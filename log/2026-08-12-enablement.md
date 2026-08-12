@@ -174,6 +174,29 @@ wanted"*. The reserved terms are **verification** and **acceptance**, and the
 standing habit is that verification names its object, which the invocation
 argument supplies.
 
+### The loop was run end to end on one item
+
+#2 was driven `Accepted → Completed` in **eight cycles**, alternating a fresh
+subagent per act — a different one each time, briefed with only the issue number
+and which skill to use, and explicitly denied the previous subagent's reasoning.
+
+**Zero send-backs. Three concessions. The circuit breaker never fired.**
+
+| | |
+|---|---|
+| **The independence gate held every time, unprompted** | No subagent verified its own work, and the session that built #1 refused to verify it without being reminded |
+| **A subagent found a defect in earlier work** | Writing `2.1` it noticed that an expiry naming a *moment* is foreclosed by the act that satisfies it — which makes `1.1`, written here, permanent debt (**F26**) |
+| **A Verifier declined an act that was not its own** | Asked to rule at `Planned`, it observed that `Planned → Built` is a Worker's transition and nothing had been built, so it ruled the plan instead and **said that its ruling arrived after the state** (**F24**) |
+| **A Verifier refused to substitute its own preference** | *"A naming preference is not a criteria-adequacy defect, and substituting mine would be the wrong act"* |
+
+**One defect was fixed mid-run.** The verdict marker was counting itself (**F25**),
+which would have produced a false circuit-breaker trip on the third verification.
+Patched to an HTML comment before continuing.
+
+**#1 did not complete, and the reason is structural.** The session that built it is
+permanently its Worker, so it can never verify it. Every subagent in this run was
+pointed at #2.
+
 ---
 
 ## Decisions
@@ -221,7 +244,7 @@ raised again.
 
 ## Findings
 
-Twenty-one. Counts re-derived, never quoted.
+Twenty-six. Counts re-derived, never quoted.
 
 | # | Finding | Bites at |
 |---|---|---|
@@ -242,6 +265,11 @@ Twenty-one. Counts re-derived, never quoted.
 | **F15** | **The first executable spec in a repository has nothing to execute it.** If the verification tooling is a capability, it needs a failing spec before it is built — and the thing that runs specs *is the thing being built*. **Every enabled repository hits this once**, at its most vulnerable moment | Step 6 · Specified |
 | **F16** | **The enablement run was work, and it never entered the door.** A branch model, seven labels, a board and two accepted compromises — no type, no state, no criteria, nothing verified it. **Findings about the practice were being raised by a process that was itself outside the practice** | One door |
 | **F17** | **The standards an actor needs are not in the repository.** The first independent verification had to reach into `Z:\Obsidian\…` for the practice documents. They are *accessible* only because a mapped drive happens to exist, which is not a property of the repository | Sufficiency |
+| **F26** | **A concession whose expiry names a *moment* can never be satisfied.** `1.1` expires when the criteria are *"expressed as a spec observed to fail **before** `.hallmark/repository.yml` exists"* — and the moment that file lands, the condition becomes permanently unreachable. **The act that satisfies the item forecloses the concession's own expiry**, so it is permanent debt by construction. Found by an independent subagent writing `2.1`, which names a **fixture state** instead — a repository without `.hallmark/personas/` — which is observable at any time | Concessions |
+| **F25** | **A token used for counting must not be expressible in the prose that discusses the count.** The verdict marker added to make send-backs countable was defeated on first contact: a Verifier reported *"counted: zero `Verdict: SENT BACK`"*, putting the token in its own comment, so the counter counted itself. The circuit breaker would have fired falsely on the third verification | Verdicts |
+| **F24** | **The act that completes a state sets it, so verifying that state always arrives after the fact.** `work` sets `Planned` because the plan act completes it. A Verifier ruling on the plan therefore rules on a state already reached — it can send the item back, but it cannot gate entry. The Verifier said so unprompted rather than letting the ruling look like a confirmation that preceded the state | State track |
+| **F23** | **The practice requires a Verifier at only two transitions; the skill offers five.** Only `Specified` names a Verifier in its criteria, and `Verified` is one by definition. `Accepted`, `Planned` and `Completed` have no Verifier requirement — so three of the five rulings are **additions**, and tooling habit could quietly make optional ceremony feel mandatory | State track |
+| **F22** | **The Glossary's `Persona` entry still carries wording D140 superseded.** It retains the narrow *"a party that builds the platform"* framing alongside the widened *"distinguished by their object, not by a verb"*. The two read in tension, and an actor sorting a party has to know which sentence is current. Found by a verification subagent applying the sorting test | Glossary |
 | **F21** | **The correct skill name is not the one a human reaches for.** The skill is `/verification` because `verify` is a retired word. In use, the natural thing typed was `/verify` — by the person who approved the naming, minutes after approving it. Retiring a word protects the vocabulary and makes the tool harder to invoke; both are true and the practice only records the first | Controlled vocabulary |
 | **F20** | **`Assignment` carries two readings, and the practice treats them as one.** It says *"the actor that takes it assigns itself; that self-assignment is the claim"* — but items are also assigned **ahead of time**: humans to show workload, agents to a queue they draw from at a fixed concurrency. **Allocation** and **claim** have opposite implications for collision — an allocated item is available to be started, a claimed one is not — so conflated, the mechanism that exists to stop two actors working the same item cannot tell the cases apart (#17) | Markers · claim |
 | **F19** | **The state track cannot say which role is needed at `Accepted`.** Reaching `Specified` takes two acts by two roles — a Worker drafts the criteria and failing spec, a Verifier confirms them — and both happen while the item sits at `Accepted`. The practice says *"the state says where the item is, and therefore what should be done next"*, but here it cannot. Markers were added to carry the difference, which means they compensate for the track being coarse rather than adding something the track never held (#12) | State track |
