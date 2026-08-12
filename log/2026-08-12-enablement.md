@@ -107,6 +107,11 @@ item is that the one who takes it says so. It is also what makes the work
 attributable afterwards. It looks like bookkeeping and it is the whole
 concurrency model.
 
+**And it is already known to be insufficient.** Assignment is also used to
+allocate work ahead of time — humans to show workload, agents to a queue — so the
+skill's claim proves the item is someone's, not that anyone is doing it (F20,
+#17).
+
 `work` covers **sift · specify · plan** and routes to one reference file per act,
 so only the relevant act loads. Build and publish are out of scope, which means an
 item can now be planned and then stall.
@@ -164,7 +169,7 @@ raised again.
 
 ## Findings
 
-Nineteen. Counts re-derived, never quoted.
+Twenty. Counts re-derived, never quoted.
 
 | # | Finding | Bites at |
 |---|---|---|
@@ -185,6 +190,7 @@ Nineteen. Counts re-derived, never quoted.
 | **F15** | **The first executable spec in a repository has nothing to execute it.** If the verification tooling is a capability, it needs a failing spec before it is built — and the thing that runs specs *is the thing being built*. **Every enabled repository hits this once**, at its most vulnerable moment | Step 6 · Specified |
 | **F16** | **The enablement run was work, and it never entered the door.** A branch model, seven labels, a board and two accepted compromises — no type, no state, no criteria, nothing verified it. **Findings about the practice were being raised by a process that was itself outside the practice** | One door |
 | **F17** | **The standards an actor needs are not in the repository.** The first independent verification had to reach into `Z:\Obsidian\…` for the practice documents. They are *accessible* only because a mapped drive happens to exist, which is not a property of the repository | Sufficiency |
+| **F20** | **`Assignment` carries two readings, and the practice treats them as one.** It says *"the actor that takes it assigns itself; that self-assignment is the claim"* — but items are also assigned **ahead of time**: humans to show workload, agents to a queue they draw from at a fixed concurrency. **Allocation** and **claim** have opposite implications for collision — an allocated item is available to be started, a claimed one is not — so conflated, the mechanism that exists to stop two actors working the same item cannot tell the cases apart (#17) | Markers · claim |
 | **F19** | **The state track cannot say which role is needed at `Accepted`.** Reaching `Specified` takes two acts by two roles — a Worker drafts the criteria and failing spec, a Verifier confirms them — and both happen while the item sits at `Accepted`. The practice says *"the state says where the item is, and therefore what should be done next"*, but here it cannot. Markers were added to carry the difference, which means they compensate for the track being coarse rather than adding something the track never held (#12) | State track |
 | **F18** | **Declaring a set and globbing a folder are two copies of one fact.** If `repository.yml` carries `personas:` *and* `.hallmark/personas/*.yml` exists, one is hand-maintained. Same for a persona's `id` versus its filename. Surfaced by the independent session before either item was specified | Declarations |
 
@@ -202,9 +208,20 @@ keeps asking someone to *record* a fact that something else already *determines*
 | F19 | which role an item needs next | its state, plus what the last act left behind |
 | — | this log's own state sections | the board |
 
+An independent session found a **seventh** without being told the pattern existed
+— the board caching an item's title, which goes stale the moment the issue is
+renamed.
+
 The rule that keeps falling out: **if it is queryable, do not write it down.**
 It has now caught the issue body listing its children, the log copying the
-concession records, two board fields, and the log's own state narrative.
+concession records, two board fields, the log's own state narrative, and a
+cached title.
+
+> **The rule has a limit, and F20 is where it stops.** *Intent to work on this
+> now* is determined by nothing — not the state, not the assignee, not the
+> history. It has to be declared, and declaring it is correct rather than a
+> smell. A rule this productive is exactly the kind that gets over-applied, and
+> the one field that must exist is the one it would kill.
 
 This argues the schema work needs a **derivation pass, not just a validation
 pass** — the question for each field is not *is it valid* but *should it exist at
