@@ -1,0 +1,4 @@
+door:
+  kind: github-issues
+  capture: https://github.com/Kieranties/hallmark/issues
+  board: https://github.com/users/Kieranties/projects/2
