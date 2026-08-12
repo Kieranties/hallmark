@@ -93,9 +93,17 @@ the natural fit.
 
 ### Step 5 · Add two fields — **partial, under concession `6.2`**
 
-The board carries `Status` (the ten state-track values), `Commitment`
-(`Uncommitted` · `Committed`) and a `Version` text field. Both axes are set on
-all three captured items.
+The board carries `Status` (the ten state-track values) and the built-in
+`Milestone`.
+
+**A `Commitment` single-select and a `Version` text field were built, then
+deleted.** Milestone `0.1.0` was created as the commitment mechanism, and both
+fields turned out to be **totally determined by it** — no milestone means
+`Uncommitted`, a milestone means `Committed` for that version. Carrying them
+separately declared a computable fact, which breaches **Derived**.
+
+How commitment is tracked is an application concern that must be **declarable**
+rather than fixed — raised as #9.
 
 **The state axis is carried by a field named `Status`, not `State`**, and that
 could not be avoided. The sequence:
@@ -296,8 +304,8 @@ doing its job: an invisible compromise converted into a tracked liability,
 | | |
 |---|---|
 | **Specified, pending verification** | #1 the door — criteria written, carries `1.1` and `6.3`. **Held at `Accepted`** until an independent Verifier confirms the criteria are adequate |
-| **Accepted** | #2 personas · #3 disciplines — `type-chore`, `Uncommitted`, unmarked |
-| **Captured, awaiting sift** | #4 schema and verification tooling · #5 actors and roles — both `New`, `Uncommitted`, untyped |
+| **Accepted** | #2 personas · #3 disciplines — `type-chore`, committed to `0.1.0`, unmarked |
+| **Captured, awaiting sift** | #4 tooling · #5 actors · #7 concession register · #8 the Initiative type · #9 commitment mechanism — all `New`, untyped |
 | **Not in the door** | The sixteen findings · a countable concession register · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
 | **Blocked** | #1 on independent verification. #2, #3 on #4. #4 on F15 — it cannot reach `Specified` by the practice's own rule |
 
@@ -468,6 +476,29 @@ Four occurrences today, all caught only by reading the value back:
 them back is the practice's own *"queried, not reported"* rule, arriving from a
 direction nobody designed for — and it is the same rule that makes `Completed`
 mean *go and find the published thing* rather than *the pipeline said so*.
+
+### The log went stale, and an independent session caught it
+
+A second Claude session working the `main` worktree reported two divergences
+between this log and the board, both correct:
+
+| Log said | Board said |
+|---|---|
+| #1 is **held at `Accepted`** pending verification | #1 is **`Specified`** |
+| `Commitment` set to `Uncommitted` on three items | the `Commitment` field **no longer exists** |
+
+Neither was a lie when written. The board moved, the fields were deleted, and
+**nothing propagated either fact into the log.**
+
+> **This is the log failing in exactly the way the practice predicts.** It is a
+> hand-maintained narrative of state that is queryable elsewhere — the same
+> defect as #6 listing its own children, and the same rule that has now caught
+> four things: **if it is queryable, do not write it down.** The log's job is
+> what *happened* and what it *cost*; every sentence in it asserting current
+> state is a copy waiting to rot.
+>
+> **It was found by an actor with clean context reading the record**, which is
+> the mechanism working — and it needed no instruction to look.
 
 **Next act:** an independent session verifies #1's criteria. Then sift #4, #5, #7
 and #8.
