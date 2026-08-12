@@ -406,19 +406,39 @@ Conceding a scope choice would inflate the ledger with things that were never
 wrong, and open-concession count is only a sharp signal while everything in it is
 real debt.
 
-## #6 became an initiative, and the type does not quite fit
+## #6 became an initiative, and the type does not fit
 
-#1, #2 and #3 are now children of #6. Three tensions, recorded rather than
-resolved — each a property of the model, not of this repository.
+#1 through #5 are now children of #6 — the whole enablement run under one parent.
+
+Three properties of `Initiative` are contradicted by the item carrying it, and
+they are **raised as #8** rather than recorded here, because each is a defect in
+the model and the model is what gets fixed.
 
 | | |
 |---|---|
-| **No state of its own** | *"Its position is the aggregate of its children."* #6's `Accepted` was set by hand. The aggregate happens to agree, but **nothing computes it** — the same breach of **Derived** as F8 |
-| **Spans several capabilities** | Every child is a `type-chore`. The definition does not fit, and *a body of work spanning several items* is not what the practice says |
-| **No work of its own — but it has some** | `6.1` and `6.2` were incurred setting up labels and the board, and **no child covers that work.** Either the initiative has work of its own, contradicting its type, or steps 4 and 5 need children of their own to host those concessions |
+| **No state of its own** | *"Its position is the aggregate of its children."* #6's `Accepted` was set by hand. **Nothing computes it**, and the model never says what *adding up* means — minimum? mode? |
+| **Spans several capabilities** | Every child is a `type-chore`. The type cannot describe a body of work spanning several **chores**, which is exactly what an enablement run is |
+| **No work of its own — but it has some** | `6.1` and `6.2` were incurred by steps 4 and 5, which **no child covers** |
 
-The third is the sharpest: **an initiative that carries concessions is, by the
-model's own definition, impossible.**
+The third is the sharpest. **An initiative that carries concessions is, by the
+model's own definition, impossible** — a concession is incurred by doing
+something, and an initiative does nothing.
+
+> **`Initiative` is the practice's only grouping construct.** If it cannot group
+> chores, cannot carry the compromises made while grouping them, and has no
+> stated aggregation rule, then **any body of non-capability work is
+> ungroupable** — which is most of what enabling a repository consists of.
+
+### Body text that duplicated metadata was removed
+
+#6 initially listed its children, and listed the items that *ought* to be
+children, as prose in the issue body. Both were deleted: `subIssues`, `parent`
+and `subIssuesSummary` are all queryable, so the list was **a hand-maintained
+copy of a fact the tracker already holds** — the same class of drift as the log
+keeping its own copy of the concession records.
+
+*The general rule this session keeps rediscovering: if it is queryable, do not
+write it down.*
 
 ## The conventions are unrecorded, so they were captured
 
@@ -434,5 +454,20 @@ expiry belongs to a third party).
 **The `concession` label marks carriers, not concessions.** It does not make them
 countable, and open-concession count remains uncomputable.
 
-**Next act:** an independent session verifies #1's criteria. Then sift #4, #5 and
-#7, and settle whether #4 and #5 belong under #6.
+### Silent write failures — now a pattern, not an incident
+
+Four occurrences today, all caught only by reading the value back:
+
+| | |
+|---|---|
+| `updateProjectV2Field` | accepts a `name` argument on a built-in field, returns success, ignores it |
+| `gh project item-edit` | setting `Commitment` straight after `item-add` no-ops silently — on #4, #5 and #8. On #8 it failed **twice in one invocation** and succeeded on a separate call |
+| a local renumbering script | collapsed ```` ```yaml ```` into ```` ``yaml ````, breaking a code fence |
+
+**Exit codes are not evidence against this API.** Verifying writes by querying
+them back is the practice's own *"queried, not reported"* rule, arriving from a
+direction nobody designed for — and it is the same rule that makes `Completed`
+mean *go and find the published thing* rather than *the pipeline said so*.
+
+**Next act:** an independent session verifies #1's criteria. Then sift #4, #5, #7
+and #8.
