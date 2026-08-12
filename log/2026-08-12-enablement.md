@@ -174,8 +174,17 @@ Numbered here, not in conversation. Counts re-derived rather than quoted.
 
 | **F14** | **The board's positional field cannot be named in the practice's vocabulary.** GitHub's built-in `Status` field is undeletable, and its name is immutable — `updateProjectV2Field` accepts a `name` argument, returns success, and ignores it. So the state axis is carried by a field called `Status`. **This is not cosmetic:** the practice retired `Done` *because* it conflated development-complete with in-the-client's-hands, replacing it with **development status** and **deployment status**. A bare `Status` re-opens exactly the question that split closed. The model also names *a lint against the controlled vocabulary* as one of three guards on the domain model — and the door itself now fails it | Step 5 |
 
-**Fourteen findings across steps 1–5.** Steps 6 and 7 are not started, so the two
+| **F15** | **The first executable spec in a repository has nothing to execute it.** `Specified` requires a failing executable spec. If the verification tooling is a **capability**, it needs one before it is built — and the thing that runs specs *is the thing being built*. The practice states no route through this. **Every enabled repository hits it once**, at the moment it is most vulnerable: a cold-start team, on their first item, with nothing working yet | Step 6 · Specified |
+
+**Fifteen findings across steps 1–5.** Steps 6 and 7 are not started, so the two
 places the note itself predicts will bite are still untested.
+
+> **F15 is the deepest one found today.** F4 said an empty repository has no
+> trivial item to walk. F15 says something stronger: the first item that *must*
+> be built to make the practice work cannot itself travel the practice. The
+> `Specified` criterion is unreachable exactly once per repository, and the
+> practice's answer to *"skipping is never sanctioned"* would make that a
+> concession on day one — which reads as the model conceding to itself.
 
 **Two of the fourteen were produced by accidents, not analysis** — F12 and F13 by
 the label deletion, F14 by discovering a built-in field that could not be removed
@@ -323,12 +332,16 @@ That is itself work not done, and it is not in the door yet.
 | | |
 |---|---|
 | **Sifted and accepted** | #1 declarations · #2 personas · #3 disciplines — `type-chore`, `Accepted`, `Uncommitted`, **unmarked** |
-| **Not in the door** | The fourteen findings · the toolchain decision · a home for concessions · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
-| **Blocked** | All three items sit at `Accepted`. `Specified` needs a failing spec; a spec needs a toolchain; choosing the toolchain is an ADR-triggering decision that was never captured |
+| **Captured, awaiting sift** | #4 schema and verification tooling — `New`, `Uncommitted`, untyped |
+| **Not in the door** | The fifteen findings · a home for concessions · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
+| **Blocked** | #1–#3 at `Accepted`, waiting on #4. #4 itself blocked by F15 — it cannot reach `Specified` by the practice's own rule |
 
-> **The walk got two states in and stopped on something that is not in the door.**
+> **The walk got two states in and stopped on something that was not in the door.**
 > That is the finding the whole exercise was for. The one-door rule says every
-> signal enters the same queue — and the thing now blocking every item in that
-> queue was being carried in conversation instead of written into it.
+> signal enters the same queue — and the thing blocking every item in that queue
+> was being carried in conversation instead of written into it. **It is now
+> captured as #4**, which is the rule working: the blocker became visible the
+> moment it was written down, and so did the fact that it cannot move either.
 
-**Next act:** capture the blocker, or narrow #1 and rule the overlap.
+**Next act:** sift #4 — and settling whether it is a chore or a capability is
+what decides whether F15 has to be answered now or can wait.
