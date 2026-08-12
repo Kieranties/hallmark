@@ -119,9 +119,36 @@ which is exactly the distinction step 6 point 3 asks for.
 Specs cannot run: no toolchain is chosen, and the choice is a genuine ADR
 trigger rather than something to settle silently inside the first item.
 
-### Step 7 · Prove it — **not started**
+### Step 7 · Prove it — **in progress, and stalled at the second state**
 
-Blocked on step 6.
+The first two lines of the step-7 checklist are ticked. The third cannot be.
+
+| Line | |
+|---|---|
+| It arrived in **the door** and nowhere else | ✓ #1, #2, #3 |
+| You **sifted** it — gave it a type, and accepted it | ✓ all three `type-chore`, `Accepted`, `Uncommitted` |
+| You wrote **acceptance criteria** and a **spec that fails** | ✗ **blocked** — no toolchain, so no spec can fail |
+| Someone **other than you** confirmed the criteria were adequate | ✗ not reached |
+| …remaining six lines | ✗ not reached |
+
+**The walk stops at `Accepted`.** Not because the practice is wrong, but because
+`Specified` demands a failing executable spec and nothing can execute one yet.
+The blocking item — choosing the toolchain — **is not in the door**.
+
+#### The sift raised two things
+
+**#1 overlaps #2 and #3.** Its body describes the declarations as *"the personas,
+the actors, and the door"*, then scopes itself to *"the cross-cutting concerns"*.
+On the first reading it subsumes the other two and one of the three should have
+been ruled `Duplicate`. Harmless at `Accepted`; a real problem at `Specified`,
+where three items would carry overlapping acceptance criteria. **Unresolved.**
+
+**Backlog item #3 bit on the very first sift.** All three items are `Accepted`
+and none carries a marker, so nothing calls them to action. The practice's own
+open question — *who sets the marker* — has the natural answer *whoever completes
+a step marks what is next*, which would make it the sifter's job. It is
+undecided, so the items were left unmarked rather than settling an open practice
+question by doing it. **An item can now sit `Accepted` and invisible.**
 
 ---
 
@@ -295,9 +322,13 @@ That is itself work not done, and it is not in the door yet.
 
 | | |
 |---|---|
-| **Captured, awaiting sift** | #1 declarations · #2 personas · #3 disciplines — all `New` / `Uncommitted`, no type |
-| **Not in the door** | The eleven findings · the toolchain decision · a home for concessions · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
-| **Blocked** | Step 6 on the toolchain choice. Step 7 on step 6 |
+| **Sifted and accepted** | #1 declarations · #2 personas · #3 disciplines — `type-chore`, `Accepted`, `Uncommitted`, **unmarked** |
+| **Not in the door** | The fourteen findings · the toolchain decision · a home for concessions · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
+| **Blocked** | All three items sit at `Accepted`. `Specified` needs a failing spec; a spec needs a toolchain; choosing the toolchain is an ADR-triggering decision that was never captured |
 
-**Next act is the sift** — assign a type to #1, #2 and #3, and rule each
-accepted, duplicate or rejected.
+> **The walk got two states in and stopped on something that is not in the door.**
+> That is the finding the whole exercise was for. The one-door rule says every
+> signal enters the same queue — and the thing now blocking every item in that
+> queue was being carried in conversation instead of written into it.
+
+**Next act:** capture the blocker, or narrow #1 and rule the overlap.
