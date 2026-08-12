@@ -1,0 +1,9 @@
+description: >
+  The party that builds the change — the declarations, the schema and whatever
+  checks them, the skills invoked to work an item, and the automation this
+  repository runs. It turns a plan into artifacts that exist.
+needs: >
+  To reach the plan and the criteria the work must satisfy, the repository's
+  existing artifacts and the conventions they already follow, and a way to run
+  each check and record what it returned — because a criterion driven is evidence
+  and a criterion read is not.
