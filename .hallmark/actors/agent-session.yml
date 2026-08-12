@@ -1,0 +1,10 @@
+description: >
+  A class rather than a named model: any agent session acting on this
+  repository under standing delegation from the actor named in `delegated-by`.
+  One declaration covers every such session because what a session may hold
+  does not vary by which model or which invocation it is — attribution of a
+  particular act still records the specific session that performed it.
+kind: agent
+roles: [worker, verifier]
+disciplines: [delivery, designer, developer, product, technical]
+delegated-by: kieranties

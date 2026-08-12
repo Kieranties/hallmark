@@ -1,0 +1,8 @@
+description: >
+  The human this repository's change is accountable to — its owner, and the
+  actor every delegation recorded here terminates at. Consequence for what is
+  accepted, committed and published lands on this actor directly rather than
+  through anybody else.
+kind: human
+roles: [worker, verifier, sentinel, decider]
+disciplines: [delivery, designer, developer, product, technical]
