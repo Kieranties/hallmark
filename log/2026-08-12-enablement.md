@@ -130,9 +130,65 @@ Numbered here, not in conversation. Counts re-derived rather than quoted.
 | **F9** | **A concession's expiry is undefined as date-or-condition.** The model says *scoped, expiring, counted* and never says which. C1's natural expiry is a condition. Date-only makes it expire while still true; condition-only means it may never expire | Concessions |
 | **F10** | **The board's auto-add cannot be build-enforced.** `gh project` has no `workflow` command; auto-add is a manual toggle in the web UI. So an item can be captured carrying **no State** — an item that exists but has not reached `New` | Step 3 · Step 5 |
 | **F11** | **The delegation ceiling covers roles but is silent on disciplines.** The actor model has two branches converging on the actor, and the ceiling rule names only one. Resolved by decision this session — recorded because the *gap* is a property of the model, not of this repository | Role model |
+| **F12** | **The door's own configuration is not under the practice.** Labels, fields, board settings and workflows are declared nowhere, versioned nowhere, and checked by nothing. The door is the single most load-bearing piece of the instantiation and it is the one piece with no record. **Demonstrated, not theorised** — see the incident below | Step 3 · Step 4 |
+| **F13** | **A concession's own lifecycle is undefined.** An ADR is *"immutable and dated, superseded never edited"*. The model says a concession is *recorded, scoped, expiring, counted* — and never says whether the record may be revised when the facts move. C1 went stale within the hour and nothing said what to do about it | Concessions |
 
-**Eleven findings across steps 1–5.** Steps 6 and 7 are not started, so the two
+**Thirteen findings across steps 1–5.** Steps 6 and 7 are not started, so the two
 places the note itself predicts will bite are still untested.
+
+### Incident — the door drifted and nothing noticed
+
+Between capture and the sift, eleven of the sixteen labels were deleted by hand:
+the nine GitHub defaults and **both markers**. The five `type-*` labels survived.
+
+Three things this exposes, none of which were visible before it happened:
+
+1. **Detection was a human remembering.** No check, no sentinel, no build. The
+   drift was reported in conversation, which is precisely the *"asking a human to
+   be a database"* failure the practice exists to kill — running inside the
+   practice's own tooling.
+2. **The markers are load-bearing and were silently removable.** With `ready` and
+   `ready-for-agent` gone, no item can be called to action. The loop stops, and
+   the board still looks healthy.
+3. **C1 went factually false.** Its compromise text asserts GitHub's defaults
+   *remain live alongside* the `type-` labels. For a period, they did not. A
+   concession that misdescribes the compromise is worse than no concession — it
+   is a record asserting something evidence does not prove.
+
+**All sixteen labels were restored** — on the grounds that the deletion was
+unintended and the recorded position was deliberate, so the world should be
+returned to the record rather than the record edited to match the world.
+
+**The nine defaults were then deleted again, by decision.** That is a different
+act from the accident and from the original error: the first was a mistake, the
+second was me silently making the tool fit, and this was the accountable actor
+choosing, on the record. The door now carries the practice's vocabulary and
+nothing else.
+
+**So F13 got answered by being lived through, in both directions:**
+
+| The world changed | The right repair |
+|---|---|
+| **By accident** | Restore the world. The record was right |
+| **By decision** | Revise the record. The world is right |
+
+The test is not *which is easier to change* — it is **which one was intended**.
+C1 was revised accordingly, and carries a `revision-note` saying what was
+removed and why, so the superseded claim is still readable. That is the ADR's
+supersession discipline applied to a concession, and it is a candidate answer to
+F13 rather than a settled one.
+
+**The evidence survives the labels.** F5 records that GitHub ships the retired
+vocabulary as defaults, and an adopting team following step 4 as written will
+meet exactly that collision. Deleting the labels here removes the collision from
+*this* repository; it does not remove the finding, because the finding lives in
+the record rather than in the world. That is the distinction the whole practice
+turns on.
+
+> **This is the strongest argument yet for `.hallmark/` holding the door's
+> declaration** — labels, fields, markers — with a check reconciling *declared*
+> against *actual*. That is the same shape as reconciling a declared touch set
+> against a derived one, and it is the mechanism the model already owns.
 
 ---
 
@@ -162,16 +218,22 @@ Pending migration into `decisions/` as ADRs.
 id: C1
 raised: 2026-08-12
 raised-by: kieranties
+revised: 2026-08-12
 standard: Every item entering the door carries exactly one of the five types
 scope: door · Kieranties/hallmark
 compromise: >
   Issue Types are an org-level GitHub feature; this is a personal repository.
   Type is carried by a `type-<type>` label, which nothing enforces — an item
-  may carry none, or several. GitHub's default labels remain live alongside
-  them, including `question` and `duplicate`, which collide with reserved
-  practice terms.
+  may carry none, or several.
 expires-when: >
   a build check rejects any issue not carrying exactly one type- label
+revision-note: >
+  As first raised, this concession also recorded that GitHub's nine default
+  labels remained live alongside the `type-` labels, colliding with the
+  reserved terms `question` and `duplicate`. Those labels were deleted by
+  decision on the day of raising, so that half of the compromise no longer
+  exists and has been removed from the record. The finding it evidenced (F5)
+  stands — an adopting team following step 4 as written will meet it.
 ```
 
 **Not yet recorded in the repository** — concessions have no home. That is
