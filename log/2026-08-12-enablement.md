@@ -87,6 +87,36 @@ Created a `main` worktree, split a Herdr pane, and started an independent Claude
 session in it. **It found two errors in this log without being asked to look** —
 an actor with clean context reading the record, which is the mechanism working.
 
+### Two skills, and three more labels
+
+Wrote a `verification` skill and a `work` skill into the `main` worktree, and
+added `needs-worker`, `needs-verifier`, `needs-decider`.
+
+They are deliberately mirror images, because the roles are:
+
+| | `verification` | `work` |
+|---|---|---|
+| **Context** | **Denied** the working session — that is what it is for | **Accumulates** it, including false starts. The only role that does |
+| **Concessions** | **Reads** them before ruling | **Raises** them rather than skipping |
+| **Stops at** | never moves an item backwards | never crosses a state needing a Verifier |
+| **First act** | check independence, then refuse or proceed | **claim the item** by self-assigning |
+
+**The claim is the interesting one.** With several agent sessions able to poll one
+door and nothing routing work to anyone, what stops two of them taking the same
+item is that the one who takes it says so. It is also what makes the work
+attributable afterwards. It looks like bookkeeping and it is the whole
+concurrency model.
+
+`work` covers **sift · specify · plan** and routes to one reference file per act,
+so only the relevant act loads. Build and publish are out of scope, which means an
+item can now be planned and then stall.
+
+**`verify` could not be used as a name.** It is a retired word — it carried both
+*gathering evidence against a standard* and *a Decider judging "this is what I
+wanted"*. The reserved terms are **verification** and **acceptance**, and the
+standing habit is that verification names its object, which the invocation
+argument supplies.
+
 ---
 
 ## Decisions
@@ -109,6 +139,9 @@ Pending migration into `decisions/` as ADRs.
 | **Concession placement** | On the item that incurred it, as append-only comments, backdated to **when it was incurred rather than when it was noticed** |
 | **Commitment** | Carried by milestones, and the mechanism must be **declarable rather than fixed** (#9) |
 | **User stories for chores** | Correct. `Specified` requires *persona named · outcome stated · problem understood* for **every** item; the type changes only whether the result produces a catalogue claim |
+| **Who sets the marker** | **Whoever completes a step marks what is next.** Needs no scheduler, and it is what lets a Worker and a Verifier call back to each other. *This settles backlog item 3 — by building it rather than by deciding it (#12)* |
+| **Markers are two axes** | `needs-worker` / `needs-verifier` / `needs-decider` say **what act is needed**; `ready` / `ready-for-agent` say **who is invited**. Named `needs-*` rather than `ready-for-verifier` so the two axes cannot be read as one — `ready-for-agent` and `ready-for-verifier` would put an actor kind and a role in the same slot |
+| **Skill naming** | `verify` is a **retired word** and could not be used. The skill is `verification`, and the invocation argument supplies the object |
 
 ### A proposed concession was rejected
 
@@ -131,7 +164,7 @@ raised again.
 
 ## Findings
 
-Eighteen. Counts re-derived, never quoted.
+Nineteen. Counts re-derived, never quoted.
 
 | # | Finding | Bites at |
 |---|---|---|
@@ -152,11 +185,12 @@ Eighteen. Counts re-derived, never quoted.
 | **F15** | **The first executable spec in a repository has nothing to execute it.** If the verification tooling is a capability, it needs a failing spec before it is built — and the thing that runs specs *is the thing being built*. **Every enabled repository hits this once**, at its most vulnerable moment | Step 6 · Specified |
 | **F16** | **The enablement run was work, and it never entered the door.** A branch model, seven labels, a board and two accepted compromises — no type, no state, no criteria, nothing verified it. **Findings about the practice were being raised by a process that was itself outside the practice** | One door |
 | **F17** | **The standards an actor needs are not in the repository.** The first independent verification had to reach into `Z:\Obsidian\…` for the practice documents. They are *accessible* only because a mapped drive happens to exist, which is not a property of the repository | Sufficiency |
+| **F19** | **The state track cannot say which role is needed at `Accepted`.** Reaching `Specified` takes two acts by two roles — a Worker drafts the criteria and failing spec, a Verifier confirms them — and both happen while the item sits at `Accepted`. The practice says *"the state says where the item is, and therefore what should be done next"*, but here it cannot. Markers were added to carry the difference, which means they compensate for the track being coarse rather than adding something the track never held (#12) | State track |
 | **F18** | **Declaring a set and globbing a folder are two copies of one fact.** If `repository.yml` carries `personas:` *and* `.hallmark/personas/*.yml` exists, one is hand-maintained. Same for a persona's `id` versus its filename. Surfaced by the independent session before either item was specified | Declarations |
 
 ### The finding behind the findings
 
-**Five of these are the same defect wearing different clothes:** the practice
+**Six of these are the same defect wearing different clothes:** the practice
 keeps asking someone to *record* a fact that something else already *determines*.
 
 | | Asserted | Already determined by |
@@ -165,6 +199,7 @@ keeps asking someone to *record* a fact that something else already *determines*
 | #8 | an initiative's state | its children |
 | — | `Commitment` and `Version` | the milestone |
 | F18 | the persona set, a persona's id | the folder, the filename |
+| F19 | which role an item needs next | its state, plus what the last act left behind |
 | — | this log's own state sections | the board |
 
 The rule that keeps falling out: **if it is queryable, do not write it down.**
