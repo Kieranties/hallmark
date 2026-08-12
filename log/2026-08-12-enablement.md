@@ -58,12 +58,12 @@ F8).
 
 ### Step 3 · Name the door — **done, and split**
 
-``yaml
+```yaml
 door:
   kind: github-issues
   capture: https://github.com/Kieranties/hallmark/issues
   board:   https://github.com/users/Kieranties/projects/2
-``
+```
 
 Split because they answer different questions. Things **land** as issues, and
 capture must be free — routing capture through the board would charge for it.
