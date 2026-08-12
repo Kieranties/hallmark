@@ -90,10 +90,22 @@ The two markers are also labels — `ready`, `ready-for-agent` — and this is *
 a concession. The practice leaves marker form to the application, and a label is
 the natural fit.
 
-### Step 5 · Add two fields — **partial**
+### Step 5 · Add two fields — **partial, under concession C2**
 
-`State` and `Commitment` exist as single-select fields on the board, plus a
-`Version` text field. Both axes are set on all three captured items.
+The board carries `Status` (the ten state-track values), `Commitment`
+(`Uncommitted` · `Committed`) and a `Version` text field. Both axes are set on
+all three captured items.
+
+**The state axis is carried by a field named `Status`, not `State`**, and that
+could not be avoided. The sequence:
+
+| Attempt | Result |
+|---|---|
+| Create a custom `State` field | Worked — but Projects v2 ships a **built-in** `Status` field, so the board then had **two** positional fields, and its default view grouped by the wrong one |
+| Delete the built-in `Status` | Refused — *"Only custom fields can be deleted"* |
+| Rewrite `Status`'s options to the ten state values | Worked |
+| Rename `Status` → `State` in the same call | **Silently ignored.** The API accepts a `name` argument on a built-in field, returns success, and does not apply it |
+| Delete the now-duplicate custom `State` | Worked |
 
 **Incomplete:** nothing forces an issue onto the board (F10).
 
@@ -133,8 +145,15 @@ Numbered here, not in conversation. Counts re-derived rather than quoted.
 | **F12** | **The door's own configuration is not under the practice.** Labels, fields, board settings and workflows are declared nowhere, versioned nowhere, and checked by nothing. The door is the single most load-bearing piece of the instantiation and it is the one piece with no record. **Demonstrated, not theorised** — see the incident below | Step 3 · Step 4 |
 | **F13** | **A concession's own lifecycle is undefined.** An ADR is *"immutable and dated, superseded never edited"*. The model says a concession is *recorded, scoped, expiring, counted* — and never says whether the record may be revised when the facts move. C1 went stale within the hour and nothing said what to do about it | Concessions |
 
-**Thirteen findings across steps 1–5.** Steps 6 and 7 are not started, so the two
+| **F14** | **The board's positional field cannot be named in the practice's vocabulary.** GitHub's built-in `Status` field is undeletable, and its name is immutable — `updateProjectV2Field` accepts a `name` argument, returns success, and ignores it. So the state axis is carried by a field called `Status`. **This is not cosmetic:** the practice retired `Done` *because* it conflated development-complete with in-the-client's-hands, replacing it with **development status** and **deployment status**. A bare `Status` re-opens exactly the question that split closed. The model also names *a lint against the controlled vocabulary* as one of three guards on the domain model — and the door itself now fails it | Step 5 |
+
+**Fourteen findings across steps 1–5.** Steps 6 and 7 are not started, so the two
 places the note itself predicts will bite are still untested.
+
+**Two of the fourteen were produced by accidents, not analysis** — F12 and F13 by
+the label deletion, F14 by discovering a built-in field that could not be removed
+or renamed. Neither would have come out of design work. That is an argument for
+walking the loop early rather than specifying it further first.
 
 ### Incident — the door drifted and nothing noticed
 
@@ -236,8 +255,39 @@ revision-note: >
   stands — an adopting team following step 4 as written will meet it.
 ```
 
-**Not yet recorded in the repository** — concessions have no home. That is
-itself work not done, and it is not in the door yet.
+### C2 · The state axis is carried by a field named `Status`
+
+```yaml
+id: C2
+raised: 2026-08-12
+raised-by: kieranties
+standard: >
+  Reserved terms are used as written. The state axis is `State`; a bare
+  `Status` is the ambiguity the retirement of `Done` exists to prevent.
+scope: board · Kieranties/hallmark
+compromise: >
+  Projects v2 ships a built-in `Status` field that cannot be deleted and
+  cannot be renamed — the API accepts a `name` argument and ignores it. A
+  custom `State` field can be created, but then the board carries two
+  positional fields and groups by the wrong one, which is worse. The
+  built-in field's options were rewritten to the ten state-track values and
+  the custom duplicate removed.
+expires-when: >
+  GitHub permits renaming the built-in field, OR the door moves to a tracker
+  whose positional field can be named. Neither is in our gift, which makes
+  this a standing concession rather than a short-lived one.
+```
+
+> **C2 is the first concession the practice cannot clear by its own effort.**
+> C1 expires when we write a check. C2 expires when GitHub changes, or when the
+> door moves. The model treats a concession as debt to be paid down, and assumes
+> the debtor can pay — it has no shape for one whose expiry condition belongs to
+> a third party. **That is a fifteenth finding in all but name**, and it is not
+> recorded as one only because it is the same gap as F9 and F13: the concession
+> mechanism's own lifecycle is underspecified in three separate directions now.
+
+**Neither concession is recorded in the repository** — concessions have no home.
+That is itself work not done, and it is not in the door yet.
 
 ---
 
