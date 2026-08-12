@@ -244,7 +244,7 @@ raised again.
 
 ## Findings
 
-Twenty-six. Counts re-derived, never quoted.
+Twenty-seven. Counts re-derived, never quoted.
 
 | # | Finding | Bites at |
 |---|---|---|
@@ -265,6 +265,7 @@ Twenty-six. Counts re-derived, never quoted.
 | **F15** | **The first executable spec in a repository has nothing to execute it.** If the verification tooling is a capability, it needs a failing spec before it is built — and the thing that runs specs *is the thing being built*. **Every enabled repository hits this once**, at its most vulnerable moment | Step 6 · Specified |
 | **F16** | **The enablement run was work, and it never entered the door.** A branch model, seven labels, a board and two accepted compromises — no type, no state, no criteria, nothing verified it. **Findings about the practice were being raised by a process that was itself outside the practice** | One door |
 | **F17** | **The standards an actor needs are not in the repository.** The first independent verification had to reach into `Z:\Obsidian\…` for the practice documents. They are *accessible* only because a mapped drive happens to exist, which is not a property of the repository | Sufficiency |
+| **F27** | **Subagents share a session, so a subagent Verifier is not independent.** #1, #2 and part of #3 were driven by alternating fresh subagents, described at the time as making `worker != verifier` mechanical. It did not — subagents under one orchestrator share a session identity, so a subagent verifying another's work is the same session ruling on itself. Found when a verifier subagent read the `Claude-Session` trailer on the build commit, matched it to its own, and refused. **Every verdict from that pattern had asserted independence, not established it** (#35) | Actor model |
 | **F26** | **A concession whose expiry names a *moment* can never be satisfied.** `1.1` expires when the criteria are *"expressed as a spec observed to fail **before** `.hallmark/repository.yml` exists"* — and the moment that file lands, the condition becomes permanently unreachable. **The act that satisfies the item forecloses the concession's own expiry**, so it is permanent debt by construction. Found by an independent subagent writing `2.1`, which names a **fixture state** instead — a repository without `.hallmark/personas/` — which is observable at any time | Concessions |
 | **F25** | **A token used for counting must not be expressible in the prose that discusses the count.** The verdict marker added to make send-backs countable was defeated on first contact: a Verifier reported *"counted: zero `Verdict: SENT BACK`"*, putting the token in its own comment, so the counter counted itself. The circuit breaker would have fired falsely on the third verification | Verdicts |
 | **F24** | **The act that completes a state sets it, so verifying that state always arrives after the fact.** `work` sets `Planned` because the plan act completes it. A Verifier ruling on the plan therefore rules on a state already reached — it can send the item back, but it cannot gate entry. The Verifier said so unprompted rather than letting the ruling look like a confirmation that preceded the state | State track |
