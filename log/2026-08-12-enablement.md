@@ -7,7 +7,8 @@ where the practice bit. Nothing here is the practice; the practice is what
 reaches `main`, and it reaches `main` only through an issue.
 
 > **Status: incomplete.** Steps 1–4 done, step 5 partial, steps 6–7 not started.
-> Three items are captured at `New` awaiting the sift.
+> Seven items in the door. #1 specified pending verification; #2, #3 accepted;
+> #4, #5, #7 awaiting sift; #6 is the initiative capturing this run.
 
 ---
 
@@ -57,12 +58,12 @@ F8).
 
 ### Step 3 · Name the door — **done, and split**
 
-```yaml
+``yaml
 door:
   kind: github-issues
   capture: https://github.com/Kieranties/hallmark/issues
   board:   https://github.com/users/Kieranties/projects/2
-```
+``
 
 Split because they answer different questions. Things **land** as issues, and
 capture must be free — routing capture through the board would charge for it.
@@ -70,7 +71,7 @@ But `State` and `Commitment` live on the board, and an issue that never reaches
 it has **no state at all**, so it cannot even be `New`. Declaring only one of
 the two leaves either capture gated or the state axis homeless.
 
-### Step 4 · Add the five item types — **done, under concession C1**
+### Step 4 · Add the five item types — **done, under concession `6.1`**
 
 Issue Types are an org-level GitHub feature and this is a personal repository.
 Type is carried by a prefixed label instead:
@@ -82,7 +83,7 @@ Prefixed so they sit *alongside* GitHub's defaults rather than replacing them.
 > **The first instinct was to delete GitHub's nine default labels, and that was
 > wrong.** It would have made the instantiation look clean by erasing the
 > evidence that it is compromised. The defaults stay; the compromise is recorded
-> as **C1**. This is the "drifting into application" tell in a new costume —
+> as **`6.1`**. This is the "drifting into application" tell in a new costume —
 > changing the tool so the process fits, instead of recording that the tool
 > does not.
 
@@ -90,7 +91,7 @@ The two markers are also labels — `ready`, `ready-for-agent` — and this is *
 a concession. The practice leaves marker form to the application, and a label is
 the natural fit.
 
-### Step 5 · Add two fields — **partial, under concession C2**
+### Step 5 · Add two fields — **partial, under concession `6.2`**
 
 The board carries `Status` (the ten state-track values), `Commitment`
 (`Uncommitted` · `Committed`) and a `Version` text field. Both axes are set on
@@ -166,17 +167,17 @@ Numbered here, not in conversation. Counts re-derived rather than quoted.
 | **F6** | **`Specified` requires a failing executable spec for every item, including a chore.** For a declarations artifact this **forces structured, schema-checkable data** — prose cannot reach `Specified`. That is a strong and useful result, and the practice never says it. A team writing prose declarations would be stuck without knowing why | Step 5 · Specified |
 | **F7** | **A repository whose product is documentation has no publish act.** `Completed` requires *"the artifact has left the repository and is retrievable by a consumer"*. Step 6 assumes a package, an image or a binary | Step 6 · Completed |
 | **F8** | **Step 2 asks you to assert a derived fact.** *"Record that the Verifier role is unheld"* — but whether it is held is **computable** from the actor list. Writing it down breaches **Derived** | Step 2 |
-| **F9** | **A concession's expiry is undefined as date-or-condition.** The model says *scoped, expiring, counted* and never says which. C1's natural expiry is a condition. Date-only makes it expire while still true; condition-only means it may never expire | Concessions |
+| **F9** | **A concession's expiry is undefined as date-or-condition.** The model says *scoped, expiring, counted* and never says which. `6.1`'s natural expiry is a condition. Date-only makes it expire while still true; condition-only means it may never expire | Concessions |
 | **F10** | **The board's auto-add cannot be build-enforced.** `gh project` has no `workflow` command; auto-add is a manual toggle in the web UI. So an item can be captured carrying **no State** — an item that exists but has not reached `New` | Step 3 · Step 5 |
 | **F11** | **The delegation ceiling covers roles but is silent on disciplines.** The actor model has two branches converging on the actor, and the ceiling rule names only one. Resolved by decision this session — recorded because the *gap* is a property of the model, not of this repository | Role model |
 | **F12** | **The door's own configuration is not under the practice.** Labels, fields, board settings and workflows are declared nowhere, versioned nowhere, and checked by nothing. The door is the single most load-bearing piece of the instantiation and it is the one piece with no record. **Demonstrated, not theorised** — see the incident below | Step 3 · Step 4 |
-| **F13** | **A concession's own lifecycle is undefined.** An ADR is *"immutable and dated, superseded never edited"*. The model says a concession is *recorded, scoped, expiring, counted* — and never says whether the record may be revised when the facts move. C1 went stale within the hour and nothing said what to do about it | Concessions |
+| **F13** | **A concession's own lifecycle is undefined.** An ADR is *"immutable and dated, superseded never edited"*. The model says a concession is *recorded, scoped, expiring, counted* — and never says whether the record may be revised when the facts move. `6.1` went stale within the hour and nothing said what to do about it | Concessions |
 
 | **F14** | **The board's positional field cannot be named in the practice's vocabulary.** GitHub's built-in `Status` field is undeletable, and its name is immutable — `updateProjectV2Field` accepts a `name` argument, returns success, and ignores it. So the state axis is carried by a field called `Status`. **This is not cosmetic:** the practice retired `Done` *because* it conflated development-complete with in-the-client's-hands, replacing it with **development status** and **deployment status**. A bare `Status` re-opens exactly the question that split closed. The model also names *a lint against the controlled vocabulary* as one of three guards on the domain model — and the door itself now fails it | Step 5 |
 
 | **F15** | **The first executable spec in a repository has nothing to execute it.** `Specified` requires a failing executable spec. If the verification tooling is a **capability**, it needs one before it is built — and the thing that runs specs *is the thing being built*. The practice states no route through this. **Every enabled repository hits it once**, at the moment it is most vulnerable: a cold-start team, on their first item, with nothing working yet | Step 6 · Specified |
 
-**Fifteen findings across steps 1–5.** Steps 6 and 7 are not started, so the two
+**Sixteen findings across steps 1–5.** Steps 6 and 7 are not started, so the two
 places the note itself predicts will bite are still untested.
 
 > **F15 is the deepest one found today.** F4 said an empty repository has no
@@ -205,7 +206,7 @@ Three things this exposes, none of which were visible before it happened:
 2. **The markers are load-bearing and were silently removable.** With `ready` and
    `ready-for-agent` gone, no item can be called to action. The loop stops, and
    the board still looks healthy.
-3. **C1 went factually false.** Its compromise text asserts GitHub's defaults
+3. **`6.1` went factually false.** Its compromise text asserts GitHub's defaults
    *remain live alongside* the `type-` labels. For a period, they did not. A
    concession that misdescribes the compromise is worse than no concession — it
    is a record asserting something evidence does not prove.
@@ -228,7 +229,7 @@ nothing else.
 | **By decision** | Revise the record. The world is right |
 
 The test is not *which is easier to change* — it is **which one was intended**.
-C1 was revised accordingly, and carries a `revision-note` saying what was
+`6.1` was revised accordingly, and carries a `revision-note` saying what was
 removed and why, so the superseded claim is still readable. That is the ADR's
 supersession discipline applied to a concession, and it is a candidate answer to
 F13 rather than a settled one.
@@ -256,7 +257,7 @@ Pending migration into `decisions/` as ADRs.
 | The repository is the sole source. All Obsidian material moves; the vault stops being an authoring surface |
 | `main` is truth · `published` is build output · `dogfood` is where ideas are tried. Nothing reaches `main` except through an issue |
 | The door is split into `capture` (issues) and `board` (Projects v2) |
-| Item type is carried by a prefixed label — **concession C1** |
+| Item type is carried by a prefixed label — **concession `6.1`** |
 | Markers are labels, and that is not a concession |
 | **The delegation ceiling extends to disciplines**: an agent's disciplines must be a subset of its delegator's, exactly as its roles must be. *New — the model does not say this today (F11)* |
 | Personas and disciplines are one structured file each, globbed rather than indexed. An index would be a derived fact requiring maintenance, which **Derived** forbids |
@@ -267,74 +268,37 @@ Pending migration into `decisions/` as ADRs.
 
 ## Concessions incurred
 
-### C1 · Item type is carried by an unenforced label
+**The records live on the items that incurred them**, as append-only comments.
+They are not reproduced here — one evidence base, many renderings, and a log
+holding its own copy of a concession is exactly the drift this practice exists
+to prevent.
 
-```yaml
-id: C1
-raised: 2026-08-12
-raised-by: kieranties
-revised: 2026-08-12
-standard: Every item entering the door carries exactly one of the five types
-scope: door · Kieranties/hallmark
-compromise: >
-  Issue Types are an org-level GitHub feature; this is a personal repository.
-  Type is carried by a `type-<type>` label, which nothing enforces — an item
-  may carry none, or several.
-expires-when: >
-  a build check rejects any issue not carrying exactly one type- label
-revision-note: >
-  As first raised, this concession also recorded that GitHub's nine default
-  labels remained live alongside the `type-` labels, colliding with the
-  reserved terms `question` and `duplicate`. Those labels were deleted by
-  decision on the day of raising, so that half of the compromise no longer
-  exists and has been removed from the record. The finding it evidenced (F5)
-  stands — an adopting team following step 4 as written will meet it.
-```
+| | Against | On | Clears when |
+|---|---|---|---|
+| **`1.1`** | `Specified` requires a failing executable spec. No runner exists | #1 | #4 lands, and the criteria are expressed as a spec observed to fail *before* the file exists |
+| **`6.1`** | Every item carries exactly one of the five types | #6 | a build check rejects any issue not carrying exactly one `type-` label |
+| **`6.2`** | Reserved terms are used as written — the state axis is `State`, not `Status` | #6 | GitHub permits renaming the built-in field, **or** the door moves |
+| **`6.3`** | **D178** — a repository declares personas, door and actors before any item travels | #6 | #5 closes, provided #1, #2 and #3 are already closed |
 
-### C2 · The state axis is carried by a field named `Status`
+**`6.2` is the first concession the practice cannot clear by its own effort.**
+`6.1` expires when we write a check. `6.2` expires when GitHub changes, or when
+the door moves. The model treats a concession as debt to be paid down and assumes
+the debtor can pay — it has no shape for one whose expiry condition belongs to a
+third party.
 
-```yaml
-id: C2
-raised: 2026-08-12
-raised-by: kieranties
-standard: >
-  Reserved terms are used as written. The state axis is `State`; a bare
-  `Status` is the ambiguity the retirement of `Done` exists to prevent.
-scope: board · Kieranties/hallmark
-compromise: >
-  Projects v2 ships a built-in `Status` field that cannot be deleted and
-  cannot be renamed — the API accepts a `name` argument and ignores it. A
-  custom `State` field can be created, but then the board carries two
-  positional fields and groups by the wrong one, which is worse. The
-  built-in field's options were rewritten to the ten state-track values and
-  the custom duplicate removed.
-expires-when: >
-  GitHub permits renaming the built-in field, OR the door moves to a tracker
-  whose positional field can be named. Neither is in our gift, which makes
-  this a standing concession rather than a short-lived one.
-```
-
-> **C2 is the first concession the practice cannot clear by its own effort.**
-> C1 expires when we write a check. C2 expires when GitHub changes, or when the
-> door moves. The model treats a concession as debt to be paid down, and assumes
-> the debtor can pay — it has no shape for one whose expiry condition belongs to
-> a third party. **That is a fifteenth finding in all but name**, and it is not
-> recorded as one only because it is the same gap as F9 and F13: the concession
-> mechanism's own lifecycle is underspecified in three separate directions now.
-
-**Neither concession is recorded in the repository** — concessions have no home.
-That is itself work not done, and it is not in the door yet.
-
----
+**`6.3` was incurred before the work to fix it began** — at the moment the first
+item was sifted, not by any later decision. The clearest case yet of the mechanism
+doing its job: an invisible compromise converted into a tracked liability,
+**backdated to when it happened rather than to when someone noticed**.
 
 ## State at stop
 
 | | |
 |---|---|
-| **Specified, pending verification** | #1 the door — criteria written, carries C3 and C4. **Held at `Accepted`** until an independent Verifier confirms the criteria are adequate |
+| **Specified, pending verification** | #1 the door — criteria written, carries `1.1` and `6.3`. **Held at `Accepted`** until an independent Verifier confirms the criteria are adequate |
 | **Accepted** | #2 personas · #3 disciplines — `type-chore`, `Uncommitted`, unmarked |
 | **Captured, awaiting sift** | #4 schema and verification tooling · #5 actors and roles — both `New`, `Uncommitted`, untyped |
-| **Not in the door** | The fifteen findings · a countable concession register · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
+| **Not in the door** | The sixteen findings · a countable concession register · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
 | **Blocked** | #1 on independent verification. #2, #3 on #4. #4 on F15 — it cannot reach `Specified` by the practice's own rule |
 
 > **The walk got two states in and stopped on something that was not in the door.**
@@ -359,10 +323,10 @@ Two concessions were raised as comments on the item, append-only:
 
 | | Against | Clears when |
 |---|---|---|
-| **C3** | `Specified` requires a **failing executable spec**. No runner exists | #4 lands, and the criteria are expressed as a spec observed to fail *before* the file exists |
-| **C4** | **D178** — a repository declares personas, door and actors *before any item travels*. #1–#3 reached `Accepted` with none declared | #5 closes, **provided #1, #2 and #3 are already closed** |
+| **`1.1`** | `Specified` requires a **failing executable spec**. No runner exists | #4 lands, and the criteria are expressed as a spec observed to fail *before* the file exists |
+| **`6.3`** | **D178** — a repository declares personas, door and actors *before any item travels*. #1–#3 reached `Accepted` with none declared | #5 closes, **provided #1, #2 and #3 are already closed** |
 
-**C4 was incurred before the work to fix it began** — at the moment the first item
+**`6.3` was incurred before the work to fix it began** — at the moment the first item
 was sifted, not by any later decision. It is the clearest case yet of the
 mechanism doing its job: an invisible compromise converted into a tracked
 liability, backdated honestly rather than to when someone noticed.
@@ -397,4 +361,78 @@ back.** Verifying writes rather than trusting exit codes is not optional against
 this API — which is the practice's own *"queried, not reported"* rule, arriving
 from an unexpected direction.
 
-**Next act:** an independent session verifies #1's criteria. Then sift #4 and #5.
+## Concessions are numbered per ticket
+
+A repository-wide sequence — `C1`, `C2`, `C3` — was abandoned. It needs a
+**central allocator**: two actors conceding concurrently on different items
+collide, and nothing in the practice says who issues the next number.
+
+**Identifier is `<issue>.<n>`.** `1.1` reads as *concession 1 on ticket 1*.
+Per-ticket numbering is locally allocatable — the item is the scope, so `n` is
+just a count of what is already on it.
+
+Renumbering exposed the next finding immediately.
+
+| Was | Incurred by | Now |
+|---|---|---|
+| `C3` no failing spec runner | specifying #1 | **`1.1`** |
+| `C1` type carried by an unenforced label | door setup, step 4 | **`6.1`** |
+| `C2` state axis named `Status` | board setup, step 5 | **`6.2`** |
+| `C4` D178 breached | the enablement run itself | **`6.3`** |
+
+### F16 · The enablement run was work, and it never entered the door
+
+Three of the four concessions had **no ticket to attach to**. A branch model,
+seven labels, a board with three fields and two accepted compromises — none of it
+was ever an item. No type, no state, no acceptance criteria, nothing verified it.
+
+**Fifteen findings were raised about the practice by a process that was itself
+outside the practice.** The one-door rule says every signal enters the same queue
+and there is no second queue for internal work; this session ran an afternoon of
+untracked work without noticing.
+
+It is not a flaw in the numbering scheme. **It is the scheme correctly refusing
+to host work that never entered the door** — which is how the gap was found at
+all.
+
+Captured retroactively as **#6 · Enable this repository**.
+
+### A proposed third concession was rejected
+
+*"Only the door is configured for now"* is a **scope decision**, not a compromise.
+It becomes one only if actors go uncaptured, and the fix for that is an item —
+**#5** — not a concession. **Concede what you cannot fix; capture what you can.**
+Conceding a scope choice would inflate the ledger with things that were never
+wrong, and open-concession count is only a sharp signal while everything in it is
+real debt.
+
+## #6 became an initiative, and the type does not quite fit
+
+#1, #2 and #3 are now children of #6. Three tensions, recorded rather than
+resolved — each a property of the model, not of this repository.
+
+| | |
+|---|---|
+| **No state of its own** | *"Its position is the aggregate of its children."* #6's `Accepted` was set by hand. The aggregate happens to agree, but **nothing computes it** — the same breach of **Derived** as F8 |
+| **Spans several capabilities** | Every child is a `type-chore`. The definition does not fit, and *a body of work spanning several items* is not what the practice says |
+| **No work of its own — but it has some** | `6.1` and `6.2` were incurred setting up labels and the board, and **no child covers that work.** Either the initiative has work of its own, contradicting its type, or steps 4 and 5 need children of their own to host those concessions |
+
+The third is the sharpest: **an initiative that carries concessions is, by the
+model's own definition, impossible.**
+
+## The conventions are unrecorded, so they were captured
+
+Five conventions emerged in use today and existed nowhere but this log — the
+`<issue>.<n>` identifier, concessions attaching to the item that incurred them,
+the `concession` label marking carriers, comments rather than body text, and
+backdating to when the compromise was incurred rather than noticed.
+
+Raised as **#7**, together with the three ways the model underspecifies the
+concession mechanism (F9 expiry form · F13 record lifecycle · a concession whose
+expiry belongs to a third party).
+
+**The `concession` label marks carriers, not concessions.** It does not make them
+countable, and open-concession count remains uncomputable.
+
+**Next act:** an independent session verifies #1's criteria. Then sift #4, #5 and
+#7, and settle whether #4 and #5 belong under #6.
