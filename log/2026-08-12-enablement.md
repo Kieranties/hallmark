@@ -354,3 +354,26 @@ The others expire when we do something. `6.2` expires when GitHub changes, or
 when the door moves. The model treats a concession as debt to be paid down and
 assumes the debtor can pay — it has no shape for one whose expiry condition
 belongs to a third party.
+
+---
+
+## What the run left as work
+
+Five rough edges the worker/verifier loop surfaced — captured rather than fixed,
+because the loop itself is working and these are the edges it exposed.
+
+| | |
+|---|---|
+| **#33** | Act reports and verdicts are prose. The target is a **verification list** — readable by scanning, with prose only where a judgement genuinely cannot be a row. Measured: 41 comments, ~213,000 characters, largest single verdict 19,639 |
+| **#36** | The **item body** has no structure either, so every sift, specification and plan invents one. Two Verifiers independently built their own criterion numbering because the body supplied none — two actors inventing the same missing structure is the signal |
+| **#37** | **A build pipeline and skill evaluation.** Nothing can say whether a change to a skill improves it, and `main` has no `.github/` at all — so `Completed` has been conceded on every item, `6.1` cannot expire, and nothing is build-enforced |
+| **#38** | **The practice lives in Obsidian**, so every act re-reads it as prose. The fix is not relocation — it is persisting the structured parts as data a skill *consumes* rather than interprets. Prose that explains *why* stays prose |
+| **#35** | Subagents share a session, so the independence claimed for #1 and #2 was **asserted rather than established** |
+
+> **The ordering that matters: evaluation before optimisation.** If #38 lands
+> first and the skills get faster, nothing will be able to say whether they also
+> got worse. #37 is what turns *this reads better* into *this is better*.
+
+**The declaration set is complete on `main`** — `repository.yml`, four personas,
+five disciplines, all of it through the door. Roles and actors (#5) are the
+remaining quarter.
