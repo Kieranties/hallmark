@@ -221,7 +221,7 @@ raised again.
 
 ## Findings
 
-Twenty. Counts re-derived, never quoted.
+Twenty-one. Counts re-derived, never quoted.
 
 | # | Finding | Bites at |
 |---|---|---|
@@ -242,6 +242,7 @@ Twenty. Counts re-derived, never quoted.
 | **F15** | **The first executable spec in a repository has nothing to execute it.** If the verification tooling is a capability, it needs a failing spec before it is built — and the thing that runs specs *is the thing being built*. **Every enabled repository hits this once**, at its most vulnerable moment | Step 6 · Specified |
 | **F16** | **The enablement run was work, and it never entered the door.** A branch model, seven labels, a board and two accepted compromises — no type, no state, no criteria, nothing verified it. **Findings about the practice were being raised by a process that was itself outside the practice** | One door |
 | **F17** | **The standards an actor needs are not in the repository.** The first independent verification had to reach into `Z:\Obsidian\…` for the practice documents. They are *accessible* only because a mapped drive happens to exist, which is not a property of the repository | Sufficiency |
+| **F21** | **The correct skill name is not the one a human reaches for.** The skill is `/verification` because `verify` is a retired word. In use, the natural thing typed was `/verify` — by the person who approved the naming, minutes after approving it. Retiring a word protects the vocabulary and makes the tool harder to invoke; both are true and the practice only records the first | Controlled vocabulary |
 | **F20** | **`Assignment` carries two readings, and the practice treats them as one.** It says *"the actor that takes it assigns itself; that self-assignment is the claim"* — but items are also assigned **ahead of time**: humans to show workload, agents to a queue they draw from at a fixed concurrency. **Allocation** and **claim** have opposite implications for collision — an allocated item is available to be started, a claimed one is not — so conflated, the mechanism that exists to stop two actors working the same item cannot tell the cases apart (#17) | Markers · claim |
 | **F19** | **The state track cannot say which role is needed at `Accepted`.** Reaching `Specified` takes two acts by two roles — a Worker drafts the criteria and failing spec, a Verifier confirms them — and both happen while the item sits at `Accepted`. The practice says *"the state says where the item is, and therefore what should be done next"*, but here it cannot. Markers were added to carry the difference, which means they compensate for the track being coarse rather than adding something the track never held (#12) | State track |
 | **F18** | **Declaring a set and globbing a folder are two copies of one fact.** If `repository.yml` carries `personas:` *and* `.hallmark/personas/*.yml` exists, one is hand-maintained. Same for a persona's `id` versus its filename. Surfaced by the independent session before either item was specified | Declarations |
