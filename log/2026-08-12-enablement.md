@@ -112,9 +112,43 @@ allocate work ahead of time — humans to show workload, agents to a queue — s
 skill's claim proves the item is someone's, not that anyone is doing it (F20,
 #17).
 
-`work` covers **sift · specify · plan · build** and routes to one reference file
-per act, so only the relevant act loads. Publishing is still absent, so an item can
-now reach `Built` and stall there.
+Both skills now cover the **whole track**, routing to one reference file per stage
+so only the relevant one loads — `work` has five acts, `verification` five
+transitions.
+
+**Two of the Verifier's five stages are its own act**; the other three confirm
+someone else's act happened. The skill is explicit that **performing an act that is
+not yours is worse than declining it** — a Verifier that sifts an item has made
+itself ineligible to verify the sift.
+
+**Send-back was enabled everywhere, with a circuit breaker.** On the third
+send-back at the same transition since the item last advanced, the Verifier still
+sends back — its two outcomes are unchanged, and it still does not escalate — but
+also marks `needs-decider` and `ready`.
+
+> **The reconciliation matters more than the mechanism.** *A Verifier does not
+> escalate* is in the model. Calling a human after three failures looks like
+> escalation and is not: the ruling stands, and what changes is **who gets
+> called**. *"Should we keep spending on this?"* was never the Verifier's
+> question. Without the breaker, two unattended skills can cycle an item between
+> `Built` and `Verified` indefinitely, each doing its job correctly.
+
+Counting send-backs forced verdicts to become **countable** — a fixed
+`Verdict: SENT BACK` line, so the count is a query rather than a reading exercise.
+Partial: the rest of the verdict is still prose.
+
+**Currency got a mechanism, and it is thin.** Commits landed on `main` plus items
+updated since the item reached `Specified`. The skill is told to record that as the
+*limit of what it checked* rather than as a pass — it catches what was recorded and
+misses what was decided in conversation, which today is most of it. The model
+already says the substrate for this is **process telemetry**, and that it has no
+home.
+
+**Publishing is three concessions in a trenchcoat.** No CD, no `published` branch,
+no catalogue. The act merges and then fails to retrieve the artifact, which is the
+honest output. Both skills are forbidden from describing a merge to `main` as
+publication — a commit is source, not artifact, and calling it published is
+precisely the claim evidence does not prove.
 
 Adding build forced three choices worth keeping:
 
