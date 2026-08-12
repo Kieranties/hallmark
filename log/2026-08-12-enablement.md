@@ -331,10 +331,11 @@ That is itself work not done, and it is not in the door yet.
 
 | | |
 |---|---|
-| **Sifted and accepted** | #1 declarations · #2 personas · #3 disciplines — `type-chore`, `Accepted`, `Uncommitted`, **unmarked** |
-| **Captured, awaiting sift** | #4 schema and verification tooling — `New`, `Uncommitted`, untyped |
-| **Not in the door** | The fifteen findings · a home for concessions · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
-| **Blocked** | #1–#3 at `Accepted`, waiting on #4. #4 itself blocked by F15 — it cannot reach `Specified` by the practice's own rule |
+| **Specified, pending verification** | #1 the door — criteria written, carries C3 and C4. **Held at `Accepted`** until an independent Verifier confirms the criteria are adequate |
+| **Accepted** | #2 personas · #3 disciplines — `type-chore`, `Uncommitted`, unmarked |
+| **Captured, awaiting sift** | #4 schema and verification tooling · #5 actors and roles — both `New`, `Uncommitted`, untyped |
+| **Not in the door** | The fifteen findings · a countable concession register · the D1–D186 ADR migration · moving `Product/` out of Obsidian |
+| **Blocked** | #1 on independent verification. #2, #3 on #4. #4 on F15 — it cannot reach `Specified` by the practice's own rule |
 
 > **The walk got two states in and stopped on something that was not in the door.**
 > That is the finding the whole exercise was for. The one-door rule says every
@@ -343,5 +344,57 @@ That is itself work not done, and it is not in the door yet.
 > captured as #4**, which is the rule working: the blocker became visible the
 > moment it was written down, and so did the fact that it cannot move either.
 
-**Next act:** sift #4 — and settling whether it is a chore or a capability is
-what decides whether F15 has to be answered now or can wait.
+## Specifying #1
+
+#1 was narrowed from *"the declarations"* to **the door alone**, which resolved
+the #1/#2/#3 scope overlap and immediately exposed that **actors had no owner** —
+raised as **#5**.
+
+**User stories are correct here even though #1 is a chore.** `Specified` requires
+*persona named · outcome stated · problem understood* for **every** item. The type
+does not change what `Specified` demands; it changes whether the result produces
+a **catalogue claim**. A chore's story is real and never reaches the catalogue.
+
+Two concessions were raised as comments on the item, append-only:
+
+| | Against | Clears when |
+|---|---|---|
+| **C3** | `Specified` requires a **failing executable spec**. No runner exists | #4 lands, and the criteria are expressed as a spec observed to fail *before* the file exists |
+| **C4** | **D178** — a repository declares personas, door and actors *before any item travels*. #1–#3 reached `Accepted` with none declared | #5 closes, **provided #1, #2 and #3 are already closed** |
+
+**C4 was incurred before the work to fix it began** — at the moment the first item
+was sifted, not by any later decision. It is the clearest case yet of the
+mechanism doing its job: an invisible compromise converted into a tracked
+liability, backdated honestly rather than to when someone noticed.
+
+> **A proposed third concession was rejected.** *"Only the door is configured for
+> now"* is a **scope decision**, not a compromise — it becomes one only if actors
+> go uncaptured, and the fix for that is an item, not a concession. **Concede what
+> you cannot fix; capture what you can.** Conceding a scope choice would inflate
+> the ledger with things that were never wrong, and the open-concession count is
+> only sharp while everything in it is a real debt.
+
+### #1 is held at `Accepted`, deliberately
+
+`Specified` also requires **a Verifier to confirm the criteria are adequate**, and
+`worker ≠ verifier` is never conceded. The criteria were materially authored in
+the working session — the story reworded, two criteria added, the concession
+framing supplied — so **that session is the Worker and cannot verify its own
+output.**
+
+Confirmation goes to a **fresh session** holding the item, the criteria and the
+standards, and explicitly **not** this conversation. That is the actor declaration
+being used as intended, and the first genuine exercise of independence in this
+repository.
+
+### Application note — a silent write failure, twice
+
+Setting `Commitment` immediately after `gh project item-add` **silently no-opped**
+on both #4 and #5: the command returned without error and the field stayed empty.
+It succeeded on retry. Same shape as `updateProjectV2Field` accepting a `name`
+argument and ignoring it (F14). **Both were caught only by reading the value
+back.** Verifying writes rather than trusting exit codes is not optional against
+this API — which is the practice's own *"queried, not reported"* rule, arriving
+from an unexpected direction.
+
+**Next act:** an independent session verifies #1's criteria. Then sift #4 and #5.
