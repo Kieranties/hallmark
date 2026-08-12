@@ -112,9 +112,27 @@ allocate work ahead of time — humans to show workload, agents to a queue — s
 skill's claim proves the item is someone's, not that anyone is doing it (F20,
 #17).
 
-`work` covers **sift · specify · plan** and routes to one reference file per act,
-so only the relevant act loads. Build and publish are out of scope, which means an
-item can now be planned and then stall.
+`work` covers **sift · specify · plan · build** and routes to one reference file
+per act, so only the relevant act loads. Publishing is still absent, so an item can
+now reach `Built` and stall there.
+
+Adding build forced three choices worth keeping:
+
+**The PR opens at `Built` and is not merged.** Publishing may run ahead of
+verification but does not advance the state — and a Worker merging its own change
+leaves the verification gate with nothing to block. Merge follows `Verified`. The
+practice's rule maps onto a PR almost exactly.
+
+**The version is conceded rather than substituted.** `Built` requires the version
+the item landed in, and nothing records it (#15). Using the milestone instead was
+rejected: the milestone names the version the item was *committed* for, so
+conflating the two makes **slippage read as zero forever** — worse than
+uncomputable, because it looks like an answer.
+
+**Plan revision is ordinary; a wrong approach stops the build.** Plans are
+explicitly revisable, so reordering is normal work. Discovering the *approach* is
+wrong is what returns an item to `Planned`, so the skill stops rather than
+improvising past it and letting a Verifier find it later.
 
 **`verify` could not be used as a name.** It is a retired word — it carried both
 *gathering evidence against a standard* and *a Decider judging "this is what I
