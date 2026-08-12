@@ -1,0 +1,10 @@
+description: >
+  Someone working an item inside an enabled repository — sifting it, specifying
+  it, planning it, building it, verifying it, or deciding on it. One party,
+  whichever kind of actor holds it, because what a role requires is access and
+  never who is reaching for it.
+needs: >
+  To be told which act the item's state requires, what that act needs in order to
+  be performed, and what it must leave behind for the next one. All of it
+  reachable at the moment of acting rather than recalled, so an act that cannot
+  be performed is visible as such instead of being improvised past.

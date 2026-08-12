@@ -1,0 +1,8 @@
+description: >
+  Someone deciding whether to trust what this repository claims — a reviewer, an
+  audit or procurement reader, or a team weighing the practice up before taking
+  it on. They read the system's output and hold no role in its change track.
+needs: >
+  To see what is claimed and what is conceded, from the record rather than from a
+  conversation. The claims queryable, the compromises recorded, scoped and
+  expiring, and both readable without holding a role here or asking anyone.
