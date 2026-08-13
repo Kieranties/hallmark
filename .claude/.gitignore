@@ -1,0 +1,7 @@
+# Git worktrees for parallel sessions.
+# These contain full checkouts of other branches; committing them would nest
+# a copy of the repository inside itself.
+worktrees/
+
+# Personal Claude Code settings — machine-specific, never shared.
+settings.local.json
