@@ -154,7 +154,7 @@ is a table cell.
 
 | Pass | The question | If the answer is yes |
 |---|---|---|
-| **1 · One clause** | After a joining word — `and`, `but`, `so`, `then`, `because`, `which`, `while` — is there a new subject with its own verb? | Split the sentence in two at that word. Drop the joining word |
+| **1 · One clause** | Find each joining word: `and`, `but`, `so`, `then`, `while`, or a dash. Read what follows it. Could that part stand alone as a sentence, and mean the same thing? | Split the sentence there. Drop the joining word |
 | **2 · Length** | Is the sentence longer than twenty words? Twenty-five, where it describes rather than instructs? | Split it, or cut the words that carry no claim |
 | **3 · Voice** | Is the subject having the verb done to it? | Rewrite it so the subject does the verb |
 | **4 · Paragraph** | Does the paragraph run past six sentences? | Break it |
@@ -163,8 +163,12 @@ is a table cell.
 **Pass 1 is the one that fails.** `, and` is its common shape. Run pass 1 over every
 sentence before you go on, and rewrite the text until pass 1 finds nothing.
 
-A comma with a list after it is not a second clause. *"…names the instruction, the
-source and what the source returned"* is one clause with three objects. Leave it.
+**Stand-alone is the whole test, and two shapes fail it.** Both stay as one sentence.
+
+| Shape | Example | Why it stays |
+|---|---|---|
+| A clause that cannot stand alone | *The declaration records which mechanism carries an axis* | *"Mechanism carries an axis"* alone does not mean what the sentence means. It is the object of `records`, not a second topic |
+| A comma with a list after it | *…names the instruction, the source and what the source returned* | One clause with three objects |
 
 Do this check while the text is still a draft. Once the item exists, it is an item like
 any other, and this skill never rewrites one.
