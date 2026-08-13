@@ -142,7 +142,34 @@ outranks the mechanism, and the limit is recorded here rather than paid for sile
 gathered with its source named, or a statement about this run of the skill. A fact that
 is none of the three does not go in.
 
-### 6 · Create the item, and set its state
+### 6 · Check the text you authored, before it becomes the item
+
+**Do not skip this because the rule is already stated below.** It was stated, and a run
+of this skill still wrote three sentences that broke it. The rule is what the text must
+meet. This step is what makes you meet it.
+
+Take the title and the body. The preserved request and anything you quoted are exempt —
+skip them. Read what remains one sentence at a time. A bullet is a sentence here, and so
+is a table cell.
+
+| Pass | The question | If the answer is yes |
+|---|---|---|
+| **1 · One clause** | After a joining word — `and`, `but`, `so`, `then`, `because`, `which`, `while` — is there a new subject with its own verb? | Split the sentence in two at that word. Drop the joining word |
+| **2 · Length** | Is the sentence longer than twenty words? Twenty-five, where it describes rather than instructs? | Split it, or cut the words that carry no claim |
+| **3 · Voice** | Is the subject having the verb done to it? | Rewrite it so the subject does the verb |
+| **4 · Paragraph** | Does the paragraph run past six sentences? | Break it |
+| **5 · One word** | Did you name one concept by two different words? | Choose the Glossary's word. Use it everywhere |
+
+**Pass 1 is the one that fails.** `, and` is its common shape. Run pass 1 over every
+sentence before you go on, and rewrite the text until pass 1 finds nothing.
+
+A comma with a list after it is not a second clause. *"…names the instruction, the
+source and what the source returned"* is one clause with three objects. Leave it.
+
+Do this check while the text is still a draft. Once the item exists, it is an item like
+any other, and this skill never rewrites one.
+
+### 7 · Create the item, and set its state
 
 Resolve every platform handle by query, at the moment you need it, and store none of
 them. The door declares the decision; the platform assigns the handle. A handle written
@@ -165,7 +192,7 @@ gh project item-edit --id <item> --project-id <project> \
 The state reads `New`, and no other value is set. `New` is achieved when the item is in
 the door and nothing else has happened, which is exactly true here.
 
-### 7 · Return
+### 8 · Return
 
 Report the item number, and stop.
 
@@ -206,6 +233,19 @@ piece of text you author, **the title included**:
 - The practice's reserved terms are the Technical Names. Spell them as the Glossary
   spells them: *item*, *door*, *state*, *sift*, *type*, *capture*, *marker*, *claim*,
   *actor*, *concession*.
+
+**One topic in each sentence, worked.** This is the rule that this skill has broken. Each
+row below is a sentence that a run of this skill wrote into an item, and each one carries
+two main clauses. Read the middle column: it is what pass 1 of step 6 looks for.
+
+| What the skill wrote | The second clause, and where it starts | What it should have written |
+|---|---|---|
+| The carrier mapping lives at `door.carries`, inside the `door` key, and `door.kind` parameterises it | at `and` — `door.kind` is a new subject, `parameterises` is its verb | The carrier mapping lives at `door.carries`, inside the `door` key. `door.kind` parameterises it |
+| `door.carries` is a discriminated union keyed on `kind`, and this binds item #4 | at `and` — `this` is a new subject, `binds` is its verb | `door.carries` is a discriminated union keyed on `kind`. This binds item #4 |
+| The instruction failed, and the skill created the item anyway | at `and` — `the skill` is a new subject, `created` is its verb | The instruction failed. The skill created the item anyway |
+
+Splitting costs nothing. Two short sentences say what one long sentence said. A reader
+who wants only the second half can now find it.
 
 **Two things are exempt, for one reason.** The preserved request, and anything you quote
 from a source you gathered. Both are evidence of what somebody else said, and a quote
