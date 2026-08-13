@@ -2,3 +2,43 @@ door:
   kind: github-issues
   capture: https://github.com/Kieranties/hallmark/issues
   board: https://github.com/users/Kieranties/projects/2
+  carries:
+    item:
+      carrier: issue
+    type:
+      carrier: label
+      values:
+        rule: prefix
+        prefix: type-
+    state:
+      carrier: project-field
+      field: Status
+      values:
+        rule: verbatim
+    commitment:
+      carrier: milestone
+      values:
+        uncommitted:
+          milestone: absent
+        committed:
+          milestone: titled-for-the-version
+    landed-version:
+      uncarried: true
+      because: >
+        Nothing on this door records the version an item was built into. The
+        milestone carries the version an item was committed for, which is a
+        different fact — substituting it would make slippage read as zero
+        forever.
+    marker:
+      carrier: label
+      values:
+        rule: verbatim
+    claim:
+      carrier: assignee
+    concession:
+      carrier: comment
+      marked-by:
+        carrier: label
+        value: concession
+    children:
+      carrier: sub-issue
