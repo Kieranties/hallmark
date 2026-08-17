@@ -4,7 +4,7 @@
 |---|---|
 | **Date** | 2026-08-17 |
 | **Status** | Research. **No decision is taken here** |
-| **Revision** | 2 — the greenfield refocus. §0 records what changed and why |
+| **Revision** | 3 — two rulings by the Decider. §0 records what changed and why |
 | **Branch** | `claude/agent-docs-site-research-b97dit`, from `dogfood` |
 | **Relates to** | [#37](https://github.com/Kieranties/hallmark/issues/37) (build pipeline), [#38](https://github.com/Kieranties/hallmark/issues/38) (practice out of Obsidian), [#4](https://github.com/Kieranties/hallmark/issues/4) (schema), [#30](https://github.com/Kieranties/hallmark/issues/30), [#15](https://github.com/Kieranties/hallmark/issues/15), [#32](https://github.com/Kieranties/hallmark/issues/32) |
 
@@ -33,6 +33,18 @@ Three consequences, and the third is the largest:
 
 **The recommendation survives the change**, on a narrower argument. §6 re-derives it rather
 than asserting that it still holds.
+
+### Revision 3 — two rulings, and the research was wrong on both
+
+**The sixth discipline is declared.** §8 recorded an argument against it and the Decider
+overruled that argument. The reasoning is kept in §8 rather than deleted, because a research
+document that quietly drops what it got wrong cannot be audited.
+
+**The schema argument is withdrawn.** Revisions 1 and 2 both led with *"Astro validates YAML
+with Zod, and that is the schema #4 needs."* The first half is true. The second does not
+follow, and §6 now says why. **This was the strongest reason offered for the recommendation,
+and it was the weakest one.** The consequence is that the generator choice is more open than
+presented, and genuinely deferrable.
 
 ---
 
@@ -169,29 +181,43 @@ to serve static prose and leaves R7 to the community.
 
 ## 6 · Recommendation, re-derived
 
-### Build on **Astro Starlight**
+### First, a correction — the schema argument is withdrawn
 
-Revision 1 gave four reasons and one of them was the Obsidian plugin. **That reason is now
-void.** Three remain, and the first carries most of the weight.
+**Revisions 1 and 2 both led with the wrong reason.** Both argued that Astro's content layer
+validates YAML with a **Zod schema**, and that this schema is the artifact
+[#4](https://github.com/Kieranties/hallmark/issues/4) needs. The second half of that does not
+follow, and the Decider was right to challenge it.
 
-**1 · It answers R8 and #4 with one mechanism.** Astro's content layer reads YAML through a
-`file()` loader and validates it with a **Zod schema**. `.hallmark/personas/*.yml` becomes
-typed, checked content that generates pages. **That schema is the same artifact
-[#4](https://github.com/Kieranties/hallmark/issues/4) needs** — *"No schema or verification
-tooling exists, so nothing can reach `Specified`"* — and #4 blocks the whole track. No other
-candidate collapses those two pieces of work into one.
+**A schema over `.hallmark/` is needed, and it is needed whether or not a docs site exists.**
+That is #4, and it blocks the whole track. But Zod is TypeScript, and a Zod schema lives
+inside the site's build. Adopting it as *the* schema would mean:
 
-**This reason got stronger, not weaker.** Tooling is now also being built to enact the
-process. That tooling and the site want the same thing: one validated schema over `.hallmark/`
-with a machine-readable projection. Building it as the site's content layer means it is
-exercised on every commit rather than kept in step by hand.
+- **The practice's schema becomes an artifact of a docs framework.** Changing the generator would change what validates the declarations. That is a coupling ADR 0001 was written to avoid, and it is [#29](https://github.com/Kieranties/hallmark/issues/29) — the application deciding the practice.
+- **The tooling being built to enact the process would have to be TypeScript, or restate the schema.** A restated schema drifts, which is the failure the declaration was introduced to fix.
 
-**2 · Pagefind ships as the default search.** R6 with no service, no key, no cost, nothing
+**The schema should be language-neutral and owned by the repository, not the site** — JSON
+Schema or equivalent. The CI validates against it, the tooling reads it, and the site
+*consumes* it. Astro and Docusaurus can both do that.
+
+**Consequence: the generator choice is more open than revisions 1 and 2 presented**, and it is
+genuinely deferrable. Nothing in §13's first two steps depends on it.
+
+### On balance, still **Astro Starlight** — on narrower ground
+
+**1 · Pagefind ships as the default search.** R6 with no service, no key, no cost, nothing
 that can lapse. For a repository whose argument is that claims must be checkable without
 asking anyone, a search index that is a build output is the consistent choice.
 
-**3 · R4 tiers 1 and 2 are one plugin.** `starlight-llms-txt` emits `llms.txt`,
+**2 · R4 tiers 1 and 2 are one plugin.** `starlight-llms-txt` emits `llms.txt`,
 `llms-full.txt` and an `llms-small.txt` for smaller context windows.
+
+**3 · Generating pages from data is native**, whatever validates the data. The `file()` loader
+reads YAML directly, and the **Reference** section of §7 is mostly generated pages. This is
+still a real advantage over Docusaurus, where it is a custom plugin — it is just a smaller one
+than claimed, because it no longer drags #4 along with it.
+
+**These three are thinner than the case previously made.** Docusaurus is close, and if
+versioning maturity matters more than search-without-a-service, it wins.
 
 ### The cost, stated plainly
 
@@ -291,25 +317,37 @@ written by different sessions.
 | **`standards/writing.md`** | The standard. Reader-before-writing, the three registers, the controlled vocabulary, sentence rules, and a seven-pass check that is driven rather than asserted |
 | **`.claude/agents/technical-writer.md`** | The agent that applies it, holding the **Worker** role |
 
-**Two decisions inside it are worth surfacing, because they are contestable.**
+**A sixth discipline is declared**, at `.hallmark/disciplines/technical-writer.yml`. Its
+object is the published explanation of the change — what the prose claims, who it addresses,
+and whether a reader can act on it.
 
-**The agent acts for the `designer` discipline, and no new discipline is declared.** The
-declared object of `designer` is *"the wording, ordering and naming of every step, skill,
-declaration and message somebody acts on … whether the thing reads the way it works"*, which
-covers documentation exactly. Declaring a sixth discipline would run into two things already
-on the record:
+**The research argued against this and was overruled, on two grounds worth recording:**
 
-- **[#32](https://github.com/Kieranties/hallmark/issues/32)** states the question is open, and names this precise case: *"If the list is closed, … inventing `practice-author` or `documentation` is a breach of the controlled vocabulary."* Declaring one answers #32 by fiat, which is [#29](https://github.com/Kieranties/hallmark/issues/29) — the application deciding the practice.
-- **D153 already refused a parallel proposal.** A `Delivery Manager` discipline was rejected because `Delivery` already existed and *Manager* is a business title, where a discipline is a type of party. **"Technical writer" is a job title by the same test.**
+- **`designer` is a holding term, not a settled category.** It stands in for a family of design parties that have not been separated yet. Reading it as a closed category, and then arguing that documentation already falls inside it, treats a placeholder as a decision.
+- **The D153 precedent does not transfer.** D153 refused `Delivery Manager` because `Delivery` already existed as the party and *Manager* named a job within it. Here the party itself is what was missing.
 
-**This is the Decider's call, not the research's.** If the sixth discipline is wanted, it is a
-ten-line declaration plus one line in the agent — and it should carry an ADR, because #32 gets
-answered either way.
+**Two consequences follow, and neither is settled by declaring it.**
 
-**The agent is a Worker and never a Verifier of its own prose.** `worker ≠ verifier` binds, and
-[#35](https://github.com/Kieranties/hallmark/issues/35) records that a subagent shares a
-session and so is not independent. Verification of published prose is a separate act in a
-separate session.
+**[#32](https://github.com/Kieranties/hallmark/issues/32) is now answered in practice but not
+on the record.** That item asks whether the discipline list is open or closed. A sixth
+discipline existing means it is open. **That ruling is owed an ADR**, and until one exists the
+answer was taken by the application rather than by the practice — which is
+[#29](https://github.com/Kieranties/hallmark/issues/29).
+
+**The five-discipline enumeration is now stale wherever it appears** — the Glossary's
+`Discipline` entry, D142, and the promotion-voice table that names only some disciplines. That
+is the same class of defect as [#23](https://github.com/Kieranties/hallmark/issues/23).
+
+### The role bound, stated correctly
+
+Revision 2 got this wrong and it is corrected here. **The discipline holds either role.** It
+writes prose as **Worker** and rules on prose as **Verifier**.
+
+`worker ≠ verifier` binds on **the actor and the item**, not on the discipline — so this
+discipline verifies freely, as long as it did not write the prose it is ruling on. Where the
+ruling must be independent of the drafting session,
+[#35](https://github.com/Kieranties/hallmark/issues/35) applies and the Verifier needs a fresh
+session.
 
 ---
 
@@ -324,7 +362,7 @@ flowchart TB
     end
 
     subgraph ci["GitHub Actions — on push and on pull request"]
-        V["validate<br/>Zod schema over .hallmark/<br/>— this is #4"]
+        V["validate<br/>schema over .hallmark/<br/>language-neutral — this is #4"]
         L["lint<br/>controlled vocabulary — #54"]
         B["build — Astro Starlight"]
         E["emit machine tiers<br/>llms.txt · per-page .md · JSON"]
@@ -408,7 +446,7 @@ The repository root has none. What it carries, and nothing more:
 
 ```mermaid
 flowchart LR
-    A["1 · .github/<br/>type-label check<br/>needs no generator"] --> B["2 · Zod schema over .hallmark/<br/>#4"]
+    A["1 · .github/<br/>type-label check<br/>needs no generator"] --> B["2 · schema over .hallmark/<br/>language-neutral — #4"]
     B --> C["3 · IA + Understand and Adopt<br/>authored to the standard"]
     C --> D["4 · Reference ⚙ generated"]
     D --> E["5 · publish to 'published'<br/>#37 — Completed stops being conceded"]
@@ -420,7 +458,7 @@ flowchart LR
 **Step 1 does not wait on anything.** A repository with no CI is the finding underneath #37,
 and the type-label check alone expires a live concession.
 
-**Steps 2, 4 and 6 are what pay #38 back**, and they are the steps the new tooling will consume.
+**Steps 2, 4 and 6 are what pay #38 back**, and they are the steps the new tooling will consume. **None of them depends on the generator**, which is why §6 now treats that choice as deferrable.
 **If effort is constrained, do those and let the prose lag.**
 
 ---
@@ -430,7 +468,7 @@ and the type-label check alone expires a live concession.
 - **Whether `log/` and the 26 findings of [#30](https://github.com/Kieranties/hallmark/issues/30) are published.** They serve the `evaluator` persona and expose a lot of in-progress reasoning. A decision, not a build setting.
 - **Whether `.claude/skills/` is published as documentation.** The skills are the executable form of the practice, and a reader comparing them against `practice/` finds the drift #38 describes.
 - **What happens to `practice/` once the site exists.** Two sources for one practice is the condition #38 was raised about. The site does not fix it by existing.
-- **Whether a sixth discipline is declared** — §8. It answers #32 either way.
+- **The ADR that #32 is now owed.** A sixth discipline is declared, so the list is open in practice. §8 records that the ruling has no record.
 - **The truncated requirement.** The first request ended mid-sentence at *"They"*. Anything after that is uncovered.
 
 ---
