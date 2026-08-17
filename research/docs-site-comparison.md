@@ -4,375 +4,442 @@
 |---|---|
 | **Date** | 2026-08-17 |
 | **Status** | Research. **No decision is taken here** |
+| **Revision** | 2 — the greenfield refocus. §0 records what changed and why |
 | **Branch** | `claude/agent-docs-site-research-b97dit`, from `dogfood` |
-| **Relates to** | [#37](https://github.com/Kieranties/hallmark/issues/37) (build pipeline), [#38](https://github.com/Kieranties/hallmark/issues/38) (practice out of Obsidian), [#30](https://github.com/Kieranties/hallmark/issues/30) (findings with nowhere to go), [#15](https://github.com/Kieranties/hallmark/issues/15) (landed version uncarried) |
+| **Relates to** | [#37](https://github.com/Kieranties/hallmark/issues/37) (build pipeline), [#38](https://github.com/Kieranties/hallmark/issues/38) (practice out of Obsidian), [#4](https://github.com/Kieranties/hallmark/issues/4) (schema), [#30](https://github.com/Kieranties/hallmark/issues/30), [#15](https://github.com/Kieranties/hallmark/issues/15), [#32](https://github.com/Kieranties/hallmark/issues/32) |
 
-> **On placement.** This file sits at `research/` because it uses foreign vocabulary
-> — *plugin*, *build*, *branch* — which the boundary rule in
+> **On placement.** This file sits at `research/` because it uses foreign vocabulary — *plugin*,
+> *build*, *branch* — which the boundary rule in
 > [ADR 0001](../adr/0001-the-door-declares-how-it-carries-the-practice.md) confines out of
-> `.hallmark/`. That placement is undeclared and free to reverse, and it repeats the
-> gap [#52](https://github.com/Kieranties/hallmark/issues/52) already names.
+> `.hallmark/`. That placement is undeclared and free to reverse, and it repeats the gap
+> [#52](https://github.com/Kieranties/hallmark/issues/52) already names.
+
+---
+
+## 0 · What changed in revision 2
+
+**Revision 1 was built on a constraint that has been withdrawn.** It treated `practice/` as
+verbatim Obsidian copies that the build must leave byte-identical, and made that the sharpest
+discriminator in the comparison. The Decider has since stated that Obsidian is only where
+content was sourced, and has no bearing on the site.
+
+Three consequences, and the third is the largest:
+
+| | Revision 1 | Revision 2 |
+|---|---|---|
+| **The Obsidian constraint** | The decisive discriminator. Eliminated Antora outright | **Void.** Antora is now eliminated on R4 alone, which is weaker but still sufficient |
+| **`starlight-obsidian`** | The second of four reasons to pick Starlight | **Void.** The recommendation now rests on three reasons, not four |
+| **The corpus** | Content to be published, transformed at build time | **Source material to be mined.** Phase one authors the site new. Migration is not the task |
+
+**The recommendation survives the change**, on a narrower argument. §6 re-derives it rather
+than asserting that it still holds.
 
 ---
 
 ## 1 · The requirements
 
-Seven were stated. Two more fall out of the corpus survey in §2, and they are marked
-**derived** because nobody asked for them.
+Seven were stated. Two are derived from the material, and are marked as such because nobody
+asked for them.
 
 | # | Requirement | Reading used here |
 |---|---|---|
-| **R1** | A README | The repository root has none today. `practice/README.md` is a provenance note for one directory, not the repository's front door |
+| **R1** | A README | The repository root has none. `practice/README.md` is a provenance note for one directory |
 | **R2** | A build pipeline | Something runs on a commit. #37: *"`main` has no `.github/` directory"* |
 | **R3** | Published to a docs branch or hosting | The artifact leaves the repository and is retrievable |
-| **R4** | Readable by a human, and by an agent as markdown | Rendered HTML for people; raw markdown plus an index for machines |
-| **R5** | Mermaid diagrams | 13 of them exist already |
+| **R4** | Readable by a human, and by an agent as markdown | Three tiers — see §3 |
+| **R5** | Mermaid diagrams | 13 exist in the source material already |
 | **R6** | Search | Over the whole corpus |
 | **R7** | Versioning of content | More than one version of the practice readable at once |
-| **R8** | *(derived)* Generated from the declarations, not hand-copied | `.hallmark/` is structured data, and a site that restates it by hand creates a second source of truth |
-| **R9** | *(derived)* Non-destructive to `practice/` | Explained in §3. This one eliminates more options than any other |
+| **R8** | *(derived)* Generated from the declarations, not restated | `.hallmark/` is structured data. A hand-written page about the door drifts from the door |
+| **R9** | *(derived)* Authored, not migrated | Phase one writes the site new. §4 explains why this is a requirement and not a preference |
 
 ---
 
-## 2 · What the site has to publish
+## 2 · The source material
 
-Measured on `dogfood`, not estimated.
+Measured on `dogfood`. **This is what the site is written *from*, not what it publishes.**
 
-| Body | Files | Size | Shape |
+| Body | Files | Size | What it is now |
 |---|---|---|---|
-| `practice/` | 10 | **~600 KB** | Obsidian markdown. The practice itself |
-| `.claude/skills/` | 12 | ~57 KB | Two skills and their state references |
-| `.hallmark/` | 12 | ~8 KB | YAML declarations — door, personas, disciplines, actors |
-| `log/` | 2 | ~43 KB | Session logs, including the 26 findings of #30 |
+| `practice/` | 10 | **~600 KB** | The practice as discovered. Working documents |
+| `.claude/skills/` | 12 | ~57 KB | Two skills — the executable form of the practice |
+| `.hallmark/` | 12 | ~8 KB | Declarations. **The one body that is already structured** |
+| `log/` | 2 | ~43 KB | Session records, including the 26 findings of #30 |
 | `adr/` | 1 | ~5 KB | ADR 0001 |
 
-**The corpus is heavily skewed.** Two files carry most of it:
+**The corpus is skewed onto two files.** `Hallmark - Decisions.md` is 426 KB across 186
+decision rows. `Hallmark - Glossary.md` is 85 KB over 864 lines and carries 102 of the
+corpus's 139 internal links.
 
-- `Hallmark - Decisions.md` — **426 KB**, 186 decision rows in one table plus the record beneath.
-- `Hallmark - Glossary.md` — **85 KB**, 864 lines, and **102 of the corpus's 139 wikilinks**.
+**Those two are not the same kind of thing, and the site should not treat them alike:**
 
-Both are single-page hubs, and both punish a generator that is slow or that wants content
-split into small pages.
-
-### What the markdown actually contains
-
-| Feature | Count | Consequence |
-|---|---|---|
-| **Wikilinks** | 139, of which ~130 are **intra-page anchors** — `[[#Commitment\|committed]]` | Mechanically convertible to `[committed](#commitment)`. This is the good news; the Glossary does not need a link graph, it needs anchor rewriting |
-| **Mermaid** | 13 blocks, all `flowchart` (LR, TB, BT) | R5 is satisfied by every candidate. It is not a discriminator |
-| **Obsidian callouts** | 12 — `[!WARNING]`, `[!NOTE]`, `[!IMPORTANT]` | Must map to the generator's admonition syntax |
-| **`![[…]]` embeds** | In **all 10** practice files — the `mentions.base` footer | Obsidian-only. Must be stripped, and will render as literal junk if it is not |
-| **Frontmatter** | 9 files carry `type`/`status`/`projects`/`people`/`tags`/`created` | Obsidian vault keys, not site keys. `projects: "[[Hallmark]]"` is a wikilink inside YAML |
-| **Filenames** | `Hallmark - Delivery model.md` — spaces and a ` - ` separator | Need slugging to `delivery-model` |
+- **The Glossary is the controlled vocabulary**, which the practice names as one of its three guards. It transfers to the site nearly intact, because being exhaustive and cross-linked *is* its job. It is the one document that survives the rewrite mostly as-is.
+- **Decisions is a working record.** 186 rows of *why*, with supersession markers. It serves the `evaluator` persona as evidence, and it serves nobody as documentation. Publishing it unedited under a **records** section is right; rewriting it into pages is a large cost with no reader.
 
 ---
 
-## 3 · The constraint that decides most of this
+## 3 · Agent-readability has three tiers
 
-`practice/README.md` states the terms the copies are held on:
+**#38 is explicit that relocation is not the win:**
 
-> These are **verbatim copies** … nothing keeps them in step with the vault … treat the
-> vault as authoritative where the two disagree, and **re-copy rather than editing here**.
+> Copying the documents into `practice/` would fix reachability and nothing else. **The skills
+> would still read prose and re-derive the same criteria.**
 
-> `[[Wikilinks]]` … and the `![[mentions.base]]` embed … were **left exactly as written
-> rather than rewritten, because rewriting the source would make these no longer copies**.
-
-**So the fix-the-markdown-by-hand option is closed.** Any transform — wikilinks, callouts,
-frontmatter, embeds — has to happen **at build time**, leaving `practice/` byte-identical to
-the vault. Otherwise the next re-copy from Obsidian silently reverts the whole site, and the
-drift `practice/README.md` warns about becomes the normal state.
-
-This is **R9**, and it is the sharpest tool in this comparison:
-
-- It **rewards** generators built on **remark/rehype** or **markdown-it**, where a transform
-  is a build-time plugin: Starlight, Docusaurus, VitePress, Fumadocs, Quartz.
-- It **penalises** generators needing a different source format, because conversion is by
-  definition destructive: **Antora** would require AsciiDoc.
-- It **complicates** the Python generators, where wikilink and callout handling means
-  third-party markdown extensions of varying maintenance.
-
-**A second point follows from #38.** That item is explicit that relocation is not the win:
-
-> Copying the documents into `practice/` would fix reachability and nothing else. **The
-> skills would still read prose and re-derive the same criteria.**
-
-So for Hallmark, **R4 is not satisfied by markdown alone**. An agent-readable site has three
-tiers, and only the third is what #38 is actually asking for:
+So R4 is not satisfied by markdown alone. It has three tiers, and the third is what #38 is
+actually asking for:
 
 | Tier | Serves | Mechanism |
 |---|---|---|
 | **1 · HTML** | A human reading | The rendered site |
 | **2 · Raw markdown** | A general agent fetching a page | `<path>.md` per page, plus `/llms.txt` and `/llms-full.txt` |
-| **3 · Structured data** | A Hallmark skill establishing what `Specified` requires | The declarations and the state criteria published as JSON at stable URLs — **consumed, not interpreted** |
+| **3 · Structured data** | **A Hallmark skill establishing what `Specified` requires** | The declarations and state criteria as JSON at stable URLs — **consumed, not interpreted** |
 
-Tier 3 is not a docs-site feature that any of these products ship. It is a build output the
-pipeline emits, and it is mostly generator-independent. **This matters for sequencing: do not
-choose the generator on tier 3, and do not let the generator choice delay tier 3.**
+**Tier 3 is not a feature any of these products ship.** It is a build output, and it is
+largely generator-independent. This matters twice over now that tooling is also being built:
+the tools that enact the process should read tier 3, not scrape tier 1.
+
+**Do not choose the generator on tier 3, and do not let the generator choice delay it.**
 
 ---
 
-## 4 · The candidates
+## 4 · Why the rewrite is a requirement, not a preference
 
-Seven, against the five asked for. Chosen to cover the distinct architectural bets rather
-than to list every product.
+The existing documents were written while the practice was being discovered. That gives them a
+property that is correct for a working document and disqualifying for a published one:
+**almost every one of them is four documents at once.**
 
-| | System | Bet |
+The Delivery model explains the reasoning, specifies the normative model, instructs the reader
+and records decisions — in the same section, in the same voice. A reader following an
+instruction hits a paragraph of rationale. A reader evaluating the claims hits a step.
+
+**The four page types and the four declared personas line up**, which is what makes the split
+tractable rather than a matter of taste:
+
+| Persona | Page type | Shape |
 |---|---|---|
-| **A** | **Astro Starlight** | Content-layer generator; docs as typed collections |
-| **B** | **Docusaurus** | React; versioning as a first-class product feature |
-| **C** | **Material for MkDocs** → **Zensical** | Python; batteries-included theme |
-| **D** | **VitePress** | Vite/Vue; minimal and fast |
-| **E** | **Antora** | AsciiDoc; multi-repo, multi-version by design |
-| **F** | **Quartz** | Obsidian-native publishing |
-| **G** | **Fumadocs** | Next.js; app-framework docs |
+| **adopting-team** | **Tutorial** / how-to | Numbered steps, each with a verifiable outcome |
+| **practice-actor** | **How-to** / reference | Entry condition, act, what it leaves behind |
+| **application-implementer** | **Reference** | Exhaustive, structural, normative words used precisely |
+| **evaluator** | **Explanation** and generated record | Prose that argues; tables that evidence |
 
-Excluded, with reasons: **Sphinx/MyST** (Python-API-doc gravity, reST idioms this corpus has
-none of), **mdBook** (no versioning, no plugin story), **Hugo/Docsy** (capable, but the Go
-template layer buys nothing here that A or B do not), **Mintlify / GitBook / Obsidian
-Publish** (hosted and paid; R3 and R7 become somebody else's roadmap).
+**This is the substance of phase one.** Splitting by reader is the work. Choosing a generator
+is comparatively trivial, and doing it first would be optimising the easy half.
+
+**The standard that governs it now exists** at [`standards/writing.md`](../standards/writing.md),
+with an agent that applies it at `.claude/agents/technical-writer.md`. §8 covers both.
 
 ---
 
-## 5 · The matrix
+## 5 · The candidates and the matrix
+
+Seven, against the five asked for — chosen to cover the distinct architectural bets rather
+than to list every product.
 
 ✅ native · 🟡 plugin or standard workaround · ⚠️ weak, immature or manual · ❌ absent
 
 | | **A** Starlight | **B** Docusaurus | **C** MkDocs/Zensical | **D** VitePress | **E** Antora | **F** Quartz | **G** Fumadocs |
 |---|---|---|---|---|---|---|---|
-| **R4** Raw md + llms.txt | 🟡 `starlight-llms-txt` — llms.txt, `-full`, `-small` | 🟡 several plugins; raw `/{path}.md` | ⚠️ `mkdocs-llmstxt` for MkDocs; **Zensical: open request only** ([#252](https://github.com/zensical/zensical/issues/252)) | 🟡 community plugin | ❌ AsciiDoc is the source; markdown is not the artifact | ⚠️ nothing standard | 🟡 good primitives, **manual route handlers** |
-| **R5** Mermaid | ✅ | ✅ official theme | ✅ native (Material) | 🟡 | 🟡 via Kroki, **renders to image** | ✅ native | ✅ |
-| **R6** Search | ✅ **Pagefind**, built in, no service | 🟡 local-search plugin, or Algolia | ✅ built in | ✅ built in | 🟡 Lunr extension | ✅ built in | ✅ Orama |
-| **R7** Versioning | ⚠️ `starlight-versions`, **self-described early development** | ✅ **best in class**, first-class | 🟡 `mike` — mature; **Zensical: bottom of roadmap**, fork is a stopgap | ❌ none | ✅ **best in class**, multi-repo too | ❌ none | ⚠️ community only |
-| **R8** Pages from YAML | ✅ **content layer `file()` loader + Zod** | 🟡 custom plugin (JS) | 🟡 `gen-files` + `macros` (Python) | 🟡 dynamic routes | ❌ | ❌ | 🟡 |
-| **R9** Non-destructive transform | ✅ remark, **plus `starlight-obsidian`** | ✅ remark | 🟡 Python extensions | ✅ markdown-it | ❌ **conversion required** | ✅ **Obsidian is the design target** | ✅ remark |
+| **R4** Raw md + llms.txt | 🟡 `starlight-llms-txt` — llms.txt, `-full`, `-small` | 🟡 several plugins; raw `/{path}.md` | ⚠️ `mkdocs-llmstxt`; **Zensical: open request only** ([#252](https://github.com/zensical/zensical/issues/252)) | 🟡 community plugin | ❌ **AsciiDoc is the source** | ⚠️ nothing standard | 🟡 good primitives, manual routes |
+| **R5** Mermaid | ✅ | ✅ official theme | ✅ native (Material) | 🟡 | 🟡 Kroki, **renders to image** | ✅ native | ✅ |
+| **R6** Search | ✅ **Pagefind**, no service | 🟡 plugin, or Algolia | ✅ built in | ✅ built in | 🟡 Lunr extension | ✅ built in | ✅ Orama |
+| **R7** Versioning | ⚠️ `starlight-versions`, **early development** | ✅ **best in class** | 🟡 `mike`; **Zensical: bottom of roadmap** | ❌ | ✅ **best in class**, multi-repo | ❌ | ⚠️ community only |
+| **R8** Pages from YAML | ✅ **content layer `file()` + Zod** | 🟡 custom plugin (JS) | 🟡 `gen-files` + `macros` | 🟡 dynamic routes | ❌ | ❌ | 🟡 |
+| **R9** Authored fresh | ✅ MDX + components | ✅ MDX + components | 🟡 markdown + Python ext | ✅ | ⚠️ AsciiDoc authoring | ⚠️ notes-shaped | ✅ |
 | **Handles a 426 KB page** | ✅ | 🟡 React hydration cost | ✅ | ✅ | ✅ | ✅ | 🟡 |
 | **Longevity** | ✅ active | ✅ active | 🔴 **EOL 2026-11-05** | ✅ active | ✅ slow, stable | 🟡 small team | 🟡 fast-moving |
 
-### The two facts that move the ranking most
+### The eliminations
 
-**C is disqualified as a new build.** Material for MkDocs reaches **end of life on
-5 November 2026** — eleven weeks from this date. Its successor **Zensical** is real and by the
-same team, but at **0.0.55**, with the API still changing, the module system not yet open to
-third parties, **versioning at the bottom of the roadmap** (a fork of `mike` is the stated
-stopgap), and **llms.txt an open feature request**. That is R4 and R7, both unmet, on a
-pre-1.0 tool. Zensical is worth re-testing in 2027; it is not what to start on now.
+**C — Material for MkDocs reaches end of life on 5 November 2026**, eleven weeks out. Zensical
+is a real successor by the same team, but sits at **0.0.55**, with the API still moving, the
+module system not yet open to third parties, **versioning at the bottom of its roadmap**, and
+**llms.txt an open feature request**. Two requirements unmet on a pre-1.0 tool. Re-test in
+2027; do not start here.
 
-**E is disqualified by R4 and R9 together.** Antora's versioning is genuinely the best here,
-and it is the only candidate designed for many repositories at once — which would suit a
-practice meant to be adopted by other repositories. But its source format is AsciiDoc.
-Converting ~600 KB of Obsidian markdown to AsciiDoc is exactly the destructive rewrite that
-`practice/README.md` forbids, and it would leave the machine-readable artifact in a format no
-agent expects. **Note it as the fallback if Hallmark ever publishes many repositories'
-practice at once**, and not before.
+**E — Antora** has the best versioning of the seven and is the only candidate built for many
+repositories at once, which would suit a practice designed to be adopted. It loses on **R4**:
+AsciiDoc is the source format, so the markdown an agent wants is not the artifact. **Record it
+as the fallback if Hallmark ever publishes many adopting repositories' practice together.**
+
+**D, F, G** — VitePress and Quartz fail R7 outright, and Quartz is shaped for a note garden
+rather than a structured docs product. Fumadocs is capable but drags a Next.js application in
+to serve static prose and leaves R7 to the community.
 
 ---
 
-## 6 · Recommendation
+## 6 · Recommendation, re-derived
 
 ### Build on **Astro Starlight**
 
-Four reasons, in the order they matter.
+Revision 1 gave four reasons and one of them was the Obsidian plugin. **That reason is now
+void.** Three remain, and the first carries most of the weight.
 
 **1 · It answers R8 and #4 with one mechanism.** Astro's content layer reads YAML through a
 `file()` loader and validates it with a **Zod schema**. `.hallmark/personas/*.yml` becomes
-typed, checked content that generates pages. That schema is *the same artifact*
-[#4](https://github.com/Kieranties/hallmark/issues/4) needs — *"No schema or verification
-tooling exists, so nothing can reach `Specified`"* — and #4 is the item blocking the whole
-track. No other candidate collapses those two pieces of work into one.
+typed, checked content that generates pages. **That schema is the same artifact
+[#4](https://github.com/Kieranties/hallmark/issues/4) needs** — *"No schema or verification
+tooling exists, so nothing can reach `Specified`"* — and #4 blocks the whole track. No other
+candidate collapses those two pieces of work into one.
 
-**2 · `starlight-obsidian` exists.** A plugin whose stated job is publishing an Obsidian
-vault into Starlight — wikilinks, callouts, sidebar. It is by the same author as
-`starlight-versions` and `starlight-llms-txt`. R9 stops being bespoke work and becomes
-configuration.
+**This reason got stronger, not weaker.** Tooling is now also being built to enact the
+process. That tooling and the site want the same thing: one validated schema over `.hallmark/`
+with a machine-readable projection. Building it as the site's content layer means it is
+exercised on every commit rather than kept in step by hand.
 
-**3 · Pagefind ships as the default search.** R6 with no service, no key, no cost, and
-nothing that can lapse. For a repository whose whole argument is that claims must be checkable
-without asking anyone, a search index that is a build output rather than a subscription is the
-consistent choice.
+**2 · Pagefind ships as the default search.** R6 with no service, no key, no cost, nothing
+that can lapse. For a repository whose argument is that claims must be checkable without
+asking anyone, a search index that is a build output is the consistent choice.
 
-**4 · R4 tiers 1 and 2 are one plugin.** `starlight-llms-txt` emits `llms.txt`,
-`llms-full.txt`, and an `llms-small.txt` for smaller context windows.
+**3 · R4 tiers 1 and 2 are one plugin.** `starlight-llms-txt` emits `llms.txt`,
+`llms-full.txt` and an `llms-small.txt` for smaller context windows.
 
-### The cost of choosing it, stated plainly
+### The cost, stated plainly
 
 **R7 is the weak point.** `starlight-versions` describes itself as *"still in early
-development. Expect frequent updates and changes."* That is the one requirement where the
-recommendation is not the strongest option.
+development. Expect frequent updates and changes."* It is the one requirement where this is
+not the strongest option.
 
-**Why it is still the right call today:** Hallmark has **no released versions yet**. The
-milestone carrier is declared, but [#15](https://github.com/Kieranties/hallmark/issues/15)
-says nothing records the version an item landed in, so there is **nothing to version the docs
-against**. R7 is a real requirement that is **not yet exercisable**, and buying it now means
-paying reasons 1–3 to get it. If versioning must work on day one, **choose Docusaurus
-instead** — see below.
+**Why it is still the right call:** Hallmark has no released versions. The milestone carrier
+is declared, but [#15](https://github.com/Kieranties/hallmark/issues/15) records that nothing
+carries the version an item landed in, so **there is nothing to version the docs against yet**.
+R7 is real and not yet exercisable.
 
-**The fallback if `starlight-versions` disappoints:** build each tagged version into its own
-subdirectory (`/v1/`, `/v2/`) from a git tag, and publish a version switcher. That is what
-`mike` does for MkDocs, it is perhaps forty lines of pipeline, and it depends on the CI, not
-on the generator.
+**The fallback, if the plugin disappoints:** build each tagged version into its own
+subdirectory from a git tag and publish a switcher. That is what `mike` does for MkDocs. It is
+pipeline work, not generator work, so it stays available whatever is chosen.
 
-### Choose **Docusaurus** instead if versioning is non-negotiable
+### If versioning must work on day one, choose **Docusaurus**
 
-It is the honest runner-up and the answer to a different weighting. Versioning is mature and
-first-class, the plugin ecosystem for raw markdown and llms.txt is the largest of any
-candidate, and remark keeps R9 satisfied. The price: **R8 becomes a custom plugin** — YAML
-declarations to pages is JS you write and maintain — and it buys nothing toward #4's schema.
-The 426 KB Decisions page is also the worst fit for React hydration of any option here.
-
-**Not recommended, briefly:** **VitePress** and **Quartz** both fail R7 outright, and Quartz
-has no answer to R4 — its strength is exactly the Obsidian handling that `starlight-obsidian`
-gives Starlight anyway. **Fumadocs** is capable but drags a Next.js application in to serve
-static prose, and leaves R7 to the community.
+The honest runner-up. Versioning is mature and first-class, and the plugin ecosystem for raw
+markdown and llms.txt is the largest here. The price: **R8 becomes a custom JS plugin that
+buys nothing toward #4**, and the 426 KB Decisions page is the worst fit for React hydration
+of any option.
 
 ---
 
-## 7 · The pipeline
+## 7 · The information architecture
+
+**This is the part that answers "communicate what the process is and how to apply it."**
+Six sections, each with one page type and one primary reader.
 
 ```mermaid
 flowchart TB
-    subgraph sources["Sources — none of these are edited by the build"]
-        P["practice/<br/>Obsidian markdown, verbatim"]
+    L["Start here<br/>what Hallmark is, in one screen"]
+
+    L --> U["Understand<br/>explanation"]
+    L --> AD["Adopt<br/>tutorial"]
+    L --> AP["Apply<br/>how-to"]
+    L --> R["Reference<br/>normative"]
+    L --> RE["Records<br/>evidence"]
+
+    U --> U1["Why this exists — the failure inventory"]
+    U --> U2["The four principles"]
+    U --> U3["Personas, disciplines, actors, roles"]
+    U --> U4["The track, and what each state achieves"]
+    U --> U5["Concessions — recording compromise"]
+
+    AD --> D1["Enable a repository"]
+    AD --> D2["Declare your door"]
+    AD --> D3["Declare personas, disciplines, actors"]
+    AD --> D4["Check you are enabled"]
+
+    AP --> P1["Capture"]
+    AP --> P2["Work an item — per state"]
+    AP --> P3["Verify an item — per state"]
+    AP --> P4["Hold a role"]
+
+    R --> R1["Glossary — the controlled vocabulary"]
+    R --> R2["Declaration schema ⚙ generated"]
+    R --> R3["Door carriers ⚙ generated"]
+    R --> R4["States, types, markers ⚙ generated"]
+
+    RE --> E1["ADRs"]
+    RE --> E2["Concession register ⚙ generated"]
+    RE --> E3["Decisions — working record"]
+    RE --> E4["Status: built vs designed"]
+```
+
+| Section | Reader | Type | Written from | Notes |
+|---|---|---|---|---|
+| **Start here** | all | landing | new | One screen. Routes to the four paths and does nothing else |
+| **Understand** | evaluator, and anyone new | explanation | Principles, Delivery model, Failure inventory | The largest rewrite. Argues; never instructs |
+| **Adopt** | adopting-team | tutorial | Enable a repository | Numbered. **Every step has a checkable outcome** — the persona's declared need is *"an answer to 'are we enabled?' that is checked rather than assumed"* |
+| **Apply** | practice-actor | how-to | Working an item, the two skills | Per state. Entry condition, act, what it leaves behind |
+| **Reference** | application-implementer | reference | Glossary, `.hallmark/` | **⚙ Mostly generated.** This is where R8 pays |
+| **Records** | evaluator | evidence | ADRs, Decisions, concessions | Published as records, banner-marked as working documents. Not rewritten |
+
+**Two rules the IA depends on:**
+
+**⚙ marks a generated page.** Anything derived from `.hallmark/` is generated, never authored.
+A hand-written page about the door drifts from the door, and undetected drift is the condition
+ADR 0001 exists to prevent.
+
+**"Status: built vs designed" is a page, not a disclaimer.** The practice is largely *designed*
+and partly *built*, and the `evaluator` persona is served by seeing which is which. Generating
+that page from the open items and the concession register makes it true by construction rather
+than by upkeep.
+
+---
+
+## 8 · The writing discipline
+
+Landed on this branch, because a consistent method has to exist before six sections get
+written by different sessions.
+
+| Artifact | What it is |
+|---|---|
+| **`standards/writing.md`** | The standard. Reader-before-writing, the three registers, the controlled vocabulary, sentence rules, and a seven-pass check that is driven rather than asserted |
+| **`.claude/agents/technical-writer.md`** | The agent that applies it, holding the **Worker** role |
+
+**Two decisions inside it are worth surfacing, because they are contestable.**
+
+**The agent acts for the `designer` discipline, and no new discipline is declared.** The
+declared object of `designer` is *"the wording, ordering and naming of every step, skill,
+declaration and message somebody acts on … whether the thing reads the way it works"*, which
+covers documentation exactly. Declaring a sixth discipline would run into two things already
+on the record:
+
+- **[#32](https://github.com/Kieranties/hallmark/issues/32)** states the question is open, and names this precise case: *"If the list is closed, … inventing `practice-author` or `documentation` is a breach of the controlled vocabulary."* Declaring one answers #32 by fiat, which is [#29](https://github.com/Kieranties/hallmark/issues/29) — the application deciding the practice.
+- **D153 already refused a parallel proposal.** A `Delivery Manager` discipline was rejected because `Delivery` already existed and *Manager* is a business title, where a discipline is a type of party. **"Technical writer" is a job title by the same test.**
+
+**This is the Decider's call, not the research's.** If the sixth discipline is wanted, it is a
+ten-line declaration plus one line in the agent — and it should carry an ADR, because #32 gets
+answered either way.
+
+**The agent is a Worker and never a Verifier of its own prose.** `worker ≠ verifier` binds, and
+[#35](https://github.com/Kieranties/hallmark/issues/35) records that a subagent shares a
+session and so is not independent. Verification of published prose is a separate act in a
+separate session.
+
+---
+
+## 9 · The pipeline
+
+```mermaid
+flowchart TB
+    subgraph src["Sources"]
         H[".hallmark/<br/>YAML declarations"]
-        S[".claude/skills/<br/>skills and references"]
+        C["site content<br/>authored to the standard"]
         A["adr/ · log/<br/>records"]
     end
 
-    subgraph ci["GitHub Actions — on push, and on pull request"]
+    subgraph ci["GitHub Actions — on push and on pull request"]
         V["validate<br/>Zod schema over .hallmark/<br/>— this is #4"]
-        N["normalise at build time<br/>wikilinks · callouts · frontmatter<br/>strip mentions.base · slug filenames"]
-        B["build<br/>Astro Starlight"]
-        E["emit machine tiers<br/>llms.txt · llms-full.txt<br/>per-page .md · declarations as JSON"]
+        L["lint<br/>controlled vocabulary — #54"]
+        B["build — Astro Starlight"]
+        E["emit machine tiers<br/>llms.txt · per-page .md · JSON"]
     end
 
     subgraph out["Published"]
-        HT["HTML + Pagefind index<br/>a human reads"]
+        HT["HTML + Pagefind<br/>a human reads"]
         MD["raw .md + llms.txt<br/>an agent fetches"]
-        JS["JSON declarations<br/>a skill consumes"]
+        JS["JSON declarations<br/>a skill and the tooling consume"]
     end
 
-    P --> N
-    H --> V --> N
-    S --> N
-    A --> N
-    N --> B --> HT
-    B --> E
-    E --> MD
+    H --> V --> B
+    C --> L --> B
+    A --> B
+    B --> HT
+    B --> E --> MD
     E --> JS
 
     V -. "fails the build<br/>nothing publishes" .-> X["❌"]
 ```
 
-**Two properties worth holding onto.** The validate step **gates** the build, so a malformed
-declaration cannot publish — which is what turns #4's schema from a document into a check.
-And normalise **reads** `practice/` and never writes it, which is R9.
+**Validate gates the build**, which is what turns #4's schema from a document into a check.
 
-### What else the pipeline should carry
-
-These are cheap once `.github/` exists at all, and each closes something already open:
+### What else the pipeline carries
 
 | Check | Closes |
 |---|---|
-| An issue carries **exactly one** `type-` label | **Concession 6.1**, which #37 says *"cannot expire"* without a build |
+| An issue carries **exactly one** `type-` label | **Concession 6.1**, which #37 records *"cannot expire"* without a build |
 | Declarations validate against the schema | [#4](https://github.com/Kieranties/hallmark/issues/4) |
-| The controlled-vocabulary lint, scoped per ADR 0001 to everything under `.hallmark/` except `door.carries` | [#54](https://github.com/Kieranties/hallmark/issues/54) |
+| Controlled-vocabulary lint, scoped per ADR 0001 to everything under `.hallmark/` except `door.carries` | [#54](https://github.com/Kieranties/hallmark/issues/54) |
 
 ---
 
-## 8 · Publishing target (R3)
+## 10 · Publishing (R3)
 
-There are two routes, and **the practice's own wording should decide it**.
-
-| Route | What it gives | Against |
+| Route | Gives | Against |
 |---|---|---|
-| **GitHub Pages from an Actions artifact** | The current default. No branch, no commit noise | The artifact is opaque and not git-addressable. Only the newest build exists |
-| **A `published` branch**, Pages serving from it | Every publish is **a commit with a history**. Any past state is retrievable by SHA | Build output in git; the branch grows |
+| **Pages from an Actions artifact** | The current default. No branch, no commit noise | Opaque, not git-addressable. Only the newest build exists |
+| **A `published` branch** | Every publish is **a commit with history**. Any past state retrievable by SHA | Build output in git; the branch grows |
 
-**The branch is the better fit, and #37 says why.** `Completed` has been conceded on every
-item so far because *"the artifact left the repository and is retrievable"* has never been
-true. A branch makes that literally checkable — a Verifier resolves a SHA. An Actions artifact
-makes it true only for the newest build. #37 also records that a **`published` branch is
-already named in the branch model** and does not exist, so this route creates nothing new; it
-builds the thing already declared.
-
-**Recommendation:** publish to `published`, and serve Pages from it. Revisit only if branch
-size becomes a real problem, which at this corpus size is years away.
+**The branch, and #37 says why.** `Completed` has been conceded on every item because *"the
+artifact left the repository and is retrievable"* has never been true. A branch makes that
+checkable — a Verifier resolves a SHA. #37 also records that a **`published` branch is already
+named in the branch model** and does not exist, so this builds what is already declared.
 
 ---
 
-## 9 · Versioning (R7), and what it depends on
+## 11 · Versioning (R7)
 
-**The docs-site question is downstream of an open practice gap.** `repository.yml` declares
+**The docs question is downstream of an open practice gap.** `repository.yml` declares
 `landed-version` as **`uncarried: true`**, with the reason recorded: the milestone carries the
 version an item was *committed for*, which is a different fact.
 
-So **the site cannot derive "what changed in v1.2" from the door today**, whatever generator
-is chosen. The sequence is:
+1. **Site versions map to git tags.** Works now, needs nothing from the door.
+2. **A switcher** publishes `/` as newest and `/vN/` per tag.
+3. **Release notes stay manual** until [#15](https://github.com/Kieranties/hallmark/issues/15) / [#71](https://github.com/Kieranties/hallmark/issues/71) give the door a landed-version carrier.
 
-1. **Site versions map to git tags**, and the tag is what a build is cut from. This works now
-   and needs nothing from the door.
-2. **A version switcher** publishes `/` as the newest, `/vN/` for each tag.
-3. **Release notes per version stay manual** until [#15](https://github.com/Kieranties/hallmark/issues/15) / [#71](https://github.com/Kieranties/hallmark/issues/71) give the door a landed-version carrier. Then they generate.
-
-**Do not let the docs site invent a second version concept.** If the site versions on tags and
-the door commits on milestones, those two must be reconciled by declaration, not by
-convention — and that is an ADR when it happens, not a build setting.
+**Do not let the site invent a second version concept.** Site-versions-on-tags and
+door-commits-on-milestones must be reconciled by declaration, and that is an ADR when it
+happens.
 
 ---
 
-## 10 · The README (R1)
+## 12 · The README (R1)
 
-The repository root has **no README**. What it should carry, and nothing beyond:
+The repository root has none. What it carries, and nothing more:
 
 | Section | Why |
 |---|---|
-| What Hallmark is, in a paragraph | The `evaluator` persona reads this and nothing else |
-| **Who it is for** — the four declared personas, linked | They exist in `.hallmark/personas/`; the README should point at them, not restate them |
-| How to raise something — the door, and `/capture` | The door is the entry, and #53 notes no persona covers the party that captures |
-| Where the practice is — `practice/`, and the site once it exists | |
-| The status, honestly — pre-1.0, dogfooding | An evaluator deciding whether to trust the claims is a declared persona, and overclaiming here is the failure that persona exists to catch |
+| What Hallmark is, in a paragraph | The `evaluator` persona may read this and nothing else |
+| Who it is for — the four personas, **linked not restated** | They are declared in `.hallmark/personas/` |
+| How to raise something — the door, and `/capture` | The door is the entry |
+| Where the practice is — the site, once it exists | |
+| The status, honestly — pre-1.0, dogfooding | Overclaiming here is the exact failure the `evaluator` persona exists to catch |
 
-**Write it after the site exists**, so its links resolve to something. It is small, and it is
-the last step rather than the first.
+**Write it once the site exists**, so its links resolve.
 
 ---
 
-## 11 · Sequencing
+## 13 · Sequencing
 
 ```mermaid
 flowchart LR
-    A["1 · .github/<br/>validate + type-label check"] --> B["2 · schema over .hallmark/<br/>#4"]
-    B --> C["3 · Starlight site<br/>declarations + practice/ + adr/"]
-    C --> D["4 · publish to 'published'<br/>#37, and Completed stops being conceded"]
-    D --> E["5 · machine tiers<br/>llms.txt + JSON declarations"]
-    E --> F["6 · README"]
-    F --> G["7 · versioning<br/>when there is a version"]
+    A["1 · .github/<br/>type-label check<br/>needs no generator"] --> B["2 · Zod schema over .hallmark/<br/>#4"]
+    B --> C["3 · IA + Understand and Adopt<br/>authored to the standard"]
+    C --> D["4 · Reference ⚙ generated"]
+    D --> E["5 · publish to 'published'<br/>#37 — Completed stops being conceded"]
+    E --> F["6 · machine tiers<br/>llms.txt + JSON"]
+    F --> G["7 · README"]
+    G --> H["8 · versioning<br/>when a version exists"]
 ```
 
-**Step 1 is worth doing on its own, immediately.** A repository with no CI at all is the
-finding underneath #37, and the type-label check alone expires a live concession. It does not
-wait on the generator choice.
+**Step 1 does not wait on anything.** A repository with no CI is the finding underneath #37,
+and the type-label check alone expires a live concession.
 
-**Steps 2 and 5 are the ones that pay #38 back.** The generator is largely irrelevant to
-both. **If effort is constrained, do those and let the site be plain.**
+**Steps 2, 4 and 6 are what pay #38 back**, and they are the steps the new tooling will consume.
+**If effort is constrained, do those and let the prose lag.**
 
 ---
 
-## 12 · What this research does not settle
+## 14 · What this does not settle
 
-- **Whether the site publishes `log/` and the 26 findings of [#30](https://github.com/Kieranties/hallmark/issues/30).** They are working records, not practice. Publishing them serves the `evaluator` persona and exposes a lot of in-progress reasoning. That is a decision, not a build setting.
-- **Whether the skills under `.claude/skills/` are published as documentation.** They are the executable form of the practice, and a reader comparing them against `practice/` would find the drift #38 describes.
-- **Whether `practice/` stays a verbatim copy at all.** §3's whole constraint dissolves if the vault stops being authoritative. That is #38's real question, and it outranks every choice on this page.
-- **The truncated requirement.** The request ended mid-sentence at *"They"*. Anything after that is not covered here.
+- **Whether `log/` and the 26 findings of [#30](https://github.com/Kieranties/hallmark/issues/30) are published.** They serve the `evaluator` persona and expose a lot of in-progress reasoning. A decision, not a build setting.
+- **Whether `.claude/skills/` is published as documentation.** The skills are the executable form of the practice, and a reader comparing them against `practice/` finds the drift #38 describes.
+- **What happens to `practice/` once the site exists.** Two sources for one practice is the condition #38 was raised about. The site does not fix it by existing.
+- **Whether a sixth discipline is declared** — §8. It answers #32 either way.
+- **The truncated requirement.** The first request ended mid-sentence at *"They"*. Anything after that is uncovered.
 
 ---
 
 ## Sources
 
-- [Material for MkDocs — End of life on November 5, 2026 (issue #8523)](https://github.com/squidfunk/mkdocs-material/issues/8523)
-- [Zensical](https://github.com/zensical/zensical) · [llms.txt feature request (#252)](https://github.com/zensical/zensical/issues/252) · [squidfunk/mike fork](https://github.com/squidfunk/mike)
-- [Starlight — plugins and integrations](https://starlight.astro.build/resources/plugins/) · [starlight-obsidian](https://github.com/HiDeoo/starlight-obsidian) · [starlight-versions](https://github.com/HiDeoo/starlight-versions) · [starlight-llms-txt](https://github.com/delucis/starlight-llms-txt)
-- [Astro — content collections](https://docs.astro.build/en/guides/content-collections/) · [content loader reference](https://docs.astro.build/en/reference/content-loader-reference/)
-- [Docusaurus 3.9 release notes](https://docusaurus.io/blog/releases/3.9) · [docusaurus-plugin-llms](https://github.com/rachfop/docusaurus-plugin-llms) · [raw .md plugin](https://github.com/FlyNumber/markdown_docusaurus_plugin)
-- [Antora](https://antora.org/) · [Asciidoctor Kroki](https://docs.asciidoctor.org/kroki-extension/latest/)
-- [Quartz](https://quartz.jzhao.xyz/) · [Obsidian compatibility](https://quartz.jzhao.xyz/features/obsidian-compatibility)
-- [Fumadocs](https://www.fumadocs.dev/docs)
+- [Material for MkDocs — End of life on November 5, 2026 (#8523)](https://github.com/squidfunk/mkdocs-material/issues/8523)
+- [Zensical](https://github.com/zensical/zensical) · [llms.txt request (#252)](https://github.com/zensical/zensical/issues/252) · [squidfunk/mike fork](https://github.com/squidfunk/mike)
+- [Starlight plugins](https://starlight.astro.build/resources/plugins/) · [starlight-versions](https://github.com/HiDeoo/starlight-versions) · [starlight-llms-txt](https://github.com/delucis/starlight-llms-txt)
+- [Astro content collections](https://docs.astro.build/en/guides/content-collections/) · [content loader reference](https://docs.astro.build/en/reference/content-loader-reference/)
+- [Docusaurus 3.9](https://docusaurus.io/blog/releases/3.9) · [docusaurus-plugin-llms](https://github.com/rachfop/docusaurus-plugin-llms)
+- [Antora](https://antora.org/) · [Asciidoctor Kroki](https://docs.asciidoctor.org/kroki-extension/latest/) · [Quartz](https://quartz.jzhao.xyz/) · [Fumadocs](https://www.fumadocs.dev/docs)
