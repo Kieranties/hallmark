@@ -1,0 +1,81 @@
+/* Docusaurus theme corrections.
+   Variables alone cannot fix these three: Infima sets them inside its own selectors,
+   which win over :root. Keep this file imported LAST. */
+
+/* 1. Footer. It is the same dark slab in BOTH themes, so it must not be built from the
+   ink ramp (which inverts) or from Infima's footer variables (which .footer--dark
+   redeclares with its own blue-grey). Fixed tokens, applied to the element. */
+.footer{
+  background-color:var(--hm-footer-bg);
+  color:var(--hm-footer-text);
+  border-top:var(--hm-border-width) solid var(--hm-footer-rule);
+  padding:var(--hm-space-8) var(--hm-gutter) var(--hm-space-6);
+}
+.footer--dark{background-color:var(--hm-footer-bg)}
+.footer__title{color:var(--hm-footer-title);font-family:var(--hm-font-mono);font-size:var(--hm-size-label);letter-spacing:var(--hm-track-label);text-transform:uppercase;font-weight:var(--hm-weight-semibold);margin-bottom:var(--hm-space-4)}
+.footer__link-item{color:var(--hm-footer-link);font-size:var(--hm-size-body-sm)}
+.footer__link-item:hover{color:var(--hm-madder-400);text-decoration:none}
+.footer__copyright{color:var(--hm-footer-muted);font-family:var(--hm-font-mono);font-size:var(--hm-size-code-sm);text-align:left}
+
+/* Footer logo: Docusaurus centres it in its own block at the foot. Pull it left and
+   put it on the same baseline as the copyright line. */
+.footer__logo{margin:0 0 var(--hm-space-4);max-width:170px}
+.footer__bottom{text-align:left}
+.footer__bottom>div:first-child{display:flex;justify-content:flex-start}
+
+/* 2. Alignment. One measure for the whole site: navbar, page content and footer all
+   sit inside --hm-page-max, so their left edges line up on every page. */
+:root{--ifm-container-width:var(--hm-page-max);--ifm-container-width-xl:var(--hm-page-max)}
+.footer .container,.navbar>.navbar__inner{max-width:var(--hm-page-max);margin-inline:auto}
+.footer__links{margin-bottom:var(--hm-space-7)}
+
+/* 3. Navbar icons. The GitHub link is a text link by default and the colour-mode
+   toggle uses Infima's own glyphs, so the two never matched. Both are replaced with
+   masked Lucide icons at one size and one stroke weight. */
+.navbar__items--right{gap:var(--hm-space-2)}
+.header-github-link{display:flex;align-items:center;padding:var(--hm-space-2)}
+.header-github-link span,.header-github-link::after{display:none}
+.header-github-link::before{
+  content:"";width:19px;height:19px;background:var(--hm-ink-700);
+  -webkit-mask:url("https://unpkg.com/lucide-static@0.436.0/icons/github.svg") center/contain no-repeat;
+  mask:url("https://unpkg.com/lucide-static@0.436.0/icons/github.svg") center/contain no-repeat;
+  transition:var(--hm-transition-colors);
+}
+.header-github-link:hover::before{background:var(--hm-action)}
+[data-theme='dark'] .header-github-link::before{background:var(--hm-ink-700)}
+
+.navbar [class*="toggle_"] .clean-btn svg,.navbar [class*="colorModeToggle"] svg{display:none}
+.navbar [class*="toggle_"] .clean-btn,.navbar [class*="colorModeToggle"] button{
+  display:flex;align-items:center;justify-content:center;width:31px;height:31px;padding:0;
+}
+.navbar [class*="toggle_"] .clean-btn::before,.navbar [class*="colorModeToggle"] button::before{
+  content:"";width:19px;height:19px;background:var(--hm-ink-700);
+  -webkit-mask:url("https://unpkg.com/lucide-static@0.436.0/icons/moon.svg") center/contain no-repeat;
+  mask:url("https://unpkg.com/lucide-static@0.436.0/icons/moon.svg") center/contain no-repeat;
+  transition:var(--hm-transition-colors);
+}
+[data-theme='dark'] .navbar [class*="toggle_"] .clean-btn::before,[data-theme='dark'] .navbar [class*="colorModeToggle"] button::before{
+  -webkit-mask-image:url("https://unpkg.com/lucide-static@0.436.0/icons/sun.svg");
+  mask-image:url("https://unpkg.com/lucide-static@0.436.0/icons/sun.svg");
+}
+.navbar [class*="toggle_"] .clean-btn:hover::before{background:var(--hm-action)}
+
+/* 4. Remaining theme chrome the bridge variables do not reach. */
+.navbar{border-bottom:var(--hm-border-width) solid var(--hm-line)}
+.navbar__title{font-family:var(--hm-font-display);font-size:20px;font-weight:var(--hm-weight-semibold);letter-spacing:-0.01em}
+.navbar__link{font-size:var(--hm-size-body-sm);font-weight:var(--hm-weight-medium)}
+.menu__link--active:not(.menu__link--sublist){border-left:var(--hm-border-width-strong) solid var(--hm-line-accent);border-radius:0 var(--hm-radius-2) var(--hm-radius-2) 0}
+.table-of-contents__link--active{color:var(--hm-action);font-weight:var(--hm-weight-medium)}
+.theme-doc-markdown table th{font-family:var(--hm-font-mono);font-size:var(--hm-size-label);letter-spacing:var(--hm-track-label);text-transform:uppercase;color:var(--hm-text-muted);font-weight:var(--hm-weight-semibold)}
+.breadcrumbs__item,.breadcrumbs__link{font-family:var(--hm-font-mono);font-size:var(--hm-size-code-sm)}
+.breadcrumbs__link{background:transparent;padding:0 var(--hm-space-2)}
+.pagination-nav__sublabel{font-family:var(--hm-font-mono);font-size:var(--hm-size-label);letter-spacing:var(--hm-track-label);text-transform:uppercase;color:var(--hm-text-faint)}
+.pagination-nav__label{font-family:var(--hm-font-display);font-weight:var(--hm-weight-semibold)}
+.pagination-nav__link{border-color:var(--hm-line);border-radius:var(--hm-radius-3)}
+.pagination-nav__link:hover{border-color:var(--hm-line-accent)}
+.alert{border-left-width:3px;border-radius:0 var(--hm-radius-2) var(--hm-radius-2) 0}
+.card{border:var(--hm-border-width) solid var(--hm-line);border-radius:var(--hm-radius-3);box-shadow:var(--hm-shadow-1)}
+.card:hover{border-color:var(--hm-line-accent);box-shadow:var(--hm-shadow-2)}
+.tabs__item{font-family:var(--hm-font-mono);font-size:var(--hm-size-code-sm);border-radius:0}
+.tabs__item--active{border-bottom-color:var(--hm-line-accent)}
+*:focus-visible{outline:none;box-shadow:var(--hm-shadow-focus)}

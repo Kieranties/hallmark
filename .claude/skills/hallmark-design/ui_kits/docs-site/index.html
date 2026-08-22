@@ -1,0 +1,29 @@
+<!-- @dsCard group="Docs site" viewport="1280x820" name="hallmark.kieranties.com" subtitle="Landing page, docs layout, dark mode — click through" -->
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="utf-8"><title>Hallmark — docs site</title>
+<link rel="icon" href="../../assets/favicon.svg"><link rel="stylesheet" href="../../styles.css">
+<style>html,body{margin:0;background:var(--hm-paper)}body{font-family:var(--hm-font-body);color:var(--hm-text-body)}*{box-sizing:border-box}a{color:var(--hm-action)}a:hover{color:var(--hm-action-hover)}code{font-family:var(--hm-font-mono)}</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script></head>
+<body><div id="root"></div>
+<script type="text/babel" src="Chrome.jsx"></script>
+<script type="text/babel" src="LandingPage.jsx"></script>
+<script type="text/babel" src="DocsPage.jsx"></script>
+<script type="text/babel">
+function App() {
+  const [view, setView] = React.useState('home');
+  const [docPage, setDocPage] = React.useState('index');
+  const [theme, setTheme] = React.useState('light');
+  React.useEffect(() => { document.documentElement.setAttribute('data-theme', theme); }, [theme]);
+  const navigate = v => { setView(v); if (v === 'docs') setDocPage('index'); };
+  return <>
+    <Navbar onNavigate={navigate} theme={theme} onToggleTheme={() => setTheme(t => t === 'dark' ? 'light' : 'dark')} />
+    {view === 'home'
+      ? <LandingPage onNavigate={navigate} />
+      : <DocsPage page={docPage} onSelect={setDocPage} />}
+    <Footer />
+  </>;
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script></body></html>

@@ -1,0 +1,18 @@
+:root{
+  /* Short, flat, no bounce. A mark is struck, not sprung. */
+  --hm-duration-instant:80ms; /* @kind other */
+  --hm-duration-fast:120ms; /* @kind other */
+  --hm-duration-base:180ms; /* @kind other */
+  --hm-duration-slow:280ms; /* @kind other */
+  --hm-ease-standard:cubic-bezier(.2,0,.2,1); /* @kind other */
+  --hm-ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
+  --hm-ease-in:cubic-bezier(.4,0,1,1); /* @kind other */
+  --hm-transition-colors:color var(--hm-duration-fast) var(--hm-ease-standard),background-color var(--hm-duration-fast) var(--hm-ease-standard),border-color var(--hm-duration-fast) var(--hm-ease-standard); /* @kind other */
+  --hm-press-translate:translateY(1px); /* @kind other */
+}
+@media (prefers-reduced-motion:reduce){:root{
+  --hm-duration-instant:0ms; /* @kind other */
+  --hm-duration-fast:0ms; /* @kind other */
+  --hm-duration-base:0ms; /* @kind other */
+  --hm-duration-slow:0ms; /* @kind other */
+}}

@@ -16,6 +16,15 @@ const config: Config = {
   // The domain itself is bound in the repository's Pages settings, not here.
   url: 'https://hallmark.kieranties.com',
   baseUrl: '/',
+  favicon: 'img/favicon.svg',
+
+  headTags: [
+    {tagName: 'link', attributes: {rel: 'preconnect', href: 'https://fonts.googleapis.com'}},
+    {
+      tagName: 'link',
+      attributes: {rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous'},
+    },
+  ],
 
   organizationName: 'Kieranties',
   projectName: 'hallmark',
@@ -60,6 +69,7 @@ const config: Config = {
     },
     navbar: {
       title: 'Hallmark',
+      logo: {alt: '', src: 'img/logo-mark.svg', width: 26, height: 28},
       items: [
         {
           type: 'docSidebar',
@@ -69,13 +79,18 @@ const config: Config = {
         },
         {
           href: 'https://github.com/Kieranties/hallmark',
-          label: 'GitHub',
           position: 'right',
+          // Required: the brand CSS swaps this for a masked Lucide glyph so it
+          // matches the colour-mode toggle. A `label` would render as text.
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
     footer: {
       style: 'dark',
+      // Drawn in #F6F1EC, so it reads on the near-black footer in both themes.
+      logo: {alt: 'Hallmark', src: 'img/logo-dark.svg', width: 170, height: 43},
       links: [
         {
           title: 'Read',

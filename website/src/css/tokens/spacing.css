@@ -1,0 +1,11 @@
+:root{
+  --hm-space-0:0;--hm-space-1:2px;--hm-space-2:4px;--hm-space-3:8px;--hm-space-4:12px;
+  --hm-space-5:16px;--hm-space-6:24px;--hm-space-7:32px;--hm-space-8:48px;--hm-space-9:64px;--hm-space-10:96px;
+
+  --hm-gutter:24px;
+  --hm-page-max:1320px;
+  --hm-sidebar-width:270px;
+  --hm-toc-width:220px;
+  --hm-navbar-height:60px;
+  --hm-section-y:var(--hm-space-10);
+}
