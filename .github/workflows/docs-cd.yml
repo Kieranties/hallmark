@@ -10,6 +10,9 @@ on:
       - '.github/workflows/docs-*.yml'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 # Queue publishes; never cancel one mid-flight.
 concurrency:
   group: pages
