@@ -1,0 +1,17 @@
+:root{
+  /* Punch geometry: near-square corners for struck edges, pill for cartouches */
+  --hm-radius-0:0;
+  --hm-radius-1:2px;
+  --hm-radius-2:3px;
+  --hm-radius-3:5px;
+  --hm-radius-4:8px;
+  --hm-radius-pill:999px;
+  --hm-border-width:1px; /* @kind other */
+  --hm-border-width-strong:2px; /* @kind other */
+  --hm-border:var(--hm-border-width) solid var(--hm-line); /* @kind other */
+  --hm-border-hairline:var(--hm-border-width) solid var(--hm-line-hairline); /* @kind other */
+  --hm-border-strong:var(--hm-border-width) solid var(--hm-line-strong); /* @kind other */
+  --hm-rule:var(--hm-border-width) solid var(--hm-line); /* @kind other */
+  /* The struck edge: a 2px accent bar used only on the leading edge of a mark */
+  --hm-strike:var(--hm-border-width-strong) solid var(--hm-line-accent); /* @kind other */
+}

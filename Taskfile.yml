@@ -11,4 +11,4 @@ tasks:
     desc: Run the documentation site locally, with live reload, on port 3000
     dir: website
     cmds:
-      - npm run start
+      - npm run start -- --poll 1000
