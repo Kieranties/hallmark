@@ -28,6 +28,11 @@ jobs:
       - run: npm ci
         working-directory: website
 
+      # docusaurus build never invokes tsc, so nothing else here would catch a
+      # type error. Run it first: a type error is cheaper to read than a build.
+      - run: npm run typecheck
+        working-directory: website
+
       - run: npm run build
         working-directory: website
 
