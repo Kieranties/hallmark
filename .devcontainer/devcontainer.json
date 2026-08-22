@@ -1,0 +1,27 @@
+{
+  "name": "hallmark",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:24-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Docusaurus dev server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  // website/package-lock.json is committed, so `npm ci` is reproducible.
+  "postCreateCommand": "npm ci --prefix website",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "unifiedjs.vscode-mdx",
+        "esbenp.prettier-vscode",
+        "editorconfig.editorconfig",
+        "github.vscode-github-actions",
+        "bierner.markdown-mermaid"
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+name: Docs build
+
+# Reusable: holds the single definition of how the site is built.
+# Called by docs-ci.yml (pull requests) and docs-cd.yml (main).
+on:
+  workflow_call:
+    inputs:
+      upload-pages-artifact:
+        description: Upload the build as a GitHub Pages artifact for a later deploy job.
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: website/.nvmrc
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+
+      - run: npm ci
+        working-directory: website
+
+      - run: npm run build
+        working-directory: website
+
+      - if: inputs.upload-pages-artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: website/build
