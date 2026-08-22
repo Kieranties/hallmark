@@ -9,13 +9,13 @@
   background-color:var(--hm-footer-bg);
   color:var(--hm-footer-text);
   border-top:var(--hm-border-width) solid var(--hm-footer-rule);
-  padding:var(--hm-space-8) var(--hm-gutter) var(--hm-space-6);
+  padding-block:var(--hm-space-8) var(--hm-space-6);
 }
 .footer--dark{background-color:var(--hm-footer-bg)}
 .footer__title{color:var(--hm-footer-title);font-family:var(--hm-font-mono);font-size:var(--hm-size-label);letter-spacing:var(--hm-track-label);text-transform:uppercase;font-weight:var(--hm-weight-semibold);margin-bottom:var(--hm-space-4)}
 .footer__link-item{color:var(--hm-footer-link);font-size:var(--hm-size-body-sm)}
 .footer__link-item:hover{color:var(--hm-madder-400);text-decoration:none}
-.footer__copyright{color:var(--hm-footer-muted);font-family:var(--hm-font-mono);font-size:var(--hm-size-code-sm);text-align:left}
+.footer__copyright{color:var(--hm-footer-muted);font-family:var(--hm-font-mono);font-size:var(--hm-size-code-sm);text-align:left;padding-top:var(--hm-space-5);border-top:var(--hm-border-width) solid var(--hm-footer-rule)}
 
 /* Footer logo: Docusaurus centres it in its own block at the foot. Pull it left and
    put it on the same baseline as the copyright line. */
@@ -23,11 +23,23 @@
 .footer__bottom{text-align:left}
 .footer__bottom>div:first-child{display:flex;justify-content:flex-start}
 
-/* 2. Alignment. One measure for the whole site: navbar, page content and footer all
-   sit inside --hm-page-max, so their left edges line up on every page. */
+/* 2. Alignment. One measure for the whole site. The gutter must sit INSIDE the measure,
+   matching how the page content is built — Infima's own 16px padding put every edge 8px out. */
 :root{--ifm-container-width:var(--hm-page-max);--ifm-container-width-xl:var(--hm-page-max)}
-.footer .container,.navbar>.navbar__inner{max-width:var(--hm-page-max);margin-inline:auto}
+.navbar{padding-inline:0}
+.navbar__inner{max-width:var(--hm-page-max);margin-inline:auto;padding-inline:var(--hm-gutter)}
+.footer{padding-inline:0}
+.footer .container{max-width:var(--hm-page-max);margin-inline:auto;padding-inline:var(--hm-gutter)}
 .footer__links{margin-bottom:var(--hm-space-7)}
+
+/* Docs layout. Docusaurus leaves the sidebar + article row unconstrained, so on wide
+   screens the sidebar hugs the viewport edge and the article drifts far from it. */
+[class*="docsWrapper_"],[class*="docPage_"]{max-width:var(--hm-page-max);margin-inline:auto;width:100%}
+.theme-doc-sidebar-container{border-right:var(--hm-border-width) solid var(--hm-line)}
+@media (min-width:997px){
+  .theme-doc-sidebar-container{width:var(--hm-sidebar-width);min-width:var(--hm-sidebar-width)}
+  [class*="docItemCol_"]{max-width:none}
+}
 
 /* 3. Navbar icons. The GitHub link is a text link by default and the colour-mode
    toggle uses Infima's own glyphs, so the two never matched. Both are replaced with
