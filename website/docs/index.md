@@ -1,34 +1,27 @@
 ---
 title: Documentation
-description: What is published here, and how it gets published.
+description: The six sections of the Hallmark practice, and what each one covers.
+sidebar_position: 0
 ---
 
 # Documentation
 
-Nothing of the practice is published here yet. This page exists to prove the site builds and
-deploys end to end; it will be replaced when the rewrite lands.
+Hallmark is a delivery practice: a set of declarations, states and criteria a repository adopts so
+that claims about work are checked rather than asserted.
 
-## How this site is published
+The practice is written in six sections. This page says what each one covers; the sections
+themselves say what the practice is.
 
-```mermaid
-flowchart LR
-    A["Pull request"] --> B["Docs CI<br/>builds only"]
-    B --> C["Merge to main"]
-    C --> D["Docs CD<br/>builds again"]
-    D --> E["GitHub Pages<br/>hallmark.kieranties.com"]
-```
-
-A pull request builds the site but never publishes it. A merge to `main` rebuilds from `main`
-rather than reusing the pull request's output — the pull request was built from a test merge that
-may never have existed on `main`.
-
-## Working on the site
-
-The site runs entirely inside the repository's dev container; see the
-[README](https://github.com/Kieranties/hallmark#developing) for the three steps.
-
-| Command | Does |
+| Section | Covers |
 | --- | --- |
-| `npm run start --prefix website` | Dev server with live reload |
-| `npm run build --prefix website` | Production build |
-| `npm run serve --prefix website` | Serve the production build |
+| **Foundations** | The principles the practice rests on, and how a practice differs from the application that adopts it |
+| **Language** | How Hallmark names things, which words it reserves, and which it has retired |
+| **The parties** | Who does the work — personas, disciplines and actors — and the roles they hold on an item |
+| **Items** | What the practice tracks, where it is kept, and what taking one on commits you to |
+| **The loop** | The track an item runs, state by state, and what each state asks before it is left |
+| **What an act requires** | What makes an act sufficient, which standards it answers to, and what it must leave behind |
+
+:::note[Being written]
+The practice is being written a page at a time. A section shows the pages that are finished, and
+nothing else — so this index will grow as they land.
+:::
