@@ -1,7 +1,13 @@
 version: '3'
 
 tasks:
-  start:dev:
+  restore:
+    desc: Install the site's dependencies from the lockfile
+    dir: website
+    cmds:
+      - npm ci
+
+  start:
     desc: Run the documentation site locally, with live reload, on port 3000
     dir: website
     cmds:

@@ -5,6 +5,15 @@
     "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers-extra/features/go-task:1": {}
   },
+  // node_modules holds ~40,000 files. On a bind mount that is a 6x penalty on
+  // every install, so it lives on container-native storage instead.
+  // The npm cache defaults to a named volume; set HALLMARK_NPM_CACHE_MOUNT to
+  // the whole mount string to point it at a host directory instead.
+  "mounts": [
+    "source=hallmark-website-node-modules,target=${containerWorkspaceFolder}/website/node_modules,type=volume",
+    "${localEnv:HALLMARK_NPM_CACHE_MOUNT:source=hallmark-npm-cache,target=/home/node/.npm,type=volume}"
+  ],
+
   "forwardPorts": [3000],
   "portsAttributes": {
     "3000": {
@@ -12,8 +21,9 @@
       "onAutoForward": "openBrowser"
     }
   },
-  // website/package-lock.json is committed, so `npm ci` is reproducible.
-  "postCreateCommand": "npm ci --prefix website",
+  // A fresh named volume mounts root-owned, so node cannot write to it until
+  // it is chowned. The npm cache volume inherits node:node from the image.
+  "postCreateCommand": "sudo chown node:node website/node_modules && task restore",
   "customizations": {
     "vscode": {
       "extensions": [
