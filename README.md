@@ -29,6 +29,9 @@ Nothing else is installed on your machine.
 
 Port 3000 is forwarded and opens in your browser. Edits reload live.
 
+[Getting started](docs/kb/getting-started.md) is the long form of all of this — signing in to
+GitHub and to Claude Code, rebuilding the container, and what each volume costs to reset.
+
 [Task](https://taskfile.dev) is the entry point for anything routine, and the container carries
 it. `task --list` shows what is defined; the VS Code Task extension lists the same tasks in the
 sidebar. `Taskfile.yml` is at the repository root.
@@ -37,6 +40,7 @@ sidebar. `Taskfile.yml` is at the repository root.
 | --- | --- |
 | `task start` | Dev server with live reload |
 | `task restore` | Install dependencies from the lockfile — the container runs this for you on create |
+| `task github-login` | Sign in to GitHub, and hand git the same sign-in |
 
 ### Where dependencies live
 
@@ -58,6 +62,28 @@ HALLMARK_NPM_CACHE_MOUNT=source=/path/to/your/npm-cache,target=/home/node/.npm,t
 ```
 
 That trades a few seconds of install time for never downloading a package twice.
+
+### GitHub
+
+The container carries the [GitHub CLI](https://cli.github.com), so `gh` is on the path — signed
+out, because installing a CLI is not the same as authenticating one. One command fixes that:
+
+```bash
+task github-login
+```
+
+It signs `gh` in, then runs `gh auth setup-git` so that git uses the same sign-in. That second
+half is the one people miss: git and `gh` authenticate separately, and a push that asks for a
+password is that gap showing.
+
+The sign-in is on a volume, so it survives a rebuild. To clear it, delete the volume and rebuild:
+
+```bash
+docker volume rm hallmark-gh-config
+```
+
+If `GH_TOKEN` is already set on your machine it is forwarded into the container and used as-is,
+and there is nothing to sign in to.
 
 ### Claude Code
 
@@ -83,6 +109,7 @@ everyone working in it, committed rather than personal.
 | Path | Holds |
 | --- | --- |
 | `website/` | The Docusaurus site — configuration, and content under `website/docs/` |
+| `docs/` | This repository's own documents — decision records in `adr/`, articles in `kb/` |
 | `.devcontainer/` | The development container definition |
 | `.claude/` | Claude Code configuration shared by everyone working in this repository |
 | `.github/workflows/` | Build on pull requests; build and publish on merge to `main` |

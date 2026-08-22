@@ -10,17 +10,28 @@
   // every install, so it lives on container-native storage instead.
   // The npm cache defaults to a named volume; set HALLMARK_NPM_CACHE_MOUNT to
   // the whole mount string to point it at a host directory instead.
-  // Claude Code's configuration is a volume so that a sign-in outlives a rebuild.
+  // Claude Code's and the GitHub CLI's configuration are volumes so that a
+  // sign-in to either outlives a rebuild.
   "mounts": [
     "source=hallmark-website-node-modules,target=${containerWorkspaceFolder}/website/node_modules,type=volume",
     "${localEnv:HALLMARK_NPM_CACHE_MOUNT:source=hallmark-npm-cache,target=/home/node/.npm,type=volume}",
-    "source=hallmark-claude-config,target=/home/node/.claude,type=volume"
+    "source=hallmark-claude-config,target=/home/node/.claude,type=volume",
+    "source=hallmark-gh-config,target=/home/node/.config/gh,type=volume"
   ],
   // Claude Code keeps its sign-in in ~/.claude.json — beside the directory
   // holding everything else, not inside it — so one mount cannot reach both.
   // CLAUDE_CONFIG_DIR gathers them into the directory the volume covers.
+  // GH_CONFIG_DIR is named for the same reason: the GitHub CLI's default
+  // location moves with XDG_CONFIG_HOME, and the volume does not.
   "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/node/.claude"
+    "CLAUDE_CONFIG_DIR": "/home/node/.claude",
+    "GH_CONFIG_DIR": "/home/node/.config/gh"
+  },
+  // A token already on your machine is used as-is, so `gh auth login` has
+  // nothing left to do. Unset on the host it arrives empty, which the GitHub
+  // CLI reads as absent — the sign-in on the volume is then what counts.
+  "remoteEnv": {
+    "GH_TOKEN": "${localEnv:GH_TOKEN}"
   },
 
   "forwardPorts": [3000],
@@ -30,10 +41,18 @@
       "onAutoForward": "openBrowser"
     }
   },
+  // Three things, in order.
   // A fresh named volume mounts root-owned, so node cannot write to it until
-  // it is chowned. The npm cache volume is the exception: /home/node/.npm
-  // already exists in the image, so the volume inherits its node:node.
-  "postCreateCommand": "sudo chown node:node website/node_modules /home/node/.claude && task restore",
+  // it is chowned — and a volume nested under ~/.config makes root-owned
+  // parents on the way to it. The npm cache volume is the exception:
+  // /home/node/.npm already exists in the image, so the volume inherits its
+  // node:node.
+  // Then git is pointed back at gh, because gh's sign-in is on a volume and
+  // survives a rebuild while the gitconfig naming it as git's credential
+  // helper does not. Guarded on being signed in, so a first create — where
+  // there is nothing to point at yet — leaves git's credentials alone.
+  // Then the site's dependencies.
+  "postCreateCommand": "sudo chown node:node website/node_modules /home/node/.claude /home/node/.config /home/node/.config/gh && { gh auth status >/dev/null 2>&1 && gh auth setup-git || true; } && task restore",
   "customizations": {
     "vscode": {
       // anthropic.claude-code is absent because the claude-code feature
@@ -44,6 +63,7 @@
         "esbenp.prettier-vscode",
         "editorconfig.editorconfig",
         "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
         "bierner.markdown-mermaid"
       ]
     }
