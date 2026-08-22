@@ -37,9 +37,6 @@ sidebar. `Taskfile.yml` is at the repository root.
 | --- | --- |
 | `task start` | Dev server with live reload |
 | `task restore` | Install dependencies from the lockfile — the container runs this for you on create |
-| `npm run build --prefix website` | Production build into `website/build/` |
-| `npm run serve --prefix website` | Serve the production build |
-| `npm run clear --prefix website` | Clear the Docusaurus cache |
 
 ### Where dependencies live
 
