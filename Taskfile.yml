@@ -12,3 +12,19 @@ tasks:
     dir: website
     cmds:
       - npm run start -- --poll 1000
+
+  github-login:
+    desc: Sign in to GitHub, and hand git the same sign-in
+    cmds:
+      # A token forwarded from the host already authenticates gh, and asking it
+      # to store a second sign-in on top of one fails rather than replaces it.
+      - cmd: |
+          if [ -n "$GH_TOKEN" ]; then
+            echo "GH_TOKEN is set on your machine and is being used — nothing to sign in to."
+          else
+            gh auth login
+          fi
+      # git and gh authenticate separately. This points git's credentials for
+      # github.com at gh, so a push uses whichever of the two above applied.
+      - gh auth setup-git
+      - gh auth status
