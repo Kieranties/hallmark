@@ -2,7 +2,8 @@
   "name": "hallmark",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:24-bookworm",
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers-extra/features/go-task:1": {}
   },
   "forwardPorts": [3000],
   "portsAttributes": {
@@ -17,6 +18,7 @@
     "vscode": {
       "extensions": [
         "unifiedjs.vscode-mdx",
+        "task.vscode-task",
         "esbenp.prettier-vscode",
         "editorconfig.editorconfig",
         "github.vscode-github-actions",

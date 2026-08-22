@@ -24,14 +24,18 @@ Nothing else is installed on your machine.
 3. Start the site:
 
    ```bash
-   npm run start --prefix website
+   task start:dev
    ```
 
 Port 3000 is forwarded and opens in your browser. Edits reload live.
 
+[Task](https://taskfile.dev) is the entry point for anything routine, and the container carries
+it. `task --list` shows what is defined; the VS Code Task extension lists the same tasks in the
+sidebar. `Taskfile.yml` is at the repository root.
+
 | Command | Does |
 | --- | --- |
-| `npm run start --prefix website` | Dev server with live reload |
+| `task start:dev` | Dev server with live reload |
 | `npm run build --prefix website` | Production build into `website/build/` |
 | `npm run serve --prefix website` | Serve the production build |
 | `npm run clear --prefix website` | Clear the Docusaurus cache |

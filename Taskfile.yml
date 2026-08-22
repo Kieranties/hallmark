@@ -1,0 +1,8 @@
+version: '3'
+
+tasks:
+  start:dev:
+    desc: Run the documentation site locally, with live reload, on port 3000
+    dir: website
+    cmds:
+      - npm run start
