@@ -8,21 +8,39 @@ updates:
     schedule:
       interval: weekly
     groups:
+      # A group carries whatever its members bring, so majors are kept out of
+      # all of them: a breaking change should arrive on its own, named, in a
+      # pull request someone reads before merging.
       docusaurus:
         patterns:
           - '@docusaurus/*'
           - '@mdx-js/*'
+        update-types:
+          - minor
+          - patch
       react:
         patterns:
           - 'react'
           - 'react-dom'
           - '@types/react*'
+        update-types:
+          - minor
+          - patch
       dev-dependencies:
         dependency-type: development
+        update-types:
+          - minor
+          - patch
     ignore:
       # image-size is reached only through @docusaurus/mdx-loader and has no
       # patched release. Revisit when Docusaurus moves off image-size@2.
       - dependency-name: image-size
+      # @docusaurus/tsconfig still sets baseUrl, which TypeScript 7 removed
+      # outright — so no local tsconfig can typecheck under 7 while we extend
+      # it. Lift this once Docusaurus ships a tsconfig without baseUrl.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
 
   # The workflows pin actions by major. Keep those pins current.
   - package-ecosystem: github-actions
