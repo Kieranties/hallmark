@@ -43,3 +43,32 @@ Port 3000 is forwarded and opens in your browser. Edits reload live.
 | `website/` | The Docusaurus site — configuration, and content under `website/docs/` |
 | `.devcontainer/` | The development container definition |
 | `.github/workflows/` | Build on pull requests; build and publish on merge to `main` |
+
+## Troubleshooting
+
+### The dev container fails to start: "is not a valid Windows path"
+
+On Windows, with Docker Desktop and WSL installed, **Dev Containers: Reopen in Container** can
+fail before the container starts:
+
+```
+docker: Error response from daemon:
+\\wsl.localhost\Ubuntu\mnt\wslg\runtime-dir\wayland-0 is not a valid Windows path
+```
+
+VS Code finds WSLg's Wayland socket and asks Docker to mount it, so that graphical applications
+inside the container can display. Docker Desktop accepts only drive-letter paths as bind sources,
+and the socket is a Unix socket that Windows cannot represent in the first place — so the mount
+can never succeed.
+
+Turn it off in your **user** settings (`Ctrl+Shift+P` → *Preferences: Open User Settings (JSON)*):
+
+```jsonc
+"dev.containers.mountWaylandSocket": false
+```
+
+Then **Dev Containers: Rebuild and Reopen in Container**.
+
+It has to be user settings. The setting is application-scoped, so VS Code ignores it in workspace
+settings and in `devcontainer.json` — this repository cannot set it on your behalf. Nothing here
+needs a display, so switching it off costs you nothing.
