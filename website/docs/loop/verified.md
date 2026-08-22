@@ -6,12 +6,12 @@ sidebar_position: 7
 
 # Verified
 
-## What it is {#definition}
+## What it is \{#definition}
 
 **An item is `Verified` when an actor who did not do the work confirms both that the work
 matches what was asked, and that what was asked is still the right thing to have built.**
 
-## Why it exists {#why}
+## Why it exists \{#why}
 
 **Nobody can review their own work.** Whoever sat through the doing knows which parts were
 rushed and which arguments were already had, and cannot un-know it. Left to check their own
@@ -27,7 +27,7 @@ one everybody runs. **Currency** is the one almost nobody runs, and it is the on
 catches the expensive failures — because work that conforms perfectly to a stale target
 passes every other gate in the track.
 
-## Rules {#rules}
+## Rules \{#rules}
 
 ### The verifier
 
@@ -80,7 +80,7 @@ flowchart LR
 | **Currency** | `Specified` | The target moved |
 | **The evidence does not settle it** | `Specified` if the criteria do not cover it · `Built` if they do and were not driven | Nothing is proving what is being claimed |
 
-## In detail {#detail}
+## In detail \{#detail}
 
 ### Verification is not acceptance
 
