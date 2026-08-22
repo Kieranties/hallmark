@@ -1,0 +1,35 @@
+version: 2
+
+updates:
+  # The docs site. Docusaurus moves as one, so a lone bump to a single
+  # @docusaurus/* package is noise — group the whole ecosystem into one PR.
+  - package-ecosystem: npm
+    directory: /website
+    schedule:
+      interval: weekly
+    groups:
+      docusaurus:
+        patterns:
+          - '@docusaurus/*'
+          - '@mdx-js/*'
+      react:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - '@types/react*'
+      dev-dependencies:
+        dependency-type: development
+    ignore:
+      # image-size is reached only through @docusaurus/mdx-loader and has no
+      # patched release. Revisit when Docusaurus moves off image-size@2.
+      - dependency-name: image-size
+
+  # The workflows pin actions by major. Keep those pins current.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns:
+          - '*'
