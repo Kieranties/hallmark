@@ -40,6 +40,7 @@ sidebar. `Taskfile.yml` is at the repository root.
 | --- | --- |
 | `task start` | Dev server with live reload |
 | `task restore` | Install dependencies from the lockfile — the container runs this for you on create |
+| `task build` | Production build — the same build the pull request gate runs |
 | `task github-login` | Sign in to GitHub, and hand git the same sign-in |
 
 ### Where dependencies live

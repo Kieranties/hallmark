@@ -13,6 +13,12 @@ tasks:
     cmds:
       - npm run start -- --poll 1000
 
+  build:
+    desc: Build the site for production — the gate every page is written to
+    dir: website
+    cmds:
+      - npm run build
+
   github-login:
     desc: Sign in to GitHub, and hand git the same sign-in
     cmds:

@@ -37,6 +37,7 @@ the VS Code Task extension shows the same list in the sidebar.
 | --- | --- |
 | `task restore` | Install the site's dependencies from the lockfile — runs for you on create |
 | `task start` | Dev server with live reload on port 3000 |
+| `task build` | Production build — the same build a pull request is gated on |
 | `task github-login` | Sign in to GitHub, and hand git the same sign-in |
 
 ## GitHub
