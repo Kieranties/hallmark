@@ -59,12 +59,32 @@ HALLMARK_NPM_CACHE_MOUNT=source=/path/to/your/npm-cache,target=/home/node/.npm,t
 
 That trades a few seconds of install time for never downloading a package twice.
 
+### Claude Code
+
+The container carries [Claude Code](https://claude.com/claude-code), so `claude` is on the path
+in any terminal inside it, and the VS Code extension arrives with it. Nothing here needs it — the
+site builds and runs the same without it — and it does not sign you in; run `claude` and it asks.
+
+Its configuration is a volume, so a sign-in survives a rebuild. That takes one adjustment: Claude
+Code keeps its sign-in in `~/.claude.json`, beside the directory holding everything else rather
+than in it, and a single mount cannot cover both. `CLAUDE_CONFIG_DIR` gathers them into
+`~/.claude`, which is what the volume covers. To reset it — sign-in, history and settings alike —
+delete the volume and rebuild the container:
+
+```bash
+docker volume rm hallmark-claude-config
+```
+
+`.claude/` in the repository is the other half — the skills and settings this project shares with
+everyone working in it, committed rather than personal.
+
 ## Layout
 
 | Path | Holds |
 | --- | --- |
 | `website/` | The Docusaurus site — configuration, and content under `website/docs/` |
 | `.devcontainer/` | The development container definition |
+| `.claude/` | Claude Code configuration shared by everyone working in this repository |
 | `.github/workflows/` | Build on pull requests; build and publish on merge to `main` |
 
 ## Troubleshooting
