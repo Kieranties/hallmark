@@ -1,0 +1,16 @@
+# Node dependencies
+node_modules/
+
+# Docusaurus build output and caches
+website/build/
+website/.docusaurus/
+.cache/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# OS and editor cruft
+.DS_Store
+Thumbs.db

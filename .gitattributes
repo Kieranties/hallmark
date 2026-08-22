@@ -1,0 +1,18 @@
+# Normalise every text file to LF, in the repository and in the working copy.
+# The dev container is Linux and the repository is edited on Windows; CRLF in a
+# checked-out file breaks anything the container executes.
+* text=auto eol=lf
+
+# Binaries git must never translate.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+
+# Generated, and long. Collapsed by default in review; still diffable.
+package-lock.json linguist-generated=true

@@ -1,0 +1,35 @@
+name: Docs CD
+
+# main rebuilds and publishes. It does not reuse the pull request's artifact:
+# that was built from a test merge which may never have existed on main.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/**'
+      - '.github/workflows/docs-*.yml'
+  workflow_dispatch:
+
+# Queue publishes; never cancel one mid-flight.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    uses: ./.github/workflows/docs-build.yml
+    with:
+      upload-pages-artifact: true
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
