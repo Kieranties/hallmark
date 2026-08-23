@@ -98,8 +98,6 @@ on a page but owned by an unwritten one are listed at the foot.
 | Commitment | [Commitment](../items/commitment.md) |
 | Uncommitted | [Commitment](../items/commitment.md) |
 | Committed | [Commitment](../items/commitment.md) |
-| Version | [Commitment](../items/commitment.md) |
-| Build identity | [Commitment](../items/commitment.md) |
 | Slippage | [Commitment](../items/commitment.md) |
 | Promotion voice | [Commitment](../items/commitment.md) |
 | Marker | [Markers and claiming](../items/markers-and-claiming.md) |
@@ -170,4 +168,9 @@ is not read as *the word is free*.
 
 **Capability catalogue · certified set · platform edition · edition registry · certification
 record · contract · contract graph closure · withdrawal · deprecation · coverage · delivered ·
-release · rollout · hotfix · health metric · product telemetry · process telemetry.**
+release · rollout · hotfix · health metric · product telemetry · process telemetry · version ·
+build identity.**
+
+The last two are used by [Commitment](../items/commitment.md), which promises work for a named
+version and computes slippage against one. What a version *is* belongs with release material,
+and that is written with *Claims and evidence*.
