@@ -41,6 +41,15 @@
   [class*="docItemCol_"]{max-width:none}
 }
 
+/* Sidebar category carets. At a fixed sidebar width the long category label pushes the
+   caret past the menu's right padding and it clips at the container edge. Let the label
+   truncate instead, and hold the caret at a fixed size inside the padding. */
+.theme-doc-sidebar-menu,.menu{padding-right:var(--hm-space-3)}
+.menu__list-item-collapsible{position:relative}
+.menu__link--sublist{padding-right:var(--hm-space-7);min-width:0;overflow:hidden;text-overflow:ellipsis}
+.menu__link--sublist-caret::after,.menu__caret{position:absolute;right:var(--hm-space-2);top:50%;transform:translateY(-50%);flex:0 0 auto;margin:0}
+.menu__list-item--collapsed .menu__link--sublist-caret::after,.menu__list-item--collapsed .menu__caret{transform:translateY(-50%) rotateZ(90deg)}
+
 /* 3. Navbar icons. The GitHub link is a text link by default and the colour-mode
    toggle uses Infima's own glyphs, so the two never matched. Both are replaced with
    masked Lucide icons at one size and one stroke weight. */
