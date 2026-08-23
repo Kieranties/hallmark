@@ -1,0 +1,28 @@
+/**
+ * Site rules that are not brand tokens. Hand-written — unlike src/css/tokens/*,
+ * which is generated from the Hallmark design system and must not be edited.
+ */
+
+/* An unwritten page is listed so the practice's shape can be read, but it has
+ * to read as unwritten before it is clicked rather than after. Muted, with a
+ * hollow brass mark where a finished page has nothing.
+ *
+ * sidebar_class_name lands on the <li>, not on the <a> inside it. */
+.menu__list-item.sidebar-unwritten > .menu__link {
+  color: var(--hm-text-faint);
+}
+
+.menu__list-item.sidebar-unwritten > .menu__link::after {
+  content: '';
+  flex: none;
+  width: 0.45em;
+  height: 0.45em;
+  margin-inline-start: auto;
+  border: var(--hm-border-width) solid var(--hm-brass-300);
+  border-radius: var(--hm-radius-pill);
+}
+
+.menu__list-item.sidebar-unwritten > .menu__link:hover,
+.menu__list-item.sidebar-unwritten > .menu__link--active {
+  color: var(--hm-text-muted);
+}

@@ -1,11 +1,13 @@
 ---
 title: How Hallmark names things
-description: Provisional — written with the page.
+description: Not yet written — this page is a placeholder.
 sidebar_position: 1
-unlisted: true
+sidebar_class_name: sidebar-unwritten
 ---
 
 # How Hallmark names things
+
+<Unwritten />
 
 ## What it is \{#definition}
 

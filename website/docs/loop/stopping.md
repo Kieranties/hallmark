@@ -1,11 +1,13 @@
 ---
 title: Stopping
-description: Provisional — written with the page.
+description: Not yet written — this page is a placeholder.
 sidebar_position: 10
-unlisted: true
+sidebar_class_name: sidebar-unwritten
 ---
 
 # Stopping
+
+<Unwritten />
 
 ## What it is \{#definition}
 

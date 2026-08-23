@@ -1,11 +1,13 @@
 ---
 title: Working alone
-description: Provisional — written with the page.
+description: Not yet written — this page is a placeholder.
 sidebar_position: 13
-unlisted: true
+sidebar_class_name: sidebar-unwritten
 ---
 
 # Working alone
+
+<Unwritten />
 
 ## What it is \{#definition}
 

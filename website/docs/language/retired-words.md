@@ -1,11 +1,13 @@
 ---
 title: Retired words
-description: Provisional — written with the page.
+description: Not yet written — this page is a placeholder.
 sidebar_position: 3
-unlisted: true
+sidebar_class_name: sidebar-unwritten
 ---
 
 # Retired words
+
+<Unwritten />
 
 ## What it is \{#definition}
 

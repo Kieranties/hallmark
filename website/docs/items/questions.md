@@ -1,11 +1,13 @@
 ---
 title: Questions
-description: Provisional — written with the page.
+description: Not yet written — this page is a placeholder.
 sidebar_position: 5
-unlisted: true
+sidebar_class_name: sidebar-unwritten
 ---
 
 # Questions
+
+<Unwritten />
 
 ## What it is \{#definition}
 

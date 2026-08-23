@@ -22,6 +22,7 @@ themselves say what the practice is.
 | **What an act requires** | What makes an act sufficient, which standards it answers to, and what it must leave behind |
 
 :::note[Being written]
-The practice is being written a page at a time. A section shows the pages that are finished, and
-nothing else — so this index will grow as they land.
+The practice is being written a page at a time. Every page it will carry is listed in the sidebar
+from the start, so its shape can be read before it is finished; a page that has not been written
+yet is marked as such, here and on the page itself.
 :::

@@ -1,11 +1,13 @@
 ---
 title: Completed
-description: Provisional — written with the page.
+description: Not yet written — this page is a placeholder.
 sidebar_position: 8
-unlisted: true
+sidebar_class_name: sidebar-unwritten
 ---
 
 # Completed
+
+<Unwritten />
 
 ## What it is \{#definition}
 

@@ -1,11 +1,13 @@
 ---
 title: What a role carries
-description: Provisional — written with the page.
+description: Not yet written — this page is a placeholder.
 sidebar_position: 6
-unlisted: true
+sidebar_class_name: sidebar-unwritten
 ---
 
 # What a role carries
+
+<Unwritten />
 
 ## What it is \{#definition}
 

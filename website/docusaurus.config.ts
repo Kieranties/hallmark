@@ -57,7 +57,8 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          // custom.css is the generated brand; site.css is hand-written and last.
+          customCss: ['./src/css/custom.css', './src/css/site.css'],
         },
       } satisfies Preset.Options,
     ],
