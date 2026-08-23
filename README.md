@@ -5,9 +5,9 @@ work are checked rather than asserted.
 
 This repository holds the practice's documentation site, and in time the tooling that enacts it.
 
-> **Status — pre-1.0, and dogfooding itself.** Nothing here is stable, and the site currently
-> carries a scaffold rather than the practice. This README is an interim placeholder; it will be
-> rewritten once the site has content for its links to resolve to.
+> **Status — pre-1.0, and dogfooding itself.** Nothing here is stable. Six of the practice's
+> eight sections are written and published; **Claims and evidence** and **Applications** are not,
+> and the site says so where their terms would otherwise be expected.
 
 ## Documentation
 
