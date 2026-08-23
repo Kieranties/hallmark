@@ -1,7 +1,7 @@
 ---
 title: Verification
 description: Provisional — written with the page.
-sidebar_position: 11
+sidebar_position: 12
 unlisted: true
 ---
 

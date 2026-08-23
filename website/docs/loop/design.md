@@ -1,11 +1,11 @@
 ---
-title: Stopping
+title: Design
 description: Provisional — written with the page.
-sidebar_position: 11
+sidebar_position: 10
 unlisted: true
 ---
 
-# Stopping
+# Design
 
 ## What it is \{#definition}
 
