@@ -154,6 +154,7 @@ on a page but owned by an unwritten one are listed at the foot.
 | Standards stack | [The standards stack](../acts/the-standards-stack.md) |
 | Build-enforced | [The standards stack](../acts/the-standards-stack.md) |
 | Verifier-enforced | [The standards stack](../acts/the-standards-stack.md) |
+| Decision record | [The standards stack](../acts/the-standards-stack.md) |
 | Required outputs | [Required outputs](../acts/required-outputs.md) |
 | Acceptance criteria | [Required outputs](../acts/required-outputs.md) |
 | Specification | [Required outputs](../acts/required-outputs.md) |
