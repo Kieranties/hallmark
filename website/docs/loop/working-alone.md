@@ -1,7 +1,7 @@
 ---
 title: Working alone
 description: Provisional — written with the page.
-sidebar_position: 13
+sidebar_position: 14
 unlisted: true
 ---
 
