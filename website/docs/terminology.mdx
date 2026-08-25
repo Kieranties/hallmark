@@ -1,0 +1,267 @@
+---
+title: Terminology
+description: Every word the practice reserves, what it means, and the page that owns it.
+sidebar_position: 6
+---
+
+import Glossary from '@site/src/components/Glossary';
+
+# Terminology
+
+**Every word the practice reserves, and the page that owns it.** An entry here is short by
+rule: a lead clause, a sentence or two, and a pointer. The long treatment lives on the page
+named beside it, never in the glossary.
+
+A word not listed here is not reserved, and carries its ordinary meaning.
+
+<Glossary>
+
+<TermEntry
+  id="accountability"
+  term="Accountability"
+  kind="Party"
+  definition={<><strong>Consequence landing on a human.</strong> Distinct from attribution, which says only what acted. Where an agent holds a role, accountability is derivative — it attaches to the human who delegated.</>}
+  seeAlso={[{label: 'Accountability', href: '/parties/accountability'}]}
+/>
+
+<TermEntry
+  id="action"
+  term="Action"
+  kind="Act"
+  definition={<><strong>Doing the work.</strong> A Worker act, like the sift, the specifying and the plan before it — what differs is only what it leaves behind: the change itself, and a result for every criterion that was set. Every criterion is driven, not assumed.</>}
+  seeAlso={[{label: 'Action', href: '/process/action'}]}
+/>
+
+<TermEntry
+  id="actor"
+  term="Actor"
+  kind="Party"
+  definition={<><strong>A human or an agent</strong> — the thing that actually holds a role. Every actor must be distinctly identifiable. Identity is not bureaucracy; it is what makes accountability traceable.</>}
+  seeAlso={[{label: 'Actors', href: '/parties/actors'}]}
+/>
+
+<TermEntry
+  id="application"
+  term="Application"
+  kind="Structure"
+  definition={<><strong>One technology-specific instantiation of the practice</strong> — the trackers, pipelines, templates and agents through which a system actually runs it. An application is replaceable; changing tracker, language or pipeline leaves the practice untouched.</>}
+  seeAlso={[{label: 'Practice and application', href: '/practice/practice-and-application'}, {label: 'Declaring an application', href: '/apply/declaring-an-application'}]}
+/>
+
+<TermEntry
+  id="capability"
+  term="Capability"
+  kind="Work type"
+  definition={<><strong>An outcome a named persona can achieve.</strong> Stated as the outcome — <em>"a support agent can reissue an invoice"</em> — never as the thing built. The only work type that adds to what the system can be said to do, and it is generated from a passing specification, never written by hand.</>}
+  seeAlso={[{label: 'Capability', href: '/work/capability'}]}
+/>
+
+<TermEntry
+  id="capture"
+  term="Capture"
+  kind="Act"
+  definition={<><strong>Recording a request at the door.</strong> Capture does nothing else: it does not type the request, judge it, or agree to it. It is open to any party and carries no quality bar by default.</>}
+  seeAlso={[{label: 'Capture', href: '/process/capture'}]}
+/>
+
+<TermEntry
+  id="chore"
+  term="Chore"
+  kind="Work type"
+  definition={<><strong>Upkeep of the system and its supporting machinery that changes no capability</strong> — documentation, build scripts, tooling, dependency updates. It may still affect the release; the type says why the work exists, not how much rigour it carries.</>}
+  seeAlso={[{label: 'Chore', href: '/work/chore'}]}
+/>
+
+<TermEntry
+  id="commitment"
+  term="Commitment"
+  kind="Property"
+  definition={<><strong>A promise that the work will be delivered by a named point.</strong> Made by a Decider, who is answerable for it. A property of the work, not a state of it — the two axes move independently.</>}
+  seeAlso={[{label: 'Commitment', href: '/work/commitment'}]}
+/>
+
+<TermEntry
+  id="concession"
+  term="Concession"
+  kind="Record"
+  definition={<><strong>To concede is to state that a standard has not been met, name who accepted that, and proceed anyway.</strong> The record is attributable, scoped, expiring and counted. A concession is not an exception to the practice — it is the practice working.</>}
+  seeAlso={[{label: 'Concessions', href: '/apply/concessions'}]}
+/>
+
+<TermEntry
+  id="criterion"
+  term="Criterion"
+  kind="Output"
+  definition={<><strong>One statement of what would make the work right</strong>, written at Specify before anything is built. A step, a measure or a marker — whatever can be driven and shown to hold. Every item has criteria.</>}
+  seeAlso={[{label: 'Specify', href: '/process/specify'}]}
+/>
+
+<TermEntry
+  id="delegation"
+  term="Delegation"
+  kind="Act"
+  definition={<><strong>Authorising a given actor to hold a given role, for a given scope.</strong> It is recorded, because it is where accountability lands. Bounded by a ceiling — nobody delegates a role they do not hold — and by least privilege.</>}
+  seeAlso={[{label: 'Accountability', href: '/parties/accountability'}]}
+/>
+
+<TermEntry
+  id="discipline"
+  term="Discipline"
+  kind="Party"
+  definition={<><strong>A party that acts on the <em>change</em></strong> (e.g. product, design, development, technical, delivery). The counterpart to persona, which is a party the running system serves. A type, never a business title.</>}
+  seeAlso={[{label: 'Disciplines', href: '/parties/disciplines'}]}
+/>
+
+<TermEntry
+  id="fix"
+  term="Fix"
+  kind="Work type"
+  definition={<><strong>Correcting something previously completed.</strong> Attaches to an existing capability; never creates one. If you cannot name the capability it attaches to, it is not a fix.</>}
+  seeAlso={[{label: 'Fix', href: '/work/fix'}]}
+/>
+
+<TermEntry
+  id="initiative"
+  term="Initiative"
+  kind="Work type"
+  definition={<><strong>A body of intent spanning capabilities and time.</strong> The only type that contains other work, and the only one never worked directly. Containment is exclusive at every level, so the result is a tree.</>}
+  seeAlso={[{label: 'Initiative', href: '/work/initiative'}]}
+/>
+
+<TermEntry
+  id="permission"
+  term="Permission"
+  kind="Role"
+  definition={<><strong>The entitlement to do something to the system</strong> — to merge, to release, to alter a contract, to accept a concession. A permission attaches to the role, never to the actor, which is what makes two actors in the same role interchangeable.</>}
+  seeAlso={[{label: 'Roles', href: '/parties/roles'}]}
+/>
+
+<TermEntry
+  id="persona"
+  term="Persona"
+  kind="Party"
+  definition={<><strong>A party the running <em>system</em> serves</strong> (e.g. customer, administrator, operator, support agent, auditor, consuming developer). Defined once, system-wide. Not a job title; one human may be several.</>}
+  seeAlso={[{label: 'Personas', href: '/parties/personas'}]}
+/>
+
+<TermEntry
+  id="plan"
+  term="Plan"
+  kind="Act"
+  definition={<><strong>Writing the actions, in order.</strong> A Worker act answering one question — <em>how will it be actioned?</em> — and declaring what the change touches. A plan is a route, not a promise; revising it is not failure.</>}
+  seeAlso={[{label: 'Plan', href: '/process/plan'}]}
+/>
+
+<TermEntry
+  id="practice"
+  term="Practice"
+  kind="Structure"
+  definition={<><strong>The interface — what must hold, who may act, and how work travels.</strong> Normative and technology-agnostic: it names no tool, and nothing in it may depend on a capability only one tool happens to have. The practice is durable.</>}
+  seeAlso={[{label: 'Practice and application', href: '/practice/practice-and-application'}]}
+/>
+
+<TermEntry
+  id="publish"
+  term="Publish"
+  kind="Act"
+  definition={<><strong>Making the result available, and confirming it arrived.</strong> The confirmation is done by looking — a report that something shipped carries no evidence, so the practice does not accept one. Complete is the state that follows.</>}
+  seeAlso={[{label: 'Publish', href: '/process/publish'}]}
+/>
+
+<TermEntry
+  id="question"
+  term="Question"
+  kind="Work type"
+  definition={<><strong>A request for information.</strong> It produces an answer, not a change. How it resolves is diagnostic: the answer was findable, lived only in someone's head, or did not exist. Answers routinely produce further work.</>}
+  seeAlso={[{label: 'Question', href: '/work/question'}]}
+/>
+
+<TermEntry
+  id="request"
+  term="Request"
+  kind="Item"
+  definition={<><strong>Whatever arrives at the door.</strong> A request has been recorded and nothing more: no type, no agreement that it will be done, no promise to anyone. At the sift it is typed and ruled on.</>}
+  seeAlso={[{label: 'Capture', href: '/process/capture'}]}
+/>
+
+<TermEntry
+  id="role"
+  term="Role"
+  kind="Party"
+  definition={<><strong>An interface</strong> — Worker, Verifier, Sentinel, Decider — of which the actor is the implementation. There are four, and the practice fixes them. Eligibility turns on access, not on actor kind.</>}
+  seeAlso={[{label: 'Roles', href: '/parties/roles'}]}
+/>
+
+<TermEntry
+  id="sift"
+  term="Sift"
+  kind="Act"
+  definition={<><strong>Ruling on a request — the first act <em>on</em> the change, and the first that requires a role.</strong> Two things settle and no more: what type the request carries, and whether it will be done at all.</>}
+  seeAlso={[{label: 'Sift', href: '/process/sift'}]}
+/>
+
+<TermEntry
+  id="specification"
+  term="Specification"
+  kind="Output"
+  definition={<><strong>An executable statement of what the system <em>should</em> do.</strong> The only thing that can prove a capability. It states intent, so it can never be recovered from the code alone — code says only what the system does.</>}
+  seeAlso={[{label: 'Specify', href: '/process/specify'}]}
+/>
+
+<TermEntry
+  id="specify"
+  term="Specify"
+  kind="Act"
+  definition={<><strong>Writing what would make the work right, before anything is built.</strong> A Worker act producing specifications that <em>fail</em> — one that has never failed has never demonstrated that it tests anything.</>}
+  seeAlso={[{label: 'Specify', href: '/process/specify'}]}
+/>
+
+<TermEntry
+  id="standard"
+  term="Standard"
+  kind="Constraint"
+  definition={<><strong>A statement of what must hold, expressed as a <em>floor</em>.</strong> A standard states how its own conformance is determined. Standards stack by union: a layer may add or constrain, never contradict.</>}
+  seeAlso={[{label: 'Standards', href: '/work/standards'}]}
+/>
+
+<TermEntry
+  id="system"
+  term="System"
+  kind="Structure"
+  definition={<><strong>The thing being built, and the boundary the practice is declared within.</strong> A system names the personas it serves, declares the standards it holds itself to, and is where all work lands. Not a repository, a codebase or a deployment.</>}
+  seeAlso={[{label: 'Overview', href: '/practice/overview'}]}
+/>
+
+<TermEntry
+  id="touch"
+  term="Touch"
+  kind="Property"
+  definition={<><strong>What a change reaches</strong> — the parts of the system it alters, and whatever depends on them. Declared by the plan. Touch decides what a change must satisfy, and it is derived from the change itself, never judged.</>}
+  seeAlso={[{label: 'Plan', href: '/process/plan'}]}
+/>
+
+<TermEntry
+  id="validate"
+  term="Validate"
+  kind="Act"
+  definition={<><strong>Judging the outcome against what was actually needed.</strong> Verification asks whether the work matches what was asked; validation asks whether what was asked was right — and it is the only check able to find that a criterion was missing altogether.</>}
+  seeAlso={[{label: 'Validate', href: '/process/validate'}]}
+/>
+
+<TermEntry
+  id="verify"
+  term="Verify"
+  kind="Act"
+  definition={<><strong>Judging work against what was asked of it.</strong> A Verifier act, held by someone who did not do the work, at the exit of every act that produces something. Two outcomes only: it verifies, or it returns the work.</>}
+  seeAlso={[{label: 'The process', href: '/process/'}]}
+/>
+
+<TermEntry
+  id="work"
+  term="Work"
+  kind="Item"
+  definition={<><strong>The collective term for anything the practice acts on.</strong> All work carries exactly one type — capability, fix, chore, question or initiative — assigned at the sift. An application may add subtypes of these, never new types alongside them.</>}
+  seeAlso={[{label: 'Work types', href: '/work/types'}]}
+/>
+
+</Glossary>

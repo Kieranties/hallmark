@@ -1,5 +1,8 @@
 {
   "label": "The parties",
-  "position": 3,
-  "link": null
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "parties/index"
+  }
 }
