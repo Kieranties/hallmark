@@ -1,0 +1,22 @@
+:root{
+  --space-0:0;
+  --space-1:2px;
+  --space-2:4px;
+  --space-3:6px;
+  --space-4:8px;
+  --space-5:12px;
+  --space-6:16px;
+  --space-7:24px;
+  --space-8:32px;
+  --space-9:48px;
+  --space-10:64px;
+  --space-11:96px;
+  --space-12:128px;
+
+  --gutter:24px;
+  --sidebar-width:284px;
+  --toc-width:224px;
+  --content-max:768px;
+  --page-max:1360px;
+  --navbar-height:60px;
+}

@@ -1,0 +1,107 @@
+/**
+ * Site-only additions. Everything the design system ships lives under
+ * src/css/hallmark/ and is copied verbatim; this file is the small remainder
+ * that is specific to this Docusaurus site and has nowhere else to go.
+ */
+
+/* --- Navbar GitHub link -------------------------------------------------- */
+/* Docusaurus has no icon field on navbar items, so the link carries a class
+   and is painted with a mask, matching the colour-mode toggle beside it. */
+:root {
+  /* Lucide `github`, inlined so the navbar needs no network round-trip. */
+  --icon-github: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4'/%3E%3Cpath d='M9 18c-4.51 2-5-2-7-2'/%3E%3C/svg%3E");
+}
+.header-github-link {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+}
+.header-github-link::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: var(--text-muted);
+  transition: var(--transition-ui);
+  -webkit-mask: var(--icon-github) no-repeat center / contain;
+  mask: var(--icon-github) no-repeat center / contain;
+}
+.header-github-link:hover::before {
+  background: var(--text-mark);
+}
+
+/* --- Mermaid dark parity ------------------------------------------------- */
+/* Mermaid cannot read CSS custom properties, so the design system's theme
+   bakes literal hex values in — and Docusaurus applies one themeVariables set
+   to both colour modes. The dark half of that export is painted here instead.
+   Values track `darkThemeVariables` in hallmark/docusaurus/mermaid.js. */
+[data-theme='dark'] .mermaid .node rect,
+[data-theme='dark'] .mermaid .node polygon,
+[data-theme='dark'] .mermaid .statediagram-state rect,
+[data-theme='dark'] .mermaid .cluster rect {
+  fill: #1d2126 !important;
+  stroke: #d3ac66 !important;
+}
+[data-theme='dark'] .mermaid .nodeLabel,
+[data-theme='dark'] .mermaid .nodeLabel p,
+[data-theme='dark'] .mermaid .cluster-label,
+[data-theme='dark'] .mermaid text.titleText {
+  fill: #e8e6e1 !important;
+  color: #e8e6e1 !important;
+}
+[data-theme='dark'] .mermaid .edgePath .path,
+[data-theme='dark'] .mermaid .transition {
+  stroke: #5e6875 !important;
+}
+[data-theme='dark'] .mermaid .edgeLabel,
+[data-theme='dark'] .mermaid .edgeLabel rect,
+[data-theme='dark'] .mermaid .labelBkg {
+  fill: #15181c !important;
+  background: #15181c !important;
+}
+
+/* --- Landing page principle grid ---------------------------------------- */
+/* Four principle cards, two up on desktop and stacked on narrow screens. */
+.hm-principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+/* --- Terminology glossary ------------------------------------------------ */
+.hm-glossary__filter {
+  width: 100%;
+  padding: 9px 12px;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--text-body);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-2);
+  transition: var(--transition-ui);
+}
+.hm-glossary__filter:focus {
+  outline: none;
+  border-color: var(--border-mark);
+  box-shadow: var(--ring-focus);
+}
+.hm-glossary__count {
+  margin: 8px 0 20px;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-mark);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.hm-glossary__list {
+  display: grid;
+  gap: 12px;
+}
+.hm-glossary__empty {
+  padding: 16px;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  background: var(--bg-sunken);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-3);
+}

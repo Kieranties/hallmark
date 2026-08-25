@@ -1,0 +1,58 @@
+/* Base palette. Never used directly in components — reference the semantic aliases in semantic.css. */
+:root{
+  /* Paper — light-theme neutrals, warm-tinted (silversmith's bench paper) */
+  --paper-0:#FFFFFF;
+  --paper-1:#FAF8F4;
+  --paper-2:#F3F0E9;
+  --paper-3:#E8E3D9;
+  --paper-4:#D8D2C6;
+
+  /* Ink — dark-theme neutrals, cool graphite */
+  --ink-0:#0E1013;
+  --ink-1:#15181C;
+  --ink-2:#1D2126;
+  --ink-3:#282D34;
+  --ink-4:#39404A;
+
+  /* Text greys */
+  --grey-1:#16181C;
+  --grey-2:#3C444E;
+  --grey-3:#5E6875;
+  --grey-4:#8A939F;
+  --grey-5:#B4BCC6;
+  --grey-6:#E8E6E1;
+  --grey-7:#F2F1EE;
+
+  /* Assay gold — the hallmark accent. Marks, keywords, struck rules. */
+  --gold-100:#F6EDDC;
+  --gold-200:#E9D3A8;
+  --gold-300:#D3AC66;
+  --gold-400:#A8792C;
+  --gold-500:#8A6222;
+  --gold-600:#5E4215;
+
+  /* Antimony blue — CODE SYNTAX ONLY (keywords). Not used anywhere in the UI:
+     links are ink with a hairline underline, gold on hover. See readme.md → Links and marks. */
+  --blue-100:#E7EDF9;
+  --blue-200:#B9CBEC;
+  --blue-300:#7FA6E8;
+  --blue-400:#2F5AA8;
+  --blue-500:#254881;
+  --blue-600:#182F55;
+
+  /* Semantic hues: verdigris (pass), punch red (fail), amber (concession) */
+  --green-100:#E1F0EC;
+  --green-300:#5FB6A2;
+  --green-400:#1F7A6B;
+  --green-600:#12463D;
+
+  --red-100:#FAE7E4;
+  --red-300:#DE8579;
+  --red-400:#B03A2E;
+  --red-600:#6B221A;
+
+  --amber-100:#FBF0D9;
+  --amber-300:#E0B45C;
+  --amber-400:#96701A;
+  --amber-600:#54400F;
+}

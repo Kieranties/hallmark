@@ -1,0 +1,32 @@
+:root{
+  /* Scale — docs-first. 16px body, serif display. */
+  --text-2xs:11px;
+  --text-xs:12px;
+  --text-sm:14px;
+  --text-base:16px;
+  --text-md:18px;
+  --text-lg:21px;
+  --text-xl:26px;
+  --text-2xl:32px;
+  --text-3xl:40px;
+  --text-4xl:52px;
+  --text-5xl:68px;
+
+  --leading-tight:1.12;
+  --leading-snug:1.28;
+  --leading-normal:1.5;
+  --leading-body:1.65;
+  --leading-loose:1.8;
+
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
+
+  --tracking-tight:-0.015em;
+  --tracking-normal:0;
+  --tracking-wide:0.04em;
+  --tracking-mark:0.14em; /* struck-mark labels, small caps substitute */
+
+  --measure-prose:68ch;
+  --measure-narrow:44ch;
+}

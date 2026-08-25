@@ -1,6 +1,6 @@
-import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import mermaidTheme from './src/css/hallmark/docusaurus/mermaid';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -52,12 +52,21 @@ const config: Config = {
       'classic',
       {
         docs: {
+          // The practice is the whole site, so it serves from the root rather
+          // than from /docs. docs/index.mdx is the landing page.
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/Kieranties/hallmark/tree/main/website/',
         },
         blog: false,
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: [
+            './src/css/hallmark/styles.css', // tokens first
+            './src/css/hallmark/docusaurus/custom.css', // Infima bridge
+            './src/css/hallmark/docusaurus/prism-hallmark.css',
+            './src/css/hallmark/docusaurus/mermaid.css',
+            './src/css/site.css', // site-only additions
+          ],
         },
       } satisfies Preset.Options,
     ],
@@ -65,22 +74,34 @@ const config: Config = {
 
   themeConfig: {
     colorMode: {
+      defaultMode: 'light',
       respectPrefersColorScheme: true,
     },
+    // Only `theme` and `options` are Docusaurus fields. The design system's
+    // export also carries `darkThemeVariables`, which Docusaurus has nowhere to
+    // put — it applies one themeVariables set to both colour modes — so dark
+    // parity is painted in src/css/site.css and the key is dropped here.
+    mermaid: {theme: mermaidTheme.theme, options: mermaidTheme.options},
     navbar: {
       title: 'Hallmark',
-      logo: {alt: '', src: 'img/logo-mark.svg', width: 26, height: 28},
+      logo: {
+        alt: '',
+        src: 'img/mark-gold.svg',
+        srcDark: 'img/mark-light.svg',
+        width: 26,
+        height: 26,
+      },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'docsSidebar',
-          position: 'left',
-          label: 'Documentation',
-        },
+        {to: '/practice/overview', label: 'Practice', position: 'left'},
+        {to: '/parties/', label: 'Parties', position: 'left'},
+        {to: '/work/types', label: 'Work', position: 'left'},
+        {to: '/process/', label: 'Process', position: 'left'},
+        {to: '/apply/declaring-an-application', label: 'Apply', position: 'left'},
+        {to: '/terminology', label: 'Terminology', position: 'right'},
         {
           href: 'https://github.com/Kieranties/hallmark',
           position: 'right',
-          // Required: the brand CSS swaps this for a masked Lucide glyph so it
+          // Required: site.css swaps this for a masked Lucide glyph so it
           // matches the colour-mode toggle. A `label` would render as text.
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
@@ -88,13 +109,31 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
-      // Drawn in #F6F1EC, so it reads on the near-black footer in both themes.
-      logo: {alt: 'Hallmark', src: 'img/logo-dark.svg', width: 170, height: 43},
+      style: 'light',
       links: [
         {
-          title: 'Read',
-          items: [{label: 'Documentation', to: '/docs'}],
+          title: 'Practice',
+          items: [
+            {label: 'Overview', to: '/practice/overview'},
+            {label: 'Principles', to: '/practice/principles'},
+            {label: 'Practice and application', to: '/practice/practice-and-application'},
+          ],
+        },
+        {
+          title: 'Reference',
+          items: [
+            {label: 'Terminology', to: '/terminology'},
+            {label: 'The states', to: '/process/states'},
+            {label: 'Standards', to: '/work/standards'},
+          ],
+        },
+        {
+          title: 'Apply',
+          items: [
+            {label: 'Declaring an application', to: '/apply/declaring-an-application'},
+            {label: 'Concessions', to: '/apply/concessions'},
+            {label: 'Subtypes', to: '/apply/subtypes'},
+          ],
         },
         {
           title: 'Repository',
@@ -104,11 +143,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Hallmark — pre-1.0. Built with Docusaurus.`,
-    },
-    prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      copyright: 'Hallmark — pre-1.0. Built on the practice it describes.',
     },
   } satisfies Preset.ThemeConfig,
 };
