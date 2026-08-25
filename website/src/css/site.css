@@ -155,3 +155,66 @@
 .sb-user-check{--sb-icon:url('/img/icons/user-check.svg')}
 .sb-users{--sb-icon:url('/img/icons/users.svg')}
 .sb-wrench{--sb-icon:url('/img/icons/wrench.svg')}
+
+/* --- Footer ---------------------------------------------------------------- */
+/* The markup is this site's (src/theme/Footer), so its layout lives here; the
+   type and colour still come from the design system's `.footer__*` rules. The
+   brand column leads, the link columns sit beside it, and the copyright sits
+   alone under a hairline. */
+.hm-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 56px;
+  max-width: var(--page-max);
+  margin: 0 auto;
+}
+.hm-footer__brand {
+  min-width: 220px;
+  max-width: 300px;
+}
+.hm-footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+}
+.hm-footer__wordmark {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.15em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--text-heading);
+}
+.hm-footer__blurb {
+  margin: 12px 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.hm-footer__columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 56px;
+}
+.hm-footer__column {
+  min-width: 174px;
+}
+.hm-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 10px;
+}
+.hm-footer__links .footer__link-item {
+  font-size: var(--text-sm);
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+.hm-footer__bottom {
+  max-width: var(--page-max);
+  margin: 32px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}

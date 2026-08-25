@@ -26,6 +26,12 @@ const config: Config = {
     },
   ],
 
+  // The one-line statement the footer leads with. themeConfig.footer has no
+  // field for it, so it travels here and src/theme/Footer reads it.
+  customFields: {
+    footerBlurb: 'A delivery practice. What is claimed is proven; what can be derived is not decided.',
+  },
+
   organizationName: 'Kieranties',
   projectName: 'hallmark',
 
@@ -111,7 +117,6 @@ const config: Config = {
     },
     footer: {
       style: 'light',
-      logo: {alt: 'Hallmark', src: 'img/mark-gold.svg', srcDark: 'img/mark-light.svg', width: 20, height: 20},
       links: [
         {
           title: 'Practice',
@@ -125,7 +130,7 @@ const config: Config = {
           title: 'Reference',
           items: [
             {label: 'Terminology', to: '/terminology'},
-            {label: 'The states', to: '/process/states'},
+            {label: 'Work types', to: '/work/types'},
             {label: 'Standards', to: '/work/standards'},
           ],
         },
@@ -137,15 +142,8 @@ const config: Config = {
             {label: 'Subtypes', to: '/apply/subtypes'},
           ],
         },
-        {
-          title: 'Repository',
-          items: [
-            {label: 'GitHub', href: 'https://github.com/Kieranties/hallmark'},
-            {label: 'Issues', href: 'https://github.com/Kieranties/hallmark/issues'},
-          ],
-        },
       ],
-      copyright: 'Hallmark — pre-1.0. Built on the practice it describes.',
+      copyright: '© 2026 Hallmark. Built on the practice it describes.',
     },
   } satisfies Preset.ThemeConfig,
 };

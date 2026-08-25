@@ -21,38 +21,6 @@ Four principles govern the practice. Each is a test that can be failed.
   <PrincipleCard index={4} name="Invariant" test="Whatever the size of the work, or the kind of actor, the same process applies." />
 </div>
 
-## The track
-
-Work advances by acts, and every act leaves something behind. Between one act and the next,
-the work rests at a state — and every state after the first is the act that produced it, in
-the past tense.
-
-```mermaid
-stateDiagram-v2
-    [*] --> New : capture
-
-    New --> Accepted : sift · accepted
-    New --> Closed : sift · duplicate
-    New --> Closed : sift · rejected
-    Accepted --> Specified : specify
-    Specified --> Planned : plan
-    Planned --> Actioned : action
-    Actioned --> Validated : validate
-    Actioned --> Accepted : validate · failed
-    Validated --> Accepted : issues found
-    Validated --> Complete : publish
-
-    Accepted --> Retracted : retract
-    Specified --> Retracted : retract
-    Planned --> Retracted : retract
-    Actioned --> Retracted : retract
-    Validated --> Retracted : retract
-
-    Closed --> [*]
-    Complete --> [*]
-    Retracted --> [*]
-```
-
 ## Ways in
 
 | Section | Covers |
