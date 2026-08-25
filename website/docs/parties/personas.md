@@ -29,6 +29,16 @@ not a job title, and one human may be several of them in a day. A party that act
 **required act of applying the practice to a system** — until it exists, not one capability
 can be stated. The practice supplies only the test: *does the running system serve them?*
 
+**A new system still has personas.** A project with no users has the parties it is being built
+*for*. Naming them before anyone arrives is what makes the first capability writable, and it
+is a cheaper conversation than the one that happens after the first release goes to somebody
+nobody described.
+
+**Admit builders here and the sorting test breaks.** The test asks whether something gives a
+named persona an outcome they did not have. Let designers or developers be personas and it
+starts asking whether a change gives *designers* a new outcome — a question the running system
+has no opinion about, and one that would let internal convenience be stated as a capability.
+
 :::important[Name for the branch, not for the person]
 The same word can land on either branch. A developer **building** the system is a
 *discipline*; a developer **consuming** what it publishes is a *persona*. Nothing about the

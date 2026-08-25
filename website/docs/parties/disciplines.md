@@ -27,6 +27,16 @@ the role changes.
 have no party above them. The practice supplies only the test: *does the party act on the
 change?*
 
+**Disciplines exist to guarantee the questions get asked, not to guarantee different people
+ask them.** Naming them is what makes *was the technical voice heard before we committed?* a
+question with an answer, at any size of team. One actor may cover several disciplines; each
+still has to be genuinely consulted rather than assumed.
+
+**Discipline and role are different questions.** A discipline says *which party you are acting
+as*; a [role](./roles.md) says *what position you hold on this subject*. The same developer is
+a discipline supplying an [actor](./actors.md), and that actor may hold Worker on one item and
+Verifier on another. Neither answer constrains the other.
+
 :::important[Name for the branch, not for the person]
 The same word can land on either branch. A developer **building** the system is a
 *discipline*; a developer **consuming** what it publishes is a *persona*. Nothing about the

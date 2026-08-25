@@ -32,3 +32,12 @@ arranged, and they belong to the [application](./practice-and-application.md) â€
 span several of any of them, and the practice is unchanged. Distinguish it from an
 [initiative](../work/initiative.md): the system is the boundary, an initiative is work
 travelling through it.
+
+## This site is the practice
+
+It holds the normative text, and it is what an [actor](../parties/actors.md) reads in order to
+act. It is not an application, and it describes none.
+
+Because it *is* the practice, the rules it states bind the pages stating them. A page that
+defines a term another page owns is the same defect as a system holding two copies of a
+standard.

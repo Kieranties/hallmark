@@ -33,9 +33,36 @@ is the exception, and is a step of its own, because its object is different.
 someone who did not do the work, at the exit of every act that produces something — the
 specifications, the plan, the change.
 
+**Two checks, and both must hold.** Work that passes one is not verified.
+
+| Check | Asks |
+| --- | --- |
+| **Conformance** | Did the work match what was asked, to standard? |
+| **Currency** | Is what was asked still right, given what changed while the work was in flight? |
+
+**Currency is the one almost nobody runs**, and it is the one that catches the expensive
+failures — because work that conforms perfectly to a stale target passes every other gate.
+
 **Two outcomes only: it verifies, or it returns the work.** A verifier that cannot settle the
 question from what is in front of it has found the evidence insufficient, which is a failed
 verification and the Worker's to close. It does not escalate.
+
+**The verifier is given everything except the session.**
+
+| Must have | Must not have |
+| --- | --- |
+| The item · the [criteria](./specify.md) · the [specifications](./specify.md) · the [plan and what it touches](./plan.md) · the change itself · the [standards](../work/standards.md) · what else changed while the work was in flight | The session in which the work was done |
+
+**An agent reviewing its own output is not independence.** The separation has to be real — a
+different [actor](../parties/actors.md), different context, or a deterministic gate. Otherwise
+what has been automated is self-certification, which is worse than no check because it
+produces a green tick.
+
+:::warning[A fresh actor is not a fresh you]
+Even with a fresh actor, it has clean context and **you do not**. You know which part you
+rushed, and you will steer it without meaning to — through the way the question is asked,
+through what gets pasted in, through which answer gets accepted quickly.
+:::
 
 ## What runs alongside
 

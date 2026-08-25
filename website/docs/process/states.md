@@ -46,6 +46,13 @@ leaves `Actioned` when [validation](./validate.md) fails outright; the other lea
 [specifying](./specify.md), because there is nothing wrong with the change — only with what
 was asked of it.
 
+**Each return goes to the state that owns the problem, not to the start.** That is one rule
+rather than a pair of special cases, and it is what keeps a return proportionate to what was
+actually found.
+
+**Returning is not failure of the track.** It is the track finding the thing it exists to
+find, at the first point anybody could have found it.
+
 ## Retraction
 
 **Retraction is available from every state the [sift](./sift.md) has let through.** A

@@ -24,6 +24,33 @@ arrive at its set.
 A standard that cannot be met is not quietly dropped. It is
 [conceded](../apply/concessions.md) — recorded, scoped, and counted.
 
+## Determining conformance
+
+**You can check a written justification for *presence*, never for *adequacy*.** That is the
+line the determination falls on: where conformance is decidable, the answer is the same
+whoever looks; where it needs judgement, a [Verifier](../parties/roles.md) makes it.
+
+**A standard is not weakened by being checked by a person rather than a build.** A standard a
+Verifier checks is not *remembered* — it sits in what the role must be able to
+[reach](../parties/roles.md), and is supplied at the moment of acting. That is the difference
+between a page and an input.
+
+**A standard is never re-decided per component.** Whoever consumes an enforced standard made
+no choice and owes no record of one; the record justifying it exists once, where the standard
+is declared.
+
+## How a standard is declared
+
+**What form a standard takes is an [application](../practice/practice-and-application.md)
+matter.** The practice requires only that it is stated as a floor and says how its own
+conformance is determined.
+
+**An architecture decision record is one such form.** It states what must hold and why, and
+the standard in force is what its un-superseded records say — so superseding one changes the
+standard rather than adding a second. Other systems will carry theirs as a linter
+configuration, a policy document, a contract, or an enforcing dependency. The practice names
+none of them.
+
 :::warning[Nothing prunes the stack]
 Layers only ever add, so the merged set only ever grows. Left unattended it becomes large
 enough that roles start to be unholdable for ordinary work — and concessions flood at exactly

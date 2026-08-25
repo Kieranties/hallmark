@@ -26,6 +26,24 @@ traceable at precisely the points where the process was not followed.
 | **Expiring** | It carries a point beyond which it no longer excuses anything |
 | **Counted** | Open concessions are a query, not a report |
 
+**Expiry is not closure.** One that expires unclosed is an overdue debt — still open, and
+still counted.
+
+**A concession generates debt automatically.** Clearing it is work, and that work is an item
+like any other, entering at the same [door](../process/capture.md).
+
+**Recording a concession has to be cheaper than hiding one, or nothing gets recorded.** That
+is why it is a record on the work rather than a process to go through: it costs what capture
+costs, and capture is free.
+
+:::warning[The count is never a target]
+**Open concession count is the sharpest signal the practice has, and targeting it destroys
+it.** Told to reduce the number, people stop *raising* concessions rather than stop *needing*
+them — which restores exactly the invisibility the record exists to end.
+
+It may summon attention. It may never be the thing anybody is asked to improve.
+:::
+
 **A concession may be recorded at any point.** It is a record *on* the work of what could not
 be met — never a decision, never a branch. It changes nothing about where the work goes; it
 changes what is known about it, and who is answerable for that. See

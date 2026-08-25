@@ -31,6 +31,11 @@ writes it into the door.
 carrying no ceremony: enough must be provided that the request can be understood by someone
 who was not there when it was raised.
 
+**Four words. A half-formed hunch. A paste of an error nobody has read yet.** That is the
+expected shape of something at `New`, and none of it is a defect — a thin request is one the
+[sift](./sift.md) will have to think about, which is the sift's job rather than the
+capturer's.
+
 :::warning[Friction at the door is paid invisibly]
 A poorly captured request costs one person a few minutes of clarification, once. A door that
 is hard to open costs every request that was never raised at all — and those leave no trace,

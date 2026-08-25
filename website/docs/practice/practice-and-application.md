@@ -40,4 +40,22 @@ practice deliberately leaves open: its [personas](../parties/personas.md), its
 application and leaves the practice untouched — which is the entire reason the two are kept
 apart.
 
+## Which side something falls on
+
+The test is the one the naming discipline uses: **could somebody instantiating this same
+practice somewhere else have made a different choice?** If yes, it is an application decision.
+
+| The practice says | An application decides |
+| --- | --- |
+| Every item carries exactly one [type](../work/types.md) | That a label carries it, and what the labels are called |
+| Every request enters one [door](../process/capture.md) | Which tracker is the door |
+| Something on the item [calls it to action](../process/states.md) | Whether that is an assignee, a label, a column or a notification |
+| A [role](../parties/roles.md) must be able to reach what it needs | Where that lives, and how it is fetched |
+| A [standard](../work/standards.md) states how its conformance is determined | What form the standard is declared in |
+
+**A team with no practice does not learn a model and then comply with it.** They use tooling
+that embodies it and learn by being unable to do the wrong thing easily. That makes the
+practice the *specification of the machinery* rather than onboarding material — and it is why
+the split is load-bearing rather than tidy.
+
 *What a system must declare is written on [declaring an application](../apply/declaring-an-application.md).*

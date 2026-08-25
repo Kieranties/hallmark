@@ -35,9 +35,9 @@ target quietly replaces the thing it stood for.
 [capability](../work/capability.md) — and a capability usually needs several, each proving one
 case.
 
-**A specification cannot be recovered from the code.** Code says what a system *does*, never
-what it *should* do — so intent has to come from outside it: the original request, the
-conversation that produced it, the outcome that was shaped. A record of current behaviour is a
+**A specification cannot be recovered from the implementation.** The implementation says what a
+system *does*, never what it *should* do — so intent has to come from outside it: the original
+request, the conversation that produced it, the outcome that was shaped. A record of current behaviour is a
 safety net, not a specification; it becomes one only when someone accountable confirms that
 the behaviour was intended. Where no source of intent exists anywhere, nothing can be
 specified, and that absence is itself a finding.

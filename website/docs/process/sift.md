@@ -29,6 +29,12 @@ work will be done, or what it will cost. Nor does it decide *when*, or *by whom*
 urgent it is. It settles three questions only: is this real, is it already known, and what
 kind of thing is it.
 
+**The count of unsifted requests is a query, not a report.** The requests waiting at `New`
+*are* the unsifted work, so the number cannot be rounded down by anybody having a bad week. A
+rising count is a fact about the rate of sifting against the rate of arrival — never a fact
+about whoever is capturing, and reading it that way reintroduces the cost at the door that
+free [capture](./capture.md) exists to remove.
+
 :::important[The sift must stay cheap, or the door closes anyway]
 Capture carries no quality bar, so every bit of variance it lets through arrives here. A cheap
 door with an expensive sift has not removed the friction — it has moved it somewhere less

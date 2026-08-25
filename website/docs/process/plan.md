@@ -23,6 +23,14 @@ reached.
 [standards](../work/standards.md) come into scope. That is derived from the change itself,
 never judged: nobody rules a change small enough to skip something.
 
+**Where touch can also be derived, a mismatch between derived and declared summons a
+verifier.** The change reached further than it was intended to, which is a surprise rather
+than a schedule.
+
+**Where touch cannot be computed at all, it attracts maximum rigour, never minimum.** A
+derivation over code nothing covers returns an empty set — which would point the incentive
+exactly the wrong way, and give the least-verified work the least care.
+
 > **Done when:** the actions are ordered, and the touch is declared.
 >
 > **Verified when:** someone who did not write it confirms that following it would make the
