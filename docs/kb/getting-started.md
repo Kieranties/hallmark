@@ -170,16 +170,14 @@ HALLMARK_NPM_CACHE_MOUNT=source=/path/to/your/npm-cache,target=/home/node/.npm,t
 | Path | Holds |
 | --- | --- |
 | `website/` | The Docusaurus site — configuration, and content under `website/docs/` |
-| `docs/adr/` | Architecture decision records. Immutable; superseded, never edited |
 | `docs/kb/` | Knowledge base articles, this one included. Living; edited as the thing changes |
 | `.hallmark/` | The repository's own declarations — its door, actors, disciplines and personas |
 | `.devcontainer/` | The container definition this article describes |
 | `.claude/` | Claude Code configuration shared by everyone working here |
 | `.github/workflows/` | Build on pull requests; build and publish on merge to `main` |
 
-[`docs/README.md`](../README.md) states which of `adr/` and `kb/` a new document belongs in.
-The split is lifecycle, not subject: if editing it later would destroy the point of it, it is
-an ADR.
+[`docs/README.md`](../README.md) states what belongs in `kb/`, and what belongs on the item
+instead.
 
 ## Working an item
 

@@ -5,9 +5,9 @@ work are checked rather than asserted.
 
 This repository holds the practice's documentation site, and in time the tooling that enacts it.
 
-> **Status — pre-1.0, and dogfooding itself.** Nothing here is stable. Six of the practice's
-> eight sections are written and published; **Claims and evidence** and **Applications** are not,
-> and the site says so where their terms would otherwise be expected.
+> **Status — pre-1.0, and dogfooding itself.** Nothing here is stable. The practice is written
+> in five sections — the practice, the parties, work, the process, and applying it — with a
+> terminology index over all of them.
 
 ## Documentation
 
@@ -110,9 +110,9 @@ everyone working in it, committed rather than personal.
 | Path | Holds |
 | --- | --- |
 | `website/` | The Docusaurus site — configuration, and content under `website/docs/` |
-| `docs/` | This repository's own documents — decision records in `adr/`, articles in `kb/` |
+| `docs/` | This repository's own documents — knowledge base articles in `kb/` |
 | `.devcontainer/` | The development container definition |
-| `.claude/` | Claude Code configuration shared by everyone working in this repository |
+| `.claude/` | Claude Code configuration shared by everyone working in this repository, including the `hallmark-design` skill the site's brand is copied from |
 | `.github/workflows/` | Build on pull requests; build and publish on merge to `main` |
 
 ## Troubleshooting
