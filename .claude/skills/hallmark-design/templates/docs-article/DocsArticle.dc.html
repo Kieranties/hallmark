@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Docs article" description="Documentation page with sidebar, prose column, contents rail and pager." -->
+<helmet><script src="./ds-base.js"></script><style>html,body{margin:0}a{color:var(--text-link);text-decoration:none;border-bottom:1px solid var(--border-link)}a:hover{color:var(--text-link-hover);border-bottom-color:var(--border-mark)}nav a,header a,footer a{border-bottom:none}</style></helmet>
+<div style="min-height:100vh;background:var(--bg-page);color:var(--text-body);font-family:var(--font-sans)">
+<header style="position:sticky;top:0;z-index:20;height:60px;display:flex;align-items:center;gap:28px;padding:0 24px;border-bottom:1px solid var(--border-subtle);background:color-mix(in srgb,var(--bg-page) 88%,transparent);backdrop-filter:saturate(140%) blur(8px)">
+<span style="display:inline-flex;align-items:center;gap:12px;color:var(--accent)"><svg width="26" height="22" viewBox="0 0 32 28" fill="none" style="overflow:visible"><ellipse cx="16" cy="14" rx="15" ry="11.5" stroke="currentColor" stroke-width="1.6"></ellipse><ellipse cx="16" cy="14" rx="12.4" ry="9" stroke="currentColor" stroke-width="0.7"></ellipse><text x="16" y="14" text-anchor="middle" dominant-baseline="central" fill="currentColor" style="font-family:var(--font-display);font-style:italic;font-weight:500;font-size:17px">h</text></svg><span style="font-family:var(--font-display);font-size:16px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--text-heading)">Hallmark</span></span>
+<nav style="display:flex;align-items:center;gap:22px;font-size:14px">
+<a href="#" style="color:var(--text-heading);font-weight:500;padding-bottom:2px;border-bottom:2px solid var(--border-mark)">Practice</a>
+<a href="#" style="color:var(--text-muted)">Terminology</a>
+<a href="#" style="color:var(--text-muted)">Process</a>
+<a href="#" style="color:var(--text-muted)">Apply</a>
+</nav>
+</header>
+<div style="display:flex;align-items:flex-start;max-width:1360px;margin:0 auto">
+<nav style="width:284px;flex:none;padding:24px 12px 64px;border-right:1px solid var(--border-subtle)">
+<div style="padding:0 10px 6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)">The practice</div>
+<div style="display:flex;flex-direction:column;gap:1;margin-bottom:22px">
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;color:var(--text-muted);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-faint)"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2Z"/><path d="M8 3v18"/></svg><span>Overview</span></a>
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;color:var(--text-muted);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-faint)"><path d="M5 22h14"/><path d="M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11A2.5 2.5 0 0 0 4 15.5V18h16v-2.5c0-.66-.26-1.3-.73-1.77Z"/><path d="M14 13V8.5a2.5 2.5 0 0 0-5 0V13"/></svg><span>Principles</span></a>
+</div>
+<div style="padding:0 10px 6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)">Process</div>
+<div style="display:flex;flex-direction:column;gap:1">
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;color:var(--text-muted);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-faint)"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg><span>Capture</span></a>
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;font-weight:500;color:var(--text-mark);background:var(--bg-selected);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-mark)"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg><span>Sift</span></a>
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;color:var(--text-muted);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-faint)"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="m9 15 2 2 4-4"/></svg><span>Specify</span></a>
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;color:var(--text-muted);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-faint)"><path d="M10 6h11"/><path d="M10 12h11"/><path d="M10 18h11"/><path d="M4 6h1v4"/><path d="M4 10h2"/><path d="m4 16 1.5-1a1 1 0 1 1 1 1.5L4 18h3"/></svg><span>Plan</span></a>
+</div>
+</nav>
+<main style="flex:1;min-width:0;padding:36px 40px 72px">
+<div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text-muted)"><a href="#">Practice</a><span style="font-family:var(--font-mono);color:var(--text-faint)">/</span><a href="#">Process</a><span style="font-family:var(--font-mono);color:var(--text-faint)">/</span><span style="color:var(--text-body)">Sift</span></div>
+<h1 style="margin:14px 0 6px;font-family:var(--font-display);font-size:40px;font-weight:500;letter-spacing:-.015em;line-height:1.15;color:var(--text-heading)">Sift</h1>
+<div style="display:flex;align-items:center;gap:10px;font-size:12px;color:var(--text-faint)"><span style="padding:2px 7px;border-radius:2px;background:var(--accent-soft);color:var(--text-mark);font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase">Act</span><span>Worker · leaves a typed item</span></div>
+<div style="width:44px;height:3px;background:var(--accent);margin:16px 0 24px"></div>
+<p style="margin:0 0 14px;max-width:68ch;font-size:16px;line-height:1.65"><strong style="color:var(--text-heading)">The first act on the change, and the first that requires a role.</strong> Capture is open to anyone; the sift is not — someone accountable rules on what arrived. Two things settle here, and only two.</p>
+<h2 style="margin:36px 0 10px;font-family:var(--font-display);font-size:26px;font-weight:600;letter-spacing:-.015em;color:var(--text-heading)">What kind of thing it is</h2>
+<p style="margin:0 0 18px;max-width:68ch;font-size:16px;line-height:1.65">The request is given a type, or the type it arrived carrying is verified. The ordered test always resolves — there is no request the practice cannot type.</p>
+<table style="width:100%;border-collapse:collapse;margin-bottom:24px">
+<thead><tr><th style="text-align:left;padding:8px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);border-bottom:1px solid var(--border-default)">Ask, in order</th><th style="text-align:left;padding:8px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);border-bottom:1px solid var(--border-default)">Request type</th></tr></thead>
+<tbody>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Does it resolve into other work?</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Initiative</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Does it ask for information?</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Question</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Does it correct something completed?</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Fix</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">None of the above</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Chore</td></tr>
+</tbody></table>
+<x-import component-from-global-scope="HallmarkDesignSystem_ad5c38.Callout" kind="warning" title="The sift must stay cheap, or the door closes anyway" hint-size="100%,96px">Capture carries no quality bar, so every bit of variance it lets through arrives here. A cheap door with an expensive sift has not removed the friction — it has moved it somewhere less visible.</x-import>
+<div style="display:flex;gap:12px;margin-top:40px">
+<a href="#" style="flex:1;padding:12px 16px;border:1px solid var(--border-subtle);border-radius:6px;background:var(--bg-surface)"><span style="display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:4px">Previous</span><span style="display:block;font-family:var(--font-display);font-size:16px;color:var(--text-heading)">Capture</span></a>
+<a href="#" style="flex:1;padding:12px 16px;text-align:right;border:1px solid var(--border-subtle);border-radius:6px;background:var(--bg-surface)"><span style="display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:4px">Next</span><span style="display:block;font-family:var(--font-display);font-size:16px;color:var(--text-heading)">Specify</span></a>
+</div>
+</main>
+<nav style="width:224px;flex:none;padding:24px 24px 64px 0">
+<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px">On this page</div>
+<div style="display:flex;flex-direction:column;gap:2px;border-left:1px solid var(--border-subtle)">
+<a href="#" style="padding:3px 0 3px 12px;margin-left:-1px;border-left:2px solid var(--border-mark);font-size:12px;color:var(--text-mark)">What kind of thing it is</a>
+<a href="#" style="padding:3px 0 3px 12px;font-size:12px;color:var(--text-muted)">Whether it will be done</a>
+<a href="#" style="padding:3px 0 3px 12px;font-size:12px;color:var(--text-muted)">Keeping the sift cheap</a>
+</div>
+</nav>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1360,&quot;height&quot;:820},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+class Component extends DCLogic {
+  applyTheme() { document.documentElement.setAttribute("data-theme", this.props.theme || "light"); }
+  componentDidMount() { this.applyTheme(); }
+  componentDidUpdate() { this.applyTheme(); }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

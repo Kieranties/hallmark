@@ -1,16 +1,14 @@
-import * as React from 'react';
-
-/** A fenced code block with a mono header strip and copy affordance — the branded Docusaurus code block. */
+/**
+ * Fenced code surface with an optional filename / language bar, line numbers and highlighted lines.
+ */
 export interface CodeBlockProps {
-  /** The literal code, newlines included. */
-  code?: string;
-  /** Shown in the header when `title` is absent. @default "bash" */
+  filename?: string;
   language?: string;
-  /** Replaces the language label — use for file paths, e.g. ".hallmark/repository.yml". */
-  title?: string;
-  /** @default true */
-  showCopy?: boolean;
+  /** Show a line-number gutter (string children only). @default false */
+  lineNumbers?: boolean;
+  /** 1-based line numbers to highlight with a gold rail and soft plate. */
+  highlight?: number[];
+  children?: React.ReactNode;
   style?: React.CSSProperties;
 }
-
-export declare function CodeBlock(props: CodeBlockProps): JSX.Element;
+export function CodeBlock(props: CodeBlockProps): JSX.Element;

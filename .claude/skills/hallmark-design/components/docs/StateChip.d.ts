@@ -1,18 +1,11 @@
-import * as React from 'react';
-
 /**
- * The state an item holds on the door. Brand-specific: the label set is the practice's own
- * vocabulary, so never pass free text — pick a state.
+ * Work-state chip using the practice's own state vocabulary.
  */
 export interface StateChipProps {
-  /** @default "sifted" */
-  state?: 'sifted' | 'specified' | 'planned' | 'built' | 'verified' | 'decided' | 'conceded';
-  /** @default true */
-  showIcon?: boolean;
-  /** @default "md" */
-  size?: 'sm' | 'md';
+  /** New | Accepted | Specified | Planned | Actioned | Validated | Complete | Closed | Retracted | Committed | Uncommitted */
+  state: string;
+  /** Override the tone derived from the state name. */
+  tone?: "neutral" | "accent" | "pass" | "fail";
   style?: React.CSSProperties;
 }
-
-export declare function StateChip(props: StateChipProps): JSX.Element;
-export declare const STATES: Record<string, { label: string; tone: string; icon: string }>;
+export function StateChip(props: StateChipProps): JSX.Element;

@@ -1,206 +1,159 @@
-# Hallmark — design system
+# Hallmark Design System
 
-**Hallmark is a delivery practice**: declarations, states and criteria a repository adopts so that
-claims about work are *checked rather than asserted*. A repository declares a **door** (where its
-items live and what carries each fact about them), items travel a fixed set of **states**, and what
-a state requires is written down rather than remembered. Its own repository runs the practice on
-itself — pre-1.0 and dogfooding.
+Hallmark is a **delivery practice** — a principled process through which work of any size is delivered, standards are met, and what is claimed of the result is proven. The name is literal: a hallmark is the punch a metalsmith strikes into finished work to certify it met an assay. Everything in this design system serves that metaphor — a quiet, document-first surface where the *marks* are the loud part.
 
-The product is currently one surface: **a documentation site**, built with Docusaurus 3.10 (classic
-preset, Mermaid theme, TypeScript config) and published to `hallmark.kieranties.com` from GitHub
-Pages on every merge to `main`.
-
-This design system gives that site a visual identity, and gives designers and agents everything
-needed to make consistent Hallmark artefacts. It is **Docusaurus-compatible by construction**:
-`tokens/docusaurus.css` maps every brand token onto an Infima variable, so the whole brand drops
-into `website/src/css/custom.css` with no swizzling.
+This system exists to dress **Hallmark's documentation site**, which will be built on **Docusaurus**. It is a documentation brand, not a product brand: a landing page exposing the principles, a terminology glossary, and nested article pages.
 
 ## Sources
 
-| Source | What was taken from it |
-| --- | --- |
-| <https://github.com/Kieranties/hallmark> | Product concept, all copy, the site's structure and config, the practice's vocabulary (`.hallmark/*.yml`) |
-| `website/src/css/custom.css` (same repo) | The *only* styling upstream: the untouched Docusaurus scaffold palette (green `#2e8555` / teal `#25c2a0`). Deliberately replaced — see below |
-| `.hallmark/` declarations | The state names, disciplines and personas that `StateChip` and the docs copy use |
+| Source | Path / link | What was taken from it |
+|---|---|---|
+| Hallmark practice mindmap | `Untitled/Mindmap 1.md` (mounted local folder, 598 lines) | All content: principles, terminology, parties, standards, work types, process, states. Voice and copy conventions. |
+| Brand assets | *none provided* | No logo, colours, fonts, icons or screens existed. Everything visual here is **new and authored for review** — see "Authored, not inherited". |
 
-The repository is worth exploring directly if you are extending this system — `.hallmark/*.yml`
-carries the practice's real vocabulary, and `website/` carries the site this kit recreates.
+There was no codebase, Figma file or existing site. The reader is not assumed to have access to the mindmap; the extracted IA lives in `content/ia.md` and the content used by the UI kit in `ui_kits/docs-site/data.js`.
 
-**There was no design system, no logo, no imagery and no icon set upstream.** Everything visual
-here is original work created for this system, at the user's explicit request. The scaffold's
-default green/teal was not carried over: it is Docusaurus's own default, not a brand decision.
+### Authored, not inherited — needs your sign-off
 
-## The idea behind the look
+- **The mark — decided.** A struck oval stamp: 1.6px outer ring, 0.7px inner ring, lowercase italic serif `h` (`assets/mark.svg`). Drawn here, from scratch, because no source mark existed. It reads as a maker's punch rather than a glyph in a warning sign. Alternative directions were reviewed and rejected; this is the mark.
+- **The palette.** Assay gold as the accent, antimony blue for links, verdigris / punch red / amber for status. Chosen to read as metalwork rather than SaaS.
+- **The type — decided.** Newsreader (display), IBM Plex Sans (body), Fira Code (mono) — all open-licence Google Fonts, permanently. No licensed faces are involved.
+- **The icons — decided.** Lucide (ISC licence) via CDN.
 
-A hallmark is a mark struck into silver by an assay office, beside the maker's own signature: a
-small, permanent claim meaning *this was checked, and someone answers for it*. The system takes
-that literally — a cursive lowercase h over its assay rule, printed-record neutrals, madder red
-as the mark's colour, and metal-derived semantics (verdigris for verified,
-brass for in flight, aubergine for a recorded concession). Nothing floats; depth comes from
-hairlines and letterpress, not from shadows and glass.
+## Fonts
 
----
+All three faces are free, open-licence Google Fonts, loaded by `@import` in `tokens/fonts.css`. This is the permanent stack, not a placeholder:
 
-# CONTENT FUNDAMENTALS
+| Role | Face | Why |
+|---|---|---|
+| Display | **Newsreader** | A modern text serif with real editorial authority at large sizes and a genuine italic — carries the "document of record" tone without period costume. |
+| Body / UI | **IBM Plex Sans** | Slightly technical, low-contrast, excellent at 14–16px; its mono sibling keeps identifiers and prose visually related. |
+| Mono | **Fira Code** | Wide, unambiguous glyphs for state names and identifiers. **Ligatures are disabled everywhere** (`font-variant-ligatures: none`). |
 
-Hallmark's own writing is the strongest asset in the repository. Copy it exactly.
+All three are under open licences (OFL / SIL), so they can be self-hosted freely: put the woff2 files in `static/fonts/`, swap the `@import` for `@font-face` rules, and leave the `--font-*` variables untouched. Self-hosting is worth doing for the site — it removes the CDN round-trip and the font-metric race that clips mermaid labels.
 
-**Tone.** Declarative and unhedged. Sentences state what is true and what follows from it:
-"A pull request builds the site but never publishes it." No enthusiasm, no persuasion, no
-metaphors doing load-bearing work.
+## Content fundamentals
 
-**Definitions by contrast.** The house move is a pair of opposed statements that settle a
-distinction: "If editing it later would destroy the point of it, it is an ADR. If never editing it
-later would make it wrong, it is a KB article." Use it where readers actually confuse two things —
-not as decoration.
+The source document has an unusually strong voice, and it is the brand's voice. Copy the following, exactly.
 
-**Reasons are given, in the same breath.** "So that", "because", "recorded here so it is not
-mistaken for a decision." Every constraint carries why it exists.
+**Definitional, not promotional.** Every paragraph either defines something or tests it. There is no persuasion, no benefit language, no "empower your team". The strongest sentence in the source is a definition: *"A concession is therefore not an exception to the practice — it is the practice working."*
 
-**Person.** Almost none. No "we", rarely "you" — the subject is the thing: the door, the item, the
-site, the repository. Instructions address the reader briefly and only in procedures
-("Clone the repository and open it in VS Code").
+**Lead clause bold, then the elaboration.** Nearly every paragraph opens with a bolded assertion, then one or two sentences of consequence. Example: **"Attribution is not accountability."** followed by the distinction. Use this rhythm; it is what makes the docs scannable without headings every 80 words.
 
-**Casing.** Sentence case everywhere — headings, buttons, cards, table headers. The only uppercase
-is the mono micro-label (`DOCS · PRACTICE`, `PREVIOUS`, `VERIFIED`), which is tracked +0.1em.
-Product vocabulary is lower-case in prose except where it names a declaration key
-(`door.carries`, `type-`, `Status`).
+**Third person, present tense, no addressee.** The practice does not speak to "you" and never says "we". It says *"the practice states"*, *"a role is scoped to a subject"*. Second person appears only inside a rule of thumb — *"You cannot grant what you do not have."*
 
-**Bold, not italics.** Bold marks the one phrase a paragraph turns on ("**checked rather than
-asserted**", "**Where this repository keeps its durable documents.**"). Italics are unused.
+**Sentence case everywhere.** Headings, buttons, nav items, table headers. Title Case is never used. The only uppercase is the letterspaced micro-label (`ON THIS PAGE`, `IMPORTANT`, `VERIFIED`) at 11px.
 
-**Tables over prose lists.** Two- and three-column lookup tables carry anything enumerable:
-paths and what they hold, commands and what they do, locations and their lifecycles.
+**Defined words are capitalised only as vocabulary.** Role names (Worker, Verifier, Sentinel, Decider) and state names (`Accepted`, `Retracted`) are capitalised because they are literal values. Ordinary defined terms — actor, persona, discipline, concession — stay lowercase in prose and are marked, not capitalised.
 
-**No emoji. Ever.** Not in copy, not in cards, not in admonition titles. Iconography is Lucide.
+**Tests, not guidance.** Where a decision has to be made, the copy gives a decidable test: *"Test: after this, can anyone do something they could not do before?"*, *"does the running system serve them?"*. Never "consider whether…".
 
-**Status is stated, not hidden.** The site says "pre-1.0", "this site is a scaffold", "that is a
-gap in the door". Uncertainty is content: a concession is recorded, scoped, and expires.
+**Em dashes and italics carry the argument.** The source leans on both: an em dash to append the consequence, italics for the word under contrast (*object*, *why*, *silently*). Keep them; they are voice, not decoration.
 
-**Admonition titles name the claim**, not the severity: `:::warning[This site is a scaffold]`.
+**No emoji. Ever.** Not in docs, not in UI, not in commit-message examples. The source contains none, and the practice's whole posture — evidence, attribution, floors — is incompatible with them.
 
-Examples worth imitating verbatim:
+**Failure modes are named and boxed.** Callouts titled like sentences: *"Friction at the door is paid invisibly"*, *"Nothing prunes the stack"*, *"A state is not a work queue"*. A callout without a title is a smell.
 
-> A delivery practice: declarations, states, and criteria that a repository adopts so that claims
-> about work are **checked rather than asserted**.
+**Examples are ✓ / ✗ pairs with a reason.** *"An operator can drain a node without dropping traffic" — named persona, achievable outcome.* Keep the trailing reason clause.
 
-> Nothing here is stable, and the site currently carries a scaffold rather than the practice.
+**Vocabulary discipline.** The practice never uses tool words (epic, story, bug, spike) in its own voice — it maps them and moves on. Never write "ticket", "backlog grooming", "sprint" in Hallmark's voice.
 
-Avoid: exclamation marks, "powerful"/"seamless"/"best-in-class", "let's dive in", rhetorical
-questions, "simply", and any sentence that would embarrass an audit reader.
+## Visual foundations
 
----
+**Overall vibe.** A specification, well set. Warm paper in light mode, cool graphite in dark, long measures of quiet prose, and gold used like a struck mark: rarely, deliberately, always meaning "this is defined vocabulary" or "this is the state".
 
-# VISUAL FOUNDATIONS
+**Colour.** One hue does the work. *Assay gold* (`--gold-400` `#A8792C`) is the brand accent — marks, keywords, the active nav rail, the 3px rule under section headings, hovered links, the primary button. There is no second UI hue: *antimony blue* (`--blue-400`) survives only as the code-syntax keyword colour, where it sits inside a code plate and never competes with prose. Status uses verdigris (`#1F7A6B`, pass/proof), punch red (`#B03A2E`, fail/returned) and amber (`#96701A`, conceded). Neutrals are split by theme: light neutrals are *warm* (paper `#FAF8F4`), dark neutrals are *cool* (ink `#15181C`) — the warmth is what stops the light theme reading as a generic docs template. Maximum two background tones per page: `--bg-page` and `--bg-surface`, with `--bg-sunken` reserved for code and footer.
 
-**Colour.** One accent: **madder** `#8A2F1C` (`--hm-madder-600`) — the struck mark, used for
-links, the primary button, active edges and the hover hairline. Neutrals are a **warm ink-on-paper
-ramp** (`--hm-paper` `#FFFDFB` → `--hm-ink-900` `#16110E`), never pure grey and never pure white.
-Semantics are drawn from metal: verdigris `#23685B` (verified, tip), brass `#96731F` (open,
-warning), aubergine `#5B2A4A` (conceded, info), ink-500 (void). **There is no separate danger
-red** — madder is both brand and alarm, so a failing check is the only madder thing on the page.
-Dark theme (`[data-theme='dark']`) lifts rather than inverts: paper becomes brown-black `#141110`,
-madder warms to terracotta `#DB6B44`.
+**Links and marks.** The one distinction to get right, because both live in prose. A **link** is ink text on a solid hairline underline (`--text-link` + `--border-link`) and turns gold on hover — it means *go there*. A **term** is gold text on a dotted gold rule (`Mark`, `.hm-mark`) and does not change on hover — it means *this word is defined*. A **keyword** is gold on a soft gold plate. Nav, header and footer links carry no underline; only links in prose do. Never give a link the dotted rule, and never make a term look clickable when it is not.
 
-**Type.** Three families. **Spectral** (serif) for every heading and the hero — 56/40/30/22px,
-weight 600, tracking −0.015em, leading 1.06–1.28. **IBM Plex Sans** for body and UI — 18/16/14/12.5px
-at 1.7 leading. **IBM Plex Mono** for everything the system *declares*: code, paths, state names,
-versions, breadcrumbs, table headers, section labels. If a string is a key, a state or a path, it
-is mono; if it is a sentence, it is not. Prose is capped at 70ch (`--hm-measure-prose`).
+**Type.** Serif display / sans body, deliberately. Headings are Newsreader 500–600 with `-0.015em` tracking; body is IBM Plex Sans 16px at 1.65 line-height over a 68ch measure; secondary prose is 14px in `--text-muted`. Italic is always the serif italic. The eleven-step scale runs 11 → 68px.
 
-**Spacing and layout.** Scale 2 · 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96. Docs frame is fixed:
-60px navbar (sticky), 270px sidebar, 70ch prose column, 220px TOC (sticky), 1320px page max, 24px
-gutter, 96px between landing sections. Sidebar and TOC are fixed-width; only prose flexes.
+**Spacing.** A 2/4/8-derived scale with a 6px step retained for chip padding (`--space-1…12`, 2 → 128px). Docs layout is fixed-rail: 284px sidebar, 768px content column, 224px contents rail, 24px gutter, 60px navbar.
 
-**Backgrounds.** Flat paper, almost always. Two exceptions: a **sunk fill** (`--hm-surface-sunk`)
-for hero and code strips, and the **punch grid** (`assets/punch-grid.svg`, 48px tile) at 4–6%
-opacity behind the landing hero and nothing else. No gradients anywhere — no hero gradient, no
-button gradient, no text gradient. No photography in the system yet (there is none upstream); if
-imagery arrives, expect it warm, high-contrast and desaturated rather than colour-graded.
+**Backgrounds.** Flat colour. No images, no gradients, no textures, no patterns, no full-bleed photography — none was provided and none is wanted. There is no ornament and no eyebrow: the mark appears once, in the header, and a page opens on its title. Brand marks are inlined as SVG markup wherever they must take a theme colour (`currentColor` inherits); the standalone files in `assets/` carry literal hex fills instead, so they also work as `<img>` and as Docusaurus `static/img` assets — `mark.svg` (ink), `mark-gold.svg` (light theme), `mark-light.svg` (dark theme). Neither `currentColor` nor `var()` resolves inside an image document, so neither appears in those files. If photography ever enters, it should be cool, high-contrast, close-up metal — and it should sit behind a solid plate, never behind text.
 
-**Borders and radii.** The hairline is the primary structural device: 1px `--hm-line` `#E0D7D0`.
-Radii are small and deliberate — 2px badges, 3px buttons and inputs, 5px cards and code blocks,
-8px large panels; the pill radius is reserved for avatars and is otherwise unused. The **struck
-edge** is a 2–3px madder edge on the leading side of an active thing: active sidebar item, active
-tab, admonition left edge, TOC marker. It is the only left-accent treatment permitted.
+**Borders.** 1px hairlines carry almost all structure: `--border-subtle` (dividers, cards, table rows), `--border-default` (inputs, buttons), `--border-mark` (gold: focus, active nav, hovered card). Two thicker marks exist: the 2px active-nav underline and the 3px 44px-wide gold rule under section headings. No coloured left borders — not on cards, not on callouts.
 
-**Shadows.** Letterpress, not float. `--hm-shadow-1` at rest for cards, `--hm-shadow-2` on hover,
-`--hm-shadow-3` only for things genuinely above the page (dialogs, dropdowns, search overlay).
-Inner shadow exists only as the 1px top highlight in `--hm-shadow-press`.
+**Corner radii.** Small and consistent: 2px (chips, badges, code inline), 4px (buttons, inputs), 6px (cards, callouts, code blocks), 10px (only for large panels), pill (tags only). Punched, not pillowy. The struck oval (`--cartouche`, an `ellipse()` clip) is the one expressive shape, used for the mark and for numbered principles.
 
-**Transparency and blur.** Sparingly, and only on sticky chrome: the navbar may take
-`--hm-blur-sticky` over scrolled content. Overlays use a 42% ink scrim
-(`--hm-overlay-scrim`). No frosted cards, no translucent panels over prose.
+**Cards.** `--bg-surface`, 1px `--border-subtle`, 6px radius, `--shadow-1`, 20px padding. On hover (interactive cards only) the border turns gold and the shadow steps to `--shadow-2`. No coloured header strip, no left accent bar, no nested cards.
 
-**Animation.** Short, flat, no bounce. 80ms press, 120ms hover, 180ms reveal, 280ms overlay, all on
-`cubic-bezier(.2,0,.2,1)`. Hover changes colour and hairline only. Press translates 1px down —
-never scales. Reveals are opacity plus a 2px rise. All durations collapse to 0 under
-`prefers-reduced-motion`. Nothing loops, nothing pulses, nothing floats.
+**Shadows.** Four levels, all restrained: `--shadow-1` resting, `--shadow-2` hover, `--shadow-3` overlays and dropdowns only, and `--shadow-struck` — an inset "incised" edge used for pressed buttons and stamped surfaces. Dark theme shadows go blacker and slightly larger rather than being removed.
 
-**States.** Hover: hairline moves to madder, background to `--hm-surface-sunk`, text to madder.
-Press: 1px down. Focus: 3px madder ring at 32% (`--hm-shadow-focus`) — visible, never removed.
-Disabled: 42% opacity, no colour change.
+**Hover states.** Text: colour shifts toward `--text-heading` or gold. Surfaces: a 4% ink wash (`--bg-hover`), never opacity changes and never a lightened brand colour. Buttons: primary darkens to `--gold-500`; secondary/ghost take the wash. Cards: gold hairline plus one shadow step.
 
-**Cards.** Paper fill, 1px hairline, 5px radius, `--hm-shadow-1`, 16px padding. On hover the
-hairline goes madder and the shadow steps to 2. No coloured header bars, no left-border-only cards
-(the single left-edge exception is the admonition, which is Docusaurus's own pattern).
+**Press states.** No scale transforms, no translate. A pressed control takes `--shadow-struck` — it looks stamped into the surface. This is the brand's one signature interaction.
 
----
+**Focus.** `--ring-focus`: a 2px page-coloured gap then a 2px gold ring. Inputs additionally turn their border gold. Never remove it; never use a soft glow.
 
-# ICONOGRAPHY
+**Animation.** One easing (`--ease-standard`, `cubic-bezier(.2,0,.2,1)`), two durations that matter — 140ms for hover/focus/colour, 220ms for disclosure and theme swap. No bounce, no overshoot, no spring, no scroll-triggered entrance animation on documentation content. Prose does not fade in; it is already there.
 
-**The repository ships no icons at all** — no icon font, no sprite, no SVGs, and Docusaurus's
-default theme supplies only its own chrome glyphs. Substitution flagged: this system standardises
-on **Lucide 0.436.0**, loaded from CDN (`https://unpkg.com/lucide-static@0.436.0/icons/`) and
-masked to `currentColor` by the `Icon` component. Lucide was chosen for its flat 1.5px stroke and
-square terminals, which match the mark's geometry.
+**Transparency and blur.** Exactly two uses: the navbar (`color-mix` of the page colour at 88% + 8px blur, so text scrolls under it legibly) and the modal scrim (`--bg-scrim`). Nothing else is translucent — no frosted cards, no glass panels.
 
-- **Sizes:** 16px inline with text, 18px in UI chrome, 20–24px as a feature mark. Never larger.
-- **Colour:** inherited from surrounding text. Icons are never a second accent colour.
-- **Set in use:** `stamp`, `filter`, `file-text`, `list-checks`, `hammer`, `check`, `circle-slash`,
-  `triangle-alert`, `octagon-alert`, `info`, `pencil-line`, `copy`, `arrow-left`, `arrow-right`,
-  `chevron-right`, `book-open`, `door-open`, `folder`, `power`, `search`, `github`, `sun`, `moon`.
-- **Emoji:** never — in UI, in docs copy, or in commit messages shown as examples.
-- **Unicode as icon:** only `⌘` inside a `Kbd`, and `·` as a separator in mono labels.
-- **Brand marks:** `assets/logo-mark.svg`, `logo.svg`, `logo-dark.svg`, `logo-mark-outline.svg`,
-  `favicon.svg`, plus the `punch-grid.svg` texture. See `assets/README.md` for clear space and
-  minimum sizes.
+**Protection.** Where text must sit over anything non-flat, use a solid plate (a `--bg-surface` card), not a gradient scrim. The system has no protection gradients.
 
-If Hallmark later adopts an icon set of its own, replace `Icon`'s `LUCIDE_BASE` and nothing else.
+**Layout rules.** Navbar is sticky; sidebar and contents rail are sticky within the viewport and independently scrollable; content is a single column capped at 768px and never justified. Footer is full-width `--bg-sunken`. Nothing else is fixed — no floating action buttons, no sticky CTAs.
 
----
+**Dark theme.** A genuine parity theme, not an inversion: gold lifts to `--gold-300`, link underlines to `--grey-4`, status colours to their 300 steps, surfaces step *up* from the page rather than down. Both themes are exercised in `guidelines/colors-dark-parity.html` and live in the UI kit.
 
-# INDEX
+## Code and diagrams
 
-**Root**
+**Code.** `tokens/syntax.css` adds a `--code-*` set for both themes: keyword (antimony), string (verdigris), number and attribute (gold), function (deep gold), tag (punch red), comment (italic grey), plus diff and line-highlight values. The palette is deliberately quieter than the inline marks around it — **a mark should always out-shout a keyword.** `CodeBlock` renders a filename/language bar, an optional line-number gutter, and highlighted lines marked with a 2px gold rail rather than a coloured background alone. For the real site, `docusaurus/prism-hallmark.css` repaints Docusaurus' Prism output with the same tokens, including `codeBlockTitle`, copy button, line numbers and highlighted lines. Cards: Code group (4).
 
-| File | Holds |
-| --- | --- |
-| `styles.css` | The single entry point consumers link. `@import` lines only |
-| `tokens/` | `colors.css`, `typography.css`, `spacing.css`, `borders.css`, `elevation.css`, `motion.css`, `fonts.css`, `docusaurus.css` |
-| `assets/` | Logo lockups, favicon, punch-grid texture, and `assets/README.md` (usage rules) |
-| `guidelines/` | Foundation specimen cards (Colors, Type, Spacing, Brand) + `card.css`, and `docusaurus-setup.md` — how to apply this system to `website/` |
-| `components/` | Reusable primitives, grouped `core/`, `docs/`, `navigation/` |
-| `ui_kits/docs-site/` | Interactive recreation of `hallmark.kieranties.com` |
+**Diagrams.** The source's mermaid diagrams are kept as mermaid, not redrawn. `docusaurus/mermaid.js` is a ready `themeConfig.mermaid` export with both light and dark `themeVariables` (mermaid cannot read CSS custom properties, so the literal token values live there — keep them in step with `tokens/colors.css`). `docusaurus/mermaid.css` squares the node corners, thins strokes to 1.1px, sets state labels in the mono face and edge labels in lowercase letterspaced sans. The state machine is rendered live in `guidelines/diagram-state.html` (and a dark twin) and inside the UI kit's Process view.
+
+## Iconography
+
+**No icon set was provided, so Lucide is the substitution** — outline, 1.5–2px stroke, 24px grid, which matches the hairline-heavy surface better than a filled set would. Flagged for your review: swapping it for a licensed set later is a one-line change.
+
+- **Delivery:** CDN, pinned — `https://unpkg.com/lucide@0.454.0/dist/umd/lucide.js`, then `lucide.createIcons()`. In markup, `<i data-lucide="search">`. Nothing is copied into `assets/` because there was nothing local to copy.
+- **Size and colour:** 14px inside dense UI (nav, callout labels, inputs), 16px in body flow, 20px maximum. Always `currentColor`, never a fill colour of their own.
+- **Where icons are and are not used.** They are used in navigation chrome, callout labels, search, theme toggle and card affordances. They are **not** used in prose, not in headings, and not as bullets — prose calls things out with the `Mark` component instead.
+- **The frequently used set:** `search`, `moon`, `sun`, `github`, `arrow-right`, `chevron-right`, `stamp`, `triangle-alert`, `check`, `undo-2`, `copy`, `link`, `book-open`.
+- **No emoji, ever.** No decorative unicode either — the one exception is the monospace arrow `→` used between state chips, which is content, not ornament.
+- **The brand SVGs in `assets/` are not icons.** `mark.svg`, `mark-gold.svg`, `wordmark.svg`, `punch-row.svg` and `favicon.svg` are brand marks; do not recolour them per-context beyond the tones the `Logo` component exposes.
+
+## Index
+
+Root files:
+
+| File | What it is |
+|---|---|
+| `INSTALL.md` | **Step-by-step guide to applying this to the Docusaurus site** — file copy list, config snippets, MDX authoring, sidebar icons, fonts |
+| `styles.css` | The one stylesheet consumers link — `@import` lines only |
+| `tokens/` | `fonts.css`, `colors.css`, `typography.css`, `spacing.css`, `shape.css`, `elevation.css`, `motion.css`, `syntax.css`, `semantic.css` |
+| `assets/` | `mark.svg` (ink), `mark-gold.svg`, `mark-light.svg` (dark theme), `wordmark.svg`, `favicon.svg` |
+| `guidelines/` | Specimen cards — Colors (8), Type (6), Spacing (5), Brand (3), Code (4), Diagrams (2) |
+| `docusaurus/` | `custom.css` Infima bridge, `prism-hallmark.css` code theme, `mermaid.js` + `mermaid.css` diagram theme, `README.md` install steps |
+| `content/ia.md` | The documentation IA extracted from the source mindmap |
+| `ui_kits/docs-site/` | Click-through recreation of the docs site (4 views) |
+| `templates/` | Page templates: `docs-article`, `docs-landing`, `terminology` — each with a light/dark tweak |
+| `thumbnail.html` | Homepage tile |
 | `SKILL.md` | Agent-skill entry point |
-| `patch/` | Drop-in patch for `Kieranties/hallmark` — mirrors `website/` paths; see `patch/APPLY.md` |
-| `github.md` | Upstream source association and sync record |
 
-**Components** — `window.<Namespace>.<Name>`; each has a `.d.ts` contract and a `.prompt.md`.
+### Components
 
-- `components/core/` — **Button**, **Badge**, **Callout**, **Kbd**, **Icon**
-- `components/docs/` — **StateChip**, **DocCard**, **CodeBlock**, **TabbedPanel**, **DataTable**
-- `components/navigation/` — **SidebarNav**, **Breadcrumbs**, **DocPager**
+Grouped by concern; each has a `.jsx`, a `.d.ts` props contract, a `.prompt.md` usage note, and one `@dsCard` per directory.
 
-**Intentional additions.** No component inventory existed upstream (the site runs the unmodified
-classic theme), so this set was authored to cover exactly what the theme renders — admonitions,
-tabs, code blocks, doc cards, pagination, sidebar, breadcrumbs — plus two brand-specific pieces:
-**Icon** (a wrapper for the substituted Lucide set) and **StateChip** (the practice's own state
-vocabulary, which the docs need constantly). Nothing beyond that: no Avatar, Toast, Dialog or
-Switch, because nothing upstream shows one.
+**`components/core/`** — `Logo`, `Button`, `Badge`, `Tag`, `Card`
 
-**UI kits** — `ui_kits/docs-site/` (landing page, docs article layout, dark mode; see its README).
+**`components/docs/`** — `Mark`, `Callout`, `TermEntry`, `CodeBlock`, `StateChip`, `PrincipleCard`, `DefinitionTable`
 
-**Substitutions to confirm.** Fonts are Google Fonts stand-ins (Spectral, IBM Plex Sans, IBM Plex
-Mono) because no font files exist upstream; icons are Lucide for the same reason. Both are flagged
-above and swappable in one file each.
+**`components/navigation/`** — `Navbar`, `SidebarNav`, `TableOfContents`, `Breadcrumbs`, `PagerNav`, `SearchField`, `ThemeToggle`, `Footer`
+
+Twenty components in total: `Logo`, `Button`, `Badge`, `Tag`, `Card`, `Mark`, `Callout`, `TermEntry`, `CodeBlock`, `StateChip`, `PrincipleCard`, `DefinitionTable`, `Navbar`, `SidebarNav`, `TableOfContents`, `Breadcrumbs`, `PagerNav`, `SearchField`, `ThemeToggle`, `Footer`.
+
+`Footer` mirrors Docusaurus' `themeConfig.footer` shape (`links: [{ title, items }]`), so the same content object drives the kit and the real site; `.footer*` rules in `docusaurus/custom.css` style the Infima markup to match.
+
+#### Intentional additions
+
+No source defined a component inventory, so this set was authored from the needs of a Docusaurus documentation site. Four are Hallmark-specific rather than generic:
+
+- **`Mark`** — the system's signature: inline call-out of a defined term, keyword or identifier. This is what "able to call out key information" resolves to.
+- **`StateChip`** — the practice's own state vocabulary (`New` … `Complete`, `Retracted`), monospace because a state is a literal value.
+- **`PrincipleCard`** — the four principles, numbered inside the octagonal punch.
+- **`TermEntry`** — one glossary definition with its classifier and cross-references.
+
+### UI kit
+
+`ui_kits/docs-site/` — landing page, doc article ("Sift"), filterable terminology page, and process page (with the live mermaid state machine), plus the site footer. Working navigation, live search filter and a light/dark toggle in the navbar; `dark.html` opens the same surface with dark as the starting theme. See its `README.md`.

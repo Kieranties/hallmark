@@ -1,33 +1,32 @@
 :root{
-  --hm-font-display:"Spectral",Georgia,"Times New Roman",serif;
-  --hm-font-body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif;
-  --hm-font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  /* Scale — docs-first. 16px body, serif display. */
+  --text-2xs:11px;
+  --text-xs:12px;
+  --text-sm:14px;
+  --text-base:16px;
+  --text-md:18px;
+  --text-lg:21px;
+  --text-xl:26px;
+  --text-2xl:32px;
+  --text-3xl:40px;
+  --text-4xl:52px;
+  --text-5xl:68px;
 
-  --hm-weight-light:300;--hm-weight-regular:400;--hm-weight-medium:500;--hm-weight-semibold:600;--hm-weight-bold:700; /* @kind other */
+  --leading-tight:1.12;
+  --leading-snug:1.28;
+  --leading-normal:1.5;
+  --leading-body:1.65;
+  --leading-loose:1.8;
 
-  /* Display sizes — Spectral, tight leading, slight negative tracking */
-  --hm-size-display-1:56px;--hm-lh-display-1:1.06; /* @kind other */
-  --hm-size-display-2:40px;--hm-lh-display-2:1.12; /* @kind other */
-  --hm-size-display-3:30px;--hm-lh-display-3:1.2; /* @kind other */
-  --hm-size-heading:22px;--hm-lh-heading:1.28; /* @kind other */
-  --hm-size-subheading:17px;--hm-lh-subheading:1.4; /* @kind other */
+  --weight-regular:400;
+  --weight-medium:500;
+  --weight-semibold:600;
 
-  /* Body — IBM Plex Sans */
-  --hm-size-body-lg:18px;--hm-lh-body-lg:1.7; /* @kind other */
-  --hm-size-body:16px;--hm-lh-body:1.7; /* @kind other */
-  --hm-size-body-sm:14px;--hm-lh-body-sm:1.6; /* @kind other */
-  --hm-size-caption:12.5px;--hm-lh-caption:1.45; /* @kind other */
+  --tracking-tight:-0.015em;
+  --tracking-normal:0;
+  --tracking-wide:0.04em;
+  --tracking-mark:0.14em; /* struck-mark labels, small caps substitute */
 
-  /* Mono — code, state names, declaration keys */
-  --hm-size-code:14.5px;--hm-lh-code:1.62; /* @kind other */
-  --hm-size-code-sm:12.5px;--hm-lh-code-sm:1.5; /* @kind other */
-  --hm-size-label:11.5px;--hm-lh-label:1.2; /* @kind other */
-
-  --hm-track-display:-0.015em; /* @kind other */
-  --hm-track-body:0; /* @kind other */
-  --hm-track-label:0.1em; /* @kind other */
-  --hm-track-mono:0; /* @kind other */
-
-  --hm-measure-prose:70ch; /* @kind other */
-  --hm-measure-narrow:56ch; /* @kind other */
+  --measure-prose:68ch;
+  --measure-narrow:44ch;
 }

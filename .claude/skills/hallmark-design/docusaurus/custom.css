@@ -1,0 +1,172 @@
+/**
+ * Hallmark → Docusaurus (Infima) bridge.
+ *
+ * Install:
+ *   1. Copy this design system's tokens/ + styles.css into your Docusaurus project's src/css/hallmark/
+ *   2. In docusaurus.config.js: theme: { customCss: ['./src/css/hallmark/styles.css', './src/css/custom.css'] }
+ *   3. Copy this file to src/css/custom.css.
+ *   4. Set colorMode: { defaultMode: 'light', respectPrefersColorScheme: true } — Docusaurus writes
+ *      data-theme="dark" on <html>, which is the same scope the Hallmark tokens use.
+ *   5. Copy assets/favicon.svg and assets/mark-gold.svg into static/img/.
+ */
+
+:root{
+  --ifm-font-family-base:var(--font-sans);
+  --ifm-font-family-monospace:var(--font-mono);
+  --ifm-heading-font-family:var(--font-display);
+  --ifm-font-size-base:16px;
+  --ifm-line-height-base:1.65;
+  --ifm-heading-font-weight:600;
+  --ifm-h1-font-size:var(--text-3xl);
+  --ifm-h2-font-size:var(--text-xl);
+  --ifm-h3-font-size:var(--text-md);
+  --ifm-heading-color:var(--text-heading);
+  --ifm-font-color-base:var(--text-body);
+  --ifm-font-color-secondary:var(--text-muted);
+
+  --ifm-background-color:var(--bg-page);
+  --ifm-background-surface-color:var(--bg-surface);
+  --ifm-hover-overlay:var(--bg-hover);
+
+  --ifm-color-primary:var(--gold-400);
+  --ifm-color-primary-dark:var(--gold-500);
+  --ifm-color-primary-darker:var(--gold-500);
+  --ifm-color-primary-darkest:var(--gold-600);
+  --ifm-color-primary-light:var(--gold-300);
+  --ifm-color-primary-lighter:var(--gold-300);
+  --ifm-color-primary-lightest:var(--gold-200);
+
+  --ifm-link-color:var(--text-link);
+  --ifm-link-hover-color:var(--text-link-hover);
+  --ifm-link-decoration:none;
+  --ifm-link-hover-decoration:none;
+
+  --ifm-navbar-height:var(--navbar-height);
+  --ifm-navbar-background-color:var(--bg-page);
+  --ifm-navbar-shadow:none;
+  --ifm-navbar-link-color:var(--text-muted);
+  --ifm-navbar-link-hover-color:var(--text-heading);
+  --ifm-navbar-item-padding-horizontal:12px;
+
+  --ifm-menu-color:var(--text-muted);
+  --ifm-menu-color-active:var(--text-mark);
+  --ifm-menu-color-background-active:var(--bg-selected);
+  --ifm-menu-color-background-hover:var(--bg-hover);
+  --ifm-menu-link-padding-vertical:5px;
+  --ifm-menu-link-padding-horizontal:10px;
+
+  --ifm-toc-border-color:var(--border-subtle);
+  --ifm-toc-link-color:var(--text-muted);
+  --ifm-table-border-color:var(--border-subtle);
+  --ifm-table-head-background:transparent;
+  --ifm-table-stripe-background:transparent;
+  --ifm-table-cell-padding:10px 12px;
+
+  --ifm-code-background:var(--bg-code);
+  --ifm-code-color:var(--text-code);
+  --ifm-code-font-size:88%;
+  --ifm-pre-background:var(--bg-code);
+  --ifm-global-radius:var(--radius-2);
+  --ifm-card-background-color:var(--bg-surface);
+  --ifm-global-shadow-lw:var(--shadow-1);
+  --ifm-global-shadow-md:var(--shadow-2);
+  --ifm-global-shadow-tl:var(--shadow-3);
+  --ifm-blockquote-color:var(--text-muted);
+  --ifm-blockquote-border-color:var(--border-mark);
+  --ifm-hr-border-color:var(--border-subtle);
+  --ifm-breadcrumb-item-background-active:transparent;
+  --ifm-breadcrumb-padding-horizontal:0;
+  --ifm-transition-fast:var(--duration-fast);
+  --ifm-transition-slow:var(--duration-base);
+  --ifm-transition-timing-default:var(--ease-standard);
+  --docusaurus-highlighted-code-line-bg:var(--accent-soft);
+}
+
+/* Navbar: translucent, hairline, no shadow */
+.navbar{border-bottom:1px solid var(--border-subtle);background:color-mix(in srgb,var(--bg-page) 88%,transparent);backdrop-filter:saturate(140%) blur(8px)}
+.navbar__title{font-family:var(--font-display);font-weight:500;letter-spacing:.15em;text-transform:uppercase;font-size:var(--text-base)}
+.navbar__link--active{color:var(--text-heading);box-shadow:inset 0 -2px 0 var(--border-mark)}
+
+/* Sidebar */
+.theme-doc-sidebar-container{border-right:1px solid var(--border-subtle)}
+.menu{font-size:var(--text-sm)}
+.menu__link{border-radius:var(--radius-2)}
+.menu__list-item-collapsible>.menu__link{font-weight:var(--weight-regular)}
+.theme-doc-sidebar-item-category>.menu__list{border-left:1px solid var(--border-subtle);margin-left:10px;padding-left:2px}
+.menu__link--sublist-caret:after,.menu__caret:before{opacity:.5}
+
+/* Prose */
+.markdown h1:first-child{font-weight:500;letter-spacing:var(--tracking-tight);line-height:1.15}
+.markdown>h2{letter-spacing:var(--tracking-tight);padding-bottom:0;border-bottom:none;margin-top:2.4rem}
+.markdown>h2:after{content:"";display:block;width:44px;height:var(--rule-mark);background:var(--accent);margin-top:12px}
+.markdown p,.markdown li{max-width:var(--measure-prose)}
+.markdown strong{font-weight:var(--weight-semibold);color:var(--text-heading)}
+.markdown em{font-family:var(--font-display);font-style:italic}
+.markdown code{border:1px solid var(--border-subtle);border-radius:var(--radius-1);padding:1px 5px;font-variant-ligatures:none}
+/* Links: ink text on a hairline underline; gold on hover. Terms are gold with a DOTTED
+   underline (.hm-mark), so the two never read the same. */
+.markdown a:not(.hm-mark){color:var(--text-link);border-bottom:1px solid var(--border-link);text-decoration:none}
+.markdown a:not(.hm-mark):hover{color:var(--text-link-hover);border-bottom-color:var(--border-mark)}
+
+/* Tables: hairline rows, uppercase micro headers, no outer border */
+.markdown table{display:table;width:100%;border-collapse:collapse}
+.markdown table thead tr{border-bottom:1px solid var(--border-default)}
+.markdown table th{font-family:var(--font-sans);font-size:var(--text-2xs);letter-spacing:var(--tracking-mark);text-transform:uppercase;color:var(--text-faint);font-weight:var(--weight-medium)}
+.markdown table td,.markdown table th{border:none;border-bottom:1px solid var(--border-subtle);font-size:var(--text-sm)}
+.markdown table tbody td:first-child{color:var(--text-heading);font-weight:var(--weight-medium)}
+
+/* Admonitions: tinted plate, hairline, uppercase label. No coloured left border. */
+.theme-admonition{border:1px solid var(--border-subtle);border-left-width:1px;border-radius:var(--radius-3);box-shadow:none;padding:14px 16px;font-size:var(--text-sm)}
+.theme-admonition .admonitionHeading_node_modules-\\@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module,
+.theme-admonition [class*="admonitionHeading"]{font-family:var(--font-sans);font-size:var(--text-2xs);letter-spacing:var(--tracking-mark);text-transform:uppercase;font-weight:var(--weight-semibold);margin-bottom:6px}
+.theme-admonition-note{background:var(--bg-sunken);--ifm-alert-foreground-color:var(--text-muted)}
+.theme-admonition-info{background:var(--bg-sunken);--ifm-alert-foreground-color:var(--text-muted)}
+.theme-admonition-tip{background:var(--status-pass-soft);--ifm-alert-foreground-color:var(--status-pass)}
+.theme-admonition-warning,.theme-admonition-caution{background:var(--status-concession-soft);--ifm-alert-foreground-color:var(--status-concession)}
+.theme-admonition-danger{background:var(--status-fail-soft);--ifm-alert-foreground-color:var(--status-fail)}
+
+/* Contents rail */
+.table-of-contents{font-size:var(--text-xs)}
+.table-of-contents__link--active{color:var(--text-mark);font-weight:var(--weight-medium)}
+
+/* Pagination */
+.pagination-nav__link{border:1px solid var(--border-subtle);border-radius:var(--radius-3);background:var(--bg-surface)}
+.pagination-nav__link:hover{border-color:var(--border-mark)}
+.pagination-nav__sublabel{font-size:var(--text-2xs);letter-spacing:var(--tracking-mark);text-transform:uppercase;color:var(--text-faint)}
+.pagination-nav__label{font-family:var(--font-display);font-weight:500}
+
+/* Buttons */
+.button--primary{background:var(--accent);border-color:transparent;color:var(--accent-on)}
+.button--primary:hover{background:var(--accent-hover);color:var(--accent-on)}
+.button--secondary{background:var(--bg-surface);border-color:var(--border-default);color:var(--text-body)}
+
+/* Footer */
+.footer{background:var(--bg-sunken);border-top:1px solid var(--border-subtle);padding:40px 40px 24px;--ifm-footer-background-color:var(--bg-sunken);--ifm-footer-color:var(--text-muted);--ifm-footer-link-color:var(--text-muted);--ifm-footer-link-hover-color:var(--text-heading);--ifm-footer-title-color:var(--text-faint)}
+.footer--dark{background:var(--bg-sunken)}
+.footer__title{font-family:var(--font-sans);font-size:var(--text-2xs);font-weight:var(--weight-medium);letter-spacing:var(--tracking-mark);text-transform:uppercase;color:var(--text-faint)}
+.footer__item{font-size:var(--text-sm);padding:3px 0}
+.footer__link-item{border-bottom:1px solid transparent}
+.footer__link-item:hover{border-bottom-color:currentColor;text-decoration:none}
+.footer__bottom{margin-top:32px;padding-top:16px;border-top:1px solid var(--border-subtle);text-align:left;font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-faint)}
+.footer__copyright{font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-faint)}
+.footer__logo{max-width:22px}
+
+/* Hallmark utility classes for MDX authoring */
+.hm-mark{color:var(--text-mark);font-weight:var(--weight-medium);border-bottom:1px dotted var(--border-mark)}
+.hm-keyword{background:var(--accent-soft);color:var(--text-mark);font-weight:var(--weight-medium);padding:0 3px}
+.hm-state{font-family:var(--font-mono);font-size:var(--text-xs);background:var(--accent-soft);color:var(--text-mark);border:1px solid var(--border-mark);border-radius:var(--radius-1);padding:2px 8px}
+.hm-punch{display:inline-grid;place-items:center;width:22px;height:22px;clip-path:var(--cartouche);background:var(--accent);color:var(--accent-on);font-family:var(--font-mono);font-size:var(--text-2xs)}
+.hm-rule{width:44px;height:var(--rule-mark);background:var(--accent);margin:12px 0}
+
+/* Dark theme: Docusaurus sets data-theme="dark"; Hallmark semantic tokens flip there already. */
+[data-theme="dark"]{
+  --ifm-color-primary:var(--gold-300);
+  --ifm-color-primary-dark:var(--gold-400);
+  --ifm-color-primary-darker:var(--gold-400);
+  --ifm-color-primary-darkest:var(--gold-500);
+  --ifm-color-primary-light:var(--gold-200);
+  --ifm-color-primary-lighter:var(--gold-200);
+  --ifm-color-primary-lightest:var(--gold-100);
+  --ifm-background-color:var(--bg-page);
+  --ifm-background-surface-color:var(--bg-surface);
+}

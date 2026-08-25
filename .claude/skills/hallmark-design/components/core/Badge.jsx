@@ -1,24 +1,23 @@
-import React from 'react';
+import React from "react";
 
-const tones = {
-  neutral: ['var(--hm-state-void-soft)', 'var(--hm-ink-700)', 'var(--hm-line)'],
-  accent: ['var(--hm-action-soft)', 'var(--hm-madder-600)', 'var(--hm-madder-200)'],
-  verified: ['var(--hm-state-verified-soft)', 'var(--hm-state-verified)', 'var(--hm-verdigris-300)'],
-  open: ['var(--hm-state-open-soft)', 'var(--hm-state-open)', 'var(--hm-brass-300)'],
-  conceded: ['var(--hm-state-conceded-soft)', 'var(--hm-state-conceded)', 'var(--hm-aubergine-300)']
+const TONES = {
+  neutral: ["var(--status-neutral-soft)", "var(--text-muted)"],
+  accent: ["var(--accent-soft)", "var(--text-mark)"],
+  pass: ["var(--status-pass-soft)", "var(--status-pass)"],
+  fail: ["var(--status-fail-soft)", "var(--status-fail)"],
+  concession: ["var(--status-concession-soft)", "var(--status-concession)"],
 };
 
-export function Badge({ children, tone = 'neutral', outline = false, mono = true, style, ...rest }) {
-  const [bg, fg, line] = tones[tone] || tones.neutral;
+export function Badge({ tone = "neutral", mono = false, children, ...rest }) {
+  const [bg, fg] = TONES[tone] || TONES.neutral;
   return (
-    <span style={{
-      display: 'inline-flex', alignItems: 'center', gap: 'var(--hm-space-2)',
-      padding: '2px 8px', borderRadius: 'var(--hm-radius-1)',
-      background: outline ? 'transparent' : bg, color: fg,
-      border: `var(--hm-border-width) solid ${line}`,
-      fontFamily: mono ? 'var(--hm-font-mono)' : 'var(--hm-font-body)',
-      fontSize: 'var(--hm-size-code-sm)', fontWeight: 'var(--hm-weight-medium)',
-      lineHeight: 1.5, whiteSpace: 'nowrap', ...style
-    }} {...rest}>{children}</span>
+    <span {...rest} style={{
+      display: "inline-flex", alignItems: "center", gap: 5, background: bg, color: fg,
+      padding: "2px 7px", borderRadius: "var(--radius-1)",
+      fontFamily: mono ? "var(--font-mono)" : "var(--font-sans)",
+      fontSize: "var(--text-2xs)", fontWeight: "var(--weight-medium)",
+      letterSpacing: mono ? "0" : "var(--tracking-wide)", textTransform: mono ? "none" : "uppercase",
+      lineHeight: 1.5, whiteSpace: "nowrap", ...(rest.style || {}),
+    }}>{children}</span>
   );
 }

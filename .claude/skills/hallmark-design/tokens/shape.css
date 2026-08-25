@@ -1,0 +1,15 @@
+:root{
+  /* Punched, not pillowy. Radii stay small; the oval stamp cartouche carries the character. */
+  --radius-0:0px;
+  --radius-1:2px;
+  --radius-2:4px;
+  --radius-3:6px;
+  --radius-4:10px;
+  --radius-pill:999px;
+
+  --border-hairline:1px;
+  --border-thick:2px;
+  --rule-mark:3px; /* the struck rule under section headings */
+
+    --cartouche:ellipse(50% 42% at 50% 50%); /* @kind other */
+}

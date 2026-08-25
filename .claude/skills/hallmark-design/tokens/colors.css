@@ -1,82 +1,58 @@
+/* Base palette. Never used directly in components — reference the semantic aliases in semantic.css. */
 :root{
-  /* Paper & ink — warm neutrals, the colour of a printed record */
-  --hm-paper:#FFFDFB;--hm-paper-sunk:#F8F5F2;
-  --hm-ink-050:#F8F5F2;--hm-ink-100:#EFE9E4;--hm-ink-200:#E0D7D0;--hm-ink-300:#C6BAB1;
-  --hm-ink-400:#A2938A;--hm-ink-500:#7A6A5F;--hm-ink-600:#574940;--hm-ink-700:#3A2E27;
-  --hm-ink-800:#241B16;--hm-ink-900:#16110E;
+  /* Paper — light-theme neutrals, warm-tinted (silversmith's bench paper) */
+  --paper-0:#FFFFFF;
+  --paper-1:#FAF8F4;
+  --paper-2:#F3F0E9;
+  --paper-3:#E8E3D9;
+  --paper-4:#D8D2C6;
 
-  /* Madder — the struck mark. Primary. */
-  --hm-madder-100:#F6E3DC;--hm-madder-200:#E9C3B7;--hm-madder-300:#D89A85;
-  --hm-madder-400:#C4522F;--hm-madder-500:#A63A23;--hm-madder-600:#8A2F1C;--hm-madder-700:#6E2415;
+  /* Ink — dark-theme neutrals, cool graphite */
+  --ink-0:#0E1013;
+  --ink-1:#15181C;
+  --ink-2:#1D2126;
+  --ink-3:#282D34;
+  --ink-4:#39404A;
 
-  /* Verdigris — verified, passing, enabled */
-  --hm-verdigris-100:#DDEDE8;--hm-verdigris-300:#7FB3A6;--hm-verdigris-500:#23685B;--hm-verdigris-600:#1B4F45;
-  /* Brass — open, pending, uncommitted */
-  --hm-brass-100:#F5EBD5;--hm-brass-300:#D6BB74;--hm-brass-500:#96731F;--hm-brass-600:#7A5C15;
-  /* Aubergine — conceded, superseded, annotated */
-  --hm-aubergine-100:#EFE2EC;--hm-aubergine-300:#A87F9C;--hm-aubergine-500:#5B2A4A;--hm-aubergine-600:#4A2340;
+  /* Text greys */
+  --grey-1:#16181C;
+  --grey-2:#3C444E;
+  --grey-3:#5E6875;
+  --grey-4:#8A939F;
+  --grey-5:#B4BCC6;
+  --grey-6:#E8E6E1;
+  --grey-7:#F2F1EE;
 
-  /* Semantic aliases */
-  --hm-text-strong:var(--hm-ink-900);
-  --hm-text-body:var(--hm-ink-800);
-  --hm-text-muted:var(--hm-ink-500);
-  --hm-text-faint:var(--hm-ink-400);
-  --hm-text-inverse:var(--hm-paper);
-  --hm-text-accent:var(--hm-madder-600);
+  /* Assay gold — the hallmark accent. Marks, keywords, struck rules. */
+  --gold-100:#F6EDDC;
+  --gold-200:#E9D3A8;
+  --gold-300:#D3AC66;
+  --gold-400:#A8792C;
+  --gold-500:#8A6222;
+  --gold-600:#5E4215;
 
-  --hm-surface-page:var(--hm-paper);
-  --hm-surface-card:var(--hm-paper);
-  --hm-surface-sunk:var(--hm-ink-050);
-  --hm-surface-raised:#FFFFFF;
-  --hm-surface-inverse:var(--hm-ink-900);
-  --hm-surface-code:var(--hm-ink-050);
-  --hm-surface-accent-soft:var(--hm-madder-100);
+  /* Antimony blue — CODE SYNTAX ONLY (keywords). Not used anywhere in the UI:
+     links are ink with a hairline underline, gold on hover. See readme.md → Links and marks. */
+  --blue-100:#E7EDF9;
+  --blue-200:#B9CBEC;
+  --blue-300:#7FA6E8;
+  --blue-400:#2F5AA8;
+  --blue-500:#254881;
+  --blue-600:#182F55;
 
-  --hm-line:var(--hm-ink-200);
-  --hm-line-strong:var(--hm-ink-300);
-  --hm-line-hairline:var(--hm-ink-100);
-  --hm-line-accent:var(--hm-madder-400);
+  /* Semantic hues: verdigris (pass), punch red (fail), amber (concession) */
+  --green-100:#E1F0EC;
+  --green-300:#5FB6A2;
+  --green-400:#1F7A6B;
+  --green-600:#12463D;
 
-  --hm-action:var(--hm-madder-600);
-  --hm-action-hover:var(--hm-madder-700);
-  --hm-action-soft:var(--hm-madder-100);
-  --hm-focus-ring:var(--hm-madder-400);
+  --red-100:#FAE7E4;
+  --red-300:#DE8579;
+  --red-400:#B03A2E;
+  --red-600:#6B221A;
 
-  --hm-state-verified:var(--hm-verdigris-500);
-  --hm-state-verified-soft:var(--hm-verdigris-100);
-  --hm-state-open:var(--hm-brass-500);
-  --hm-state-open-soft:var(--hm-brass-100);
-  --hm-state-conceded:var(--hm-aubergine-500);
-  --hm-state-conceded-soft:var(--hm-aubergine-100);
-  --hm-state-void:var(--hm-ink-500);
-  --hm-state-void-soft:var(--hm-ink-100);
-
-  /* Fixed, theme-independent. The footer is always the dark slab, in both themes,
-     so it cannot be built from the ink ramp — that ramp inverts. */
-  --hm-footer-bg:#16110E;
-  --hm-footer-text:#C6BAB1;
-  --hm-footer-link:#E0D7D0;
-  --hm-footer-title:#FFFDFB;
-  --hm-footer-rule:#3A2E27;
-  --hm-footer-muted:#7A6A5F;
-}
-[data-theme='dark']{
-  --hm-paper:#141110;--hm-paper-sunk:#1B1715;
-  --hm-ink-050:#1B1715;--hm-ink-100:#231E1B;--hm-ink-200:#302925;--hm-ink-300:#453B35;
-  --hm-ink-400:#6B5D54;--hm-ink-500:#93857B;--hm-ink-600:#B6A9A0;--hm-ink-700:#D3C8C0;
-  --hm-ink-800:#E9E1DA;--hm-ink-900:#F6F1EC;
-
-  --hm-madder-100:#3A1810;--hm-madder-200:#5A2417;--hm-madder-300:#8A3A24;
-  --hm-madder-400:#C4522F;--hm-madder-500:#DB6B44;--hm-madder-600:#EE8863;--hm-madder-700:#F6AC8E;
-
-  --hm-verdigris-100:#122C27;--hm-verdigris-300:#2F6A5C;--hm-verdigris-500:#67B7A4;--hm-verdigris-600:#8FCEBE;
-  --hm-brass-100:#2C2410;--hm-brass-300:#6E5620;--hm-brass-500:#D2B268;--hm-brass-600:#E3C98D;
-  --hm-aubergine-100:#2A1725;--hm-aubergine-300:#6A3A5C;--hm-aubergine-500:#C094B4;--hm-aubergine-600:#D7B4CD;
-
-  --hm-surface-raised:#1F1A18;
-  --hm-surface-inverse:#F6F1EC;
-  --hm-text-inverse:#141110;
-  --hm-text-accent:var(--hm-madder-600);
-  --hm-action:var(--hm-madder-500);
-  --hm-action-hover:var(--hm-madder-600);
+  --amber-100:#FBF0D9;
+  --amber-300:#E0B45C;
+  --amber-400:#96701A;
+  --amber-600:#54400F;
 }

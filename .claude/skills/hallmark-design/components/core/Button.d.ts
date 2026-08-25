@@ -1,23 +1,17 @@
-import * as React from 'react';
-
 /**
- * Hallmark's action control. Madder primary for the single next step on a page,
- * outlined secondary for alternatives, ghost for inline/toolbar actions.
+ * Action control. Primary carries the gold; everything else stays quiet.
  */
 export interface ButtonProps {
-  children?: React.ReactNode;
-  /** Visual weight. One primary per view. @default "primary" */
-  variant?: 'primary' | 'secondary' | 'ghost';
+  /** @default "primary" */
+  variant?: "primary" | "secondary" | "ghost";
   /** @default "md" */
-  size?: 'sm' | 'md' | 'lg';
-  /** Renders an anchor instead of a button. */
-  href?: string;
+  size?: "sm" | "md" | "lg";
   disabled?: boolean;
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
+  /** Render as another element, e.g. "a" for a link-button. @default "button" */
+  as?: "button" | "a";
+  href?: string;
   onClick?: (e: React.MouseEvent) => void;
-  type?: 'button' | 'submit' | 'reset';
+  children?: React.ReactNode;
   style?: React.CSSProperties;
 }
-
-export declare function Button(props: ButtonProps): JSX.Element;
+export function Button(props: ButtonProps): JSX.Element;

@@ -1,8 +1,7 @@
-A code block for commands, YAML declarations and config.
+Code surface — sunken plate, hairline border, ligatures off, line numbers optional.
 
 ```jsx
-<CodeBlock title=".hallmark/repository.yml" language="yaml" code={"door:\n  kind: github-issues"} />
+<CodeBlock filename="hallmark.yml" language="yaml" lineNumbers highlight={[3]}>{src}</CodeBlock>
 ```
 
-Header strip carries the file path where there is one, the language otherwise. Mocks show plain
-mono — syntax highlighting comes from Prism in the real site, not from this component.
+Pass a plain string to get per-line rendering (numbers, highlights). Pass nodes to render pre-highlighted markup from Prism — colour it with the `--code-*` tokens, never Prism's defaults.

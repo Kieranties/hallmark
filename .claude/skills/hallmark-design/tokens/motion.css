@@ -1,18 +1,11 @@
 :root{
-  /* Short, flat, no bounce. A mark is struck, not sprung. */
-  --hm-duration-instant:80ms; /* @kind other */
-  --hm-duration-fast:120ms; /* @kind other */
-  --hm-duration-base:180ms; /* @kind other */
-  --hm-duration-slow:280ms; /* @kind other */
-  --hm-ease-standard:cubic-bezier(.2,0,.2,1); /* @kind other */
-  --hm-ease-out:cubic-bezier(0,0,.2,1); /* @kind other */
-  --hm-ease-in:cubic-bezier(.4,0,1,1); /* @kind other */
-  --hm-transition-colors:color var(--hm-duration-fast) var(--hm-ease-standard),background-color var(--hm-duration-fast) var(--hm-ease-standard),border-color var(--hm-duration-fast) var(--hm-ease-standard); /* @kind other */
-  --hm-press-translate:translateY(1px); /* @kind other */
+  --duration-instant:80ms; /* @kind other */
+  --duration-fast:140ms; /* @kind other */
+  --duration-base:220ms; /* @kind other */
+  --duration-slow:400ms; /* @kind other */
+  /* One easing for nearly everything. No bounce, no overshoot. */
+  --ease-standard:cubic-bezier(.2,0,.2,1); /* @kind other */
+  --ease-out:cubic-bezier(0,0,.24,1); /* @kind other */
+  --ease-in:cubic-bezier(.4,0,1,1); /* @kind other */
+  --transition-ui:color var(--duration-fast) var(--ease-standard),background-color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard),box-shadow var(--duration-fast) var(--ease-standard);
 }
-@media (prefers-reduced-motion:reduce){:root{
-  --hm-duration-instant:0ms; /* @kind other */
-  --hm-duration-fast:0ms; /* @kind other */
-  --hm-duration-base:0ms; /* @kind other */
-  --hm-duration-slow:0ms; /* @kind other */
-}}

@@ -1,15 +1,12 @@
-import * as React from 'react';
-
-/** A small mono-set label for versions, types and counts. Squared corners — a struck tag, not a pill. */
+/**
+ * Small status label — verification outcomes, concessions, states.
+ */
 export interface BadgeProps {
-  children?: React.ReactNode;
   /** @default "neutral" */
-  tone?: 'neutral' | 'accent' | 'verified' | 'open' | 'conceded';
-  /** Transparent fill, hairline kept. @default false */
-  outline?: boolean;
-  /** Set in IBM Plex Mono. @default true */
+  tone?: "neutral" | "accent" | "pass" | "fail" | "concession";
+  /** Monospace, mixed-case form for identifiers rather than statuses. @default false */
   mono?: boolean;
+  children?: React.ReactNode;
   style?: React.CSSProperties;
 }
-
-export declare function Badge(props: BadgeProps): JSX.Element;
+export function Badge(props: BadgeProps): JSX.Element;

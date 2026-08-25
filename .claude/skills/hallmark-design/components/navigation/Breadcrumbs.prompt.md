@@ -1,7 +1,5 @@
-Sits above the page title on every docs page.
+Path trail — monospace separator, last item unlinked.
 
 ```jsx
-<Breadcrumbs items={[{ label: 'Docs', href: '/docs' }, { label: 'The door' }]} />
+<Breadcrumbs items={[{label:"Practice",href:"/practice"},{label:"Process"},{label:"Sift"}]} />
 ```
-
-Set in mono because a breadcrumb names a path, not a sentence. Last item is the current page and is never a link.
