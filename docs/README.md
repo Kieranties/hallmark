@@ -30,6 +30,5 @@ body cannot hold it.
 | The failing specification | The repository, with the code it proves |
 | The plan, and what it touches | The item, on the door |
 
-`door.carries` in `.hallmark/repository.yml` declares no carrier for criteria and none for a
-plan, so the body of an issue carries them today by convention rather than by declaration.
-That is a gap in the door, recorded here so it is not mistaken for a decision.
+Nothing declares which field of an issue carries the criteria, or the plan, so the body
+carries both today by convention. That is recorded here so it is not mistaken for a decision.

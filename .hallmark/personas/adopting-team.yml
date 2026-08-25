@@ -1,9 +1,0 @@
-description: >
-  A team taking Hallmark into a repository of their own. They have a repository,
-  a build and somewhere to track items, and they want it to run this practice.
-  Their object is their own repository's change, never Hallmark's.
-needs: >
-  To be carried from an unenabled repository to one that runs the practice, and
-  to be told when it has arrived. Steps they can follow without first reading the
-  whole model, and an answer to "are we enabled?" that is checked rather than
-  assumed.

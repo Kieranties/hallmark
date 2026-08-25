@@ -1,8 +1,0 @@
-description: >
-  Someone instantiating the practice on a technology — this GitHub instantiation,
-  a Jira one, or one that does not exist yet. They build an application on the
-  practice; what they build with it is their own.
-needs: >
-  A normative practice precise enough to build against without inferring what was
-  meant, and declarations with a schema they can read, so an application is
-  derived from the practice rather than from somebody's reading of it.

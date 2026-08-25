@@ -1,9 +1,0 @@
-description: >
-  The party that answers for feasibility and fit — whether a stated outcome can
-  be built here at all, what shape it takes in this instantiation, and which of
-  its claims a toolchain can enforce rather than a reader assert.
-needs: >
-  To reach this repository as it actually stands — its declarations, the platform
-  it is instantiated on, what checking exists and what does not — and the
-  decisions already taken against it, so feasibility is judged against the real
-  substrate and no check is promised that nothing can run.
