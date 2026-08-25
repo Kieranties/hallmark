@@ -92,12 +92,13 @@ const config: Config = {
         height: 26,
       },
       items: [
+        // The design system's data.js puts four sections in the bar; Parties and
+        // Work are reached from the sidebar. Terminology is a left-hand item
+        // there, not a right-hand one.
         {to: '/practice/overview', label: 'Practice', position: 'left'},
-        {to: '/parties/', label: 'Parties', position: 'left'},
-        {to: '/work/types', label: 'Work', position: 'left'},
+        {to: '/terminology', label: 'Terminology', position: 'left'},
         {to: '/process/', label: 'Process', position: 'left'},
         {to: '/apply/declaring-an-application', label: 'Apply', position: 'left'},
-        {to: '/terminology', label: 'Terminology', position: 'right'},
         {
           href: 'https://github.com/Kieranties/hallmark',
           position: 'right',
@@ -110,6 +111,7 @@ const config: Config = {
     },
     footer: {
       style: 'light',
+      logo: {alt: 'Hallmark', src: 'img/mark-gold.svg', srcDark: 'img/mark-light.svg', width: 20, height: 20},
       links: [
         {
           title: 'Practice',
