@@ -1,34 +1,27 @@
-<!-- @dsCard group="Components" viewport="700x300" name="Navigation" subtitle="SidebarNav, Breadcrumbs, DocPager" -->
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
-<style>body{margin:0;padding:20px;background:var(--hm-paper);font-family:var(--hm-font-body);color:var(--hm-text-body)}.split{display:grid;grid-template-columns:250px 1fr;gap:24px}a{color:var(--hm-action)}a:hover{color:var(--hm-action-hover)}</style>
+<!-- @dsCard group="Components" viewport="700x560" name="Navigation" subtitle="Navbar, sidebar, contents, breadcrumbs, pager, footer" -->
+<!doctype html><html data-theme="light"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script src="../../_ds_bundle.js"></script></head>
-<body><div id="root"></div>
+<script src="../../_ds_bundle.js"></script>
+<script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.js"></script>
+<style>html,body{margin:0}body{background:var(--bg-page);color:var(--text-body);font-family:var(--font-sans);padding:16px}</style></head><body style="padding:0"><div id="root"></div>
 <script type="text/babel">
-const { SidebarNav, Breadcrumbs, DocPager, Badge } = window.HallmarkDesignSystem_b394b6;
-function Demo() {
-  const [active, setActive] = React.useState('door');
-  return <div className="split">
-    <SidebarNav activeId={active} onSelect={setActive} sections={[
-      {label:'Practice', items:[
-        {id:'index', label:'Documentation', icon:'book-open'},
-        {id:'door', label:'The door', icon:'door-open'},
-        {id:'states', label:'States and criteria', icon:'list-checks'},
-        {id:'concession', label:'Concessions', icon:'circle-slash', trailing:<Badge tone="open" style={{marginLeft:'auto'}}>draft</Badge>}
-      ]},
-      {label:'Adopt', items:[
-        {id:'enable', label:'Enable a repository', icon:'power'},
-        {id:'verify', label:'Are we enabled?', icon:'check'}
-      ]}
-    ]} />
-    <div>
-      <Breadcrumbs items={[{label:'Docs'},{label:'Practice'},{label:'The door'}]} />
-      <div style={{margin:'20px 0 24px',fontFamily:'var(--hm-font-display)',fontSize:'var(--hm-size-display-3)',fontWeight:600,color:'var(--hm-text-strong)'}}>The door</div>
-      <DocPager previous={{label:'Documentation'}} next={{label:'States and criteria'}} />
+const { Navbar, SidebarNav, TableOfContents, Breadcrumbs, PagerNav, SearchField, ThemeToggle, Footer } = window.HallmarkDesignSystem_ad5c38;
+const items=[{id:"practice",label:"Practice"},{id:"terminology",label:"Terminology"},{id:"process",label:"Process"},{id:"apply",label:"Apply"}];
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <div>
+    <Navbar items={items} active="practice" sticky={false} right={<><SearchField width={200} icon={<i data-lucide="search" style={{width:14,height:14}}/>}/><ThemeToggle icons={{dark:<i data-lucide="moon" style={{width:14,height:14}}/>}}/></>}/>
+    <div style={{display:"flex",gap:8,padding:"0 16px"}}>
+      <SidebarNav style={{width:220,padding:"16px 8px"}} active="sift" sections={[{label:"Practice",items:[{id:"overview",label:"Overview"},{id:"principles",label:"Principles"}]},{label:"Process",items:[{id:"capture",label:"Capture"},{id:"sift",label:"Sift",items:[{id:"outcomes",label:"Outcomes"}]},{id:"specify",label:"Specify"}]}]}/>
+      <div style={{flex:1,padding:"16px 0",display:"flex",flexDirection:"column",gap:14}}>
+        <Breadcrumbs items={[{label:"Practice",href:"#"},{label:"Process",href:"#"},{label:"Sift"}]}/>
+        <PagerNav prev={{label:"Capture"}} next={{label:"Specify"}}/>
+      </div>
+      <TableOfContents style={{width:170,padding:"16px 0"}} active="outcomes" items={[{id:"what-kind",label:"What kind of thing it is"},{id:"outcomes",label:"Outcomes",depth:1},{id:"cheap",label:"Keeping the sift cheap"}]}/>
     </div>
-  </div>;
-}
-ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+    <Footer blurb="A delivery practice. What is claimed is proven; what can be derived is not decided." copyright="© 2026 Hallmark" note="Practice v1.0" columns={[{label:"Practice",items:[{label:"Overview"},{label:"Principles"}]},{label:"Reference",items:[{label:"Terminology"},{label:"Standards"}]},{label:"Apply",items:[{label:"Concessions"},{label:"Subtypes"}]}]}/>
+  </div>
+);
+setTimeout(()=>window.lucide&&window.lucide.createIcons(),60);
 </script></body></html>

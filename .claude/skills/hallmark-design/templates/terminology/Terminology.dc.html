@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Terminology" description="Glossary page: filter bar, classification tags and hairline-separated definition entries." -->
+<helmet><script src="../docs-article/ds-base.js"></script><style>html,body{margin:0}a{color:var(--text-link);text-decoration:none;border-bottom:1px solid var(--border-link)}a:hover{color:var(--text-link-hover);border-bottom-color:var(--border-mark)}nav a,header a,footer a{border-bottom:none}</style></helmet>
+<div style="min-height:100vh;background:var(--bg-page);color:var(--text-body);font-family:var(--font-sans)">
+<header style="position:sticky;top:0;z-index:20;height:60px;display:flex;align-items:center;gap:28px;padding:0 24px;border-bottom:1px solid var(--border-subtle);background:color-mix(in srgb,var(--bg-page) 88%,transparent);backdrop-filter:saturate(140%) blur(8px)">
+<span style="display:inline-flex;align-items:center;gap:12px;color:var(--accent)"><svg width="26" height="22" viewBox="0 0 32 28" fill="none" style="overflow:visible"><ellipse cx="16" cy="14" rx="15" ry="11.5" stroke="currentColor" stroke-width="1.6"></ellipse><ellipse cx="16" cy="14" rx="12.4" ry="9" stroke="currentColor" stroke-width="0.7"></ellipse><text x="16" y="14" text-anchor="middle" dominant-baseline="central" fill="currentColor" style="font-family:var(--font-display);font-style:italic;font-weight:500;font-size:17px">h</text></svg><span style="font-family:var(--font-display);font-size:16px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--text-heading)">Hallmark</span></span>
+<nav style="display:flex;align-items:center;gap:22px;font-size:14px">
+<a href="#" style="color:var(--text-muted)">Practice</a>
+<a href="#" style="color:var(--text-heading);font-weight:500;padding-bottom:2px;border-bottom:2px solid var(--border-mark)">Terminology</a>
+<a href="#" style="color:var(--text-muted)">Process</a>
+<a href="#" style="color:var(--text-muted)">Apply</a>
+</nav>
+</header>
+<div style="display:flex;align-items:flex-start;max-width:1360px;margin:0 auto">
+<nav style="width:284px;flex:none;padding:24px 12px 64px;border-right:1px solid var(--border-subtle)">
+<div style="padding:0 10px 6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)">Reference</div>
+<div style="display:flex;flex-direction:column;gap:1">
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;font-weight:500;color:var(--text-mark);background:var(--bg-selected);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-mark)"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-2Z"/><path d="M8 3v18"/></svg><span>Terminology</span></a>
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;color:var(--text-muted);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-faint)"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m6.08 12-3.5 1.6a1 1 0 0 0 0 1.81l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9a1 1 0 0 0 0-1.83L17.9 12"/></svg><span>Work types</span></a>
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;color:var(--text-muted);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-faint)"><path d="M21.3 8.7 8.7 21.3a1 1 0 0 1-1.4 0l-4.6-4.6a1 1 0 0 1 0-1.4L15.3 2.7a1 1 0 0 1 1.4 0l4.6 4.6a1 1 0 0 1 0 1.4Z"/><path d="m7.5 10.5 2 2"/><path d="m10.5 7.5 2 2"/><path d="m13.5 4.5 2 2"/></svg><span>Standards</span></a>
+<a href="#" style="display:flex;align-items:center;gap:8px;padding:5px 10px;font-size:14px;color:var(--text-muted);border-radius:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--text-faint)"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg><span>Roles</span></a>
+</div>
+</nav>
+<main style="flex:1;min-width:0;padding:36px 40px 72px">
+<h1 style="margin:0 0 8px;font-family:var(--font-display);font-size:40px;font-weight:500;letter-spacing:-.015em;color:var(--text-heading)">Terminology</h1>
+<p style="margin:0;max-width:68ch;font-size:18px;line-height:1.65;color:var(--text-muted)">Every word the practice defines, with the branch or act it belongs to. Where a bare name could be read two ways, it is qualified until it can only be one.</p>
+<div style="width:44px;height:3px;background:var(--accent);margin:18px 0 22px"></div>
+<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:8px">
+<div style="display:flex;align-items:center;gap:8px;width:280px;padding:6px 10px;background:var(--bg-surface);border:1px solid var(--border-default);border-radius:4px">
+<span style="font-family:var(--font-mono);font-size:12px;color:var(--text-faint)">⌕</span>
+<span style="font-size:14px;color:var(--text-faint)">Filter terms</span>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;font-size:12px">
+<span style="padding:3px 9px;border-radius:999px;border:1px solid var(--border-mark);background:var(--accent-soft);color:var(--text-mark)">All</span>
+<span style="padding:3px 9px;border-radius:999px;border:1px solid var(--border-subtle);color:var(--text-muted)">Party</span>
+<span style="padding:3px 9px;border-radius:999px;border:1px solid var(--border-subtle);color:var(--text-muted)">Act</span>
+<span style="padding:3px 9px;border-radius:999px;border:1px solid var(--border-subtle);color:var(--text-muted)">Work type</span>
+<span style="padding:3px 9px;border-radius:999px;border:1px solid var(--border-subtle);color:var(--text-muted)">Evidence</span>
+</div>
+<span style="padding:2px 7px;border-radius:2px;background:var(--status-neutral-soft);color:var(--text-muted);font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase">24 terms</span>
+</div>
+<article id="actor" style="padding:18px 0;border-top:1px solid var(--border-subtle)">
+<header style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px"><h3 style="margin:0;font-family:var(--font-display);font-size:21px;font-weight:600;letter-spacing:-.015em;color:var(--text-heading)">Actor</h3><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)">Party</span></header>
+<p style="margin:0;max-width:68ch;font-size:16px;line-height:1.65"><strong style="color:var(--text-heading)">A human or an agent</strong> — the thing that actually holds a role. Every actor must be distinctly identifiable, because identity is what makes accountability traceable.</p>
+<p style="margin:10px 0 0;font-size:14px;color:var(--text-muted)">See also <a href="#role">Role</a>, <a href="#delegation">Delegation</a></p>
+</article>
+<article id="concession" style="padding:18px 0;border-top:1px solid var(--border-subtle)">
+<header style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px"><h3 style="margin:0;font-family:var(--font-display);font-size:21px;font-weight:600;letter-spacing:-.015em;color:var(--text-heading)">Concession</h3><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)">Record</span></header>
+<p style="margin:0;max-width:68ch;font-size:16px;line-height:1.65"><strong style="color:var(--text-heading)">To concede is to state that a standard has not been met, name who accepted that, and proceed anyway.</strong> A concession is not an exception to the practice — it is the practice working.</p>
+<p style="margin:10px 0 0;font-size:14px;color:var(--text-muted)">See also <a href="#standard">Standard</a></p>
+</article>
+<article id="sift" style="padding:18px 0;border-top:1px solid var(--border-subtle)">
+<header style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px"><h3 style="margin:0;font-family:var(--font-display);font-size:21px;font-weight:600;letter-spacing:-.015em;color:var(--text-heading)">Sift</h3><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)">Act</span></header>
+<p style="margin:0;max-width:68ch;font-size:16px;line-height:1.65"><strong style="color:var(--text-heading)">Ruling on a request</strong> — the first act on the change, and the first that requires a role. Two things settle: what type the request carries, and whether it will be done at all.</p>
+<p style="margin:10px 0 0;font-size:14px;color:var(--text-muted)">See also <a href="#request">Request</a>, <a href="#work-types">Work types</a></p>
+</article>
+<article id="standard" style="padding:18px 0;border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle)">
+<header style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px"><h3 style="margin:0;font-family:var(--font-display);font-size:21px;font-weight:600;letter-spacing:-.015em;color:var(--text-heading)">Standard</h3><span style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)">Standard</span></header>
+<p style="margin:0;max-width:68ch;font-size:16px;line-height:1.65"><strong style="color:var(--text-heading)">A statement of what must hold, expressed as a floor.</strong> Standards stack by union: a layer may add or constrain, never contradict. One that cannot be met is conceded, never quietly dropped.</p>
+<p style="margin:10px 0 0;font-size:14px;color:var(--text-muted)">See also <a href="#concession">Concession</a></p>
+</article>
+</main>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1360,&quot;height&quot;:820},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+class Component extends DCLogic {
+  applyTheme() { document.documentElement.setAttribute("data-theme", this.props.theme || "light"); }
+  componentDidMount() { this.applyTheme(); }
+  componentDidUpdate() { this.applyTheme(); }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

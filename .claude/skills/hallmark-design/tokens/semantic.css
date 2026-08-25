@@ -1,0 +1,91 @@
+/* Semantic aliases. Components reference ONLY these. Light theme = default; dark theme under [data-theme="dark"] (Docusaurus' own switch attribute). */
+:root{
+  --bg-page:var(--paper-1);
+  --bg-surface:var(--paper-0);
+  --bg-sunken:var(--paper-2);
+  --bg-raised:var(--paper-0);
+  --bg-code:var(--paper-2);
+  --bg-hover:rgba(22,24,28,.04);
+  --bg-active:rgba(22,24,28,.07);
+  --bg-selected:var(--gold-100);
+  --bg-scrim:rgba(22,24,28,.44);
+
+  --text-body:var(--grey-1);
+  --text-heading:var(--grey-1);
+  --text-muted:var(--grey-3);
+  --text-faint:var(--grey-4);
+  --text-inverse:var(--paper-1);
+  --text-link:var(--grey-1);
+  --text-link-hover:var(--gold-500);
+  --border-link:var(--grey-5);
+  --text-mark:var(--gold-500);
+  --text-code:var(--gold-600);
+
+  --border-subtle:var(--paper-3);
+  --border-default:var(--paper-4);
+  --border-strong:var(--grey-4);
+  --border-mark:var(--gold-400);
+
+  --accent:var(--gold-400);
+  --accent-hover:var(--gold-500);
+  --accent-soft:var(--gold-100);
+  --accent-on:var(--paper-0);
+
+  --interactive:var(--grey-2);
+  --interactive-hover:var(--gold-500);
+  --interactive-soft:var(--paper-2);
+
+  --status-pass:var(--green-400);
+  --status-pass-soft:var(--green-100);
+  --status-fail:var(--red-400);
+  --status-fail-soft:var(--red-100);
+  --status-concession:var(--amber-400);
+  --status-concession-soft:var(--amber-100);
+  --status-neutral:var(--grey-3);
+  --status-neutral-soft:var(--paper-2);
+}
+[data-theme="dark"]{
+  --bg-page:var(--ink-1);
+  --bg-surface:var(--ink-2);
+  --bg-sunken:var(--ink-0);
+  --bg-raised:var(--ink-2);
+  --bg-code:var(--ink-0);
+  --bg-hover:rgba(255,255,255,.05);
+  --bg-active:rgba(255,255,255,.08);
+  --bg-selected:rgba(211,172,102,.14);
+  --bg-scrim:rgba(0,0,0,.6);
+
+  --text-body:var(--grey-6);
+  --text-heading:var(--grey-7);
+  --text-muted:var(--grey-5);
+  --text-faint:var(--grey-4);
+  --text-inverse:var(--ink-0);
+  --text-link:var(--grey-7);
+  --text-link-hover:var(--gold-300);
+  --border-link:var(--grey-4);
+  --text-mark:var(--gold-300);
+  --text-code:var(--gold-200);
+
+  --border-subtle:var(--ink-3);
+  --border-default:var(--ink-4);
+  --border-strong:var(--grey-4);
+  --border-mark:var(--gold-300);
+
+  --accent:var(--gold-300);
+  --accent-hover:var(--gold-200);
+  --accent-soft:rgba(211,172,102,.14);
+  --accent-on:var(--ink-0);
+
+  --interactive:var(--grey-5);
+  --interactive-hover:var(--gold-300);
+  --interactive-soft:var(--ink-3);
+
+  --status-pass:var(--green-300);
+  --status-pass-soft:rgba(95,182,162,.14);
+  --status-fail:var(--red-300);
+  --status-fail-soft:rgba(222,133,121,.14);
+  --status-concession:var(--amber-300);
+  --status-concession-soft:rgba(224,180,92,.14);
+  --status-neutral:var(--grey-5);
+  --status-neutral-soft:var(--ink-3);
+}

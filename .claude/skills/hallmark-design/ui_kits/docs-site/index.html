@@ -1,29 +1,52 @@
-<!-- @dsCard group="Docs site" viewport="1280x820" name="hallmark.kieranties.com" subtitle="Landing page, docs layout, dark mode — click through" -->
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="utf-8"><title>Hallmark — docs site</title>
-<link rel="icon" href="../../assets/favicon.svg"><link rel="stylesheet" href="../../styles.css">
-<style>html,body{margin:0;background:var(--hm-paper)}body{font-family:var(--hm-font-body);color:var(--hm-text-body)}*{box-sizing:border-box}a{color:var(--hm-action)}a:hover{color:var(--hm-action-hover)}code{font-family:var(--hm-font-mono)}</style>
+<!-- @dsCard group="Docs site" viewport="1360x820" name="Hallmark docs site" subtitle="Landing, article, terminology and process views" -->
+<!doctype html><html data-theme="light"><head><meta charset="utf-8"><title>Hallmark — docs site UI kit</title>
+<link rel="icon" href="../../assets/favicon.svg">
+<link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script src="../../_ds_bundle.js"></script></head>
-<body><div id="root"></div>
-<script type="text/babel" src="Chrome.jsx"></script>
-<script type="text/babel" src="LandingPage.jsx"></script>
-<script type="text/babel" src="DocsPage.jsx"></script>
+<script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<script src="./data.js"></script>
+<link rel="stylesheet" href="../../docusaurus/mermaid.css">
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs";
+const shared = { fontFamily: '"Fira Code","IBM Plex Mono",ui-monospace,Menlo,monospace', fontSize: "13px" };
+const V = {
+  light: { ...shared, background: "#FAF8F4", primaryColor: "#FFFFFF", primaryTextColor: "#16181C", primaryBorderColor: "#A8792C", lineColor: "#8A939F", edgeLabelBackground: "#FAF8F4", labelBackground: "#FAF8F4", titleColor: "#16181C" },
+  dark: { ...shared, background: "#15181C", primaryColor: "#1D2126", primaryTextColor: "#E8E6E1", primaryBorderColor: "#D3AC66", lineColor: "#5E6875", edgeLabelBackground: "#15181C", labelBackground: "#15181C", titleColor: "#F2F1EE" },
+};
+window.hallmarkMermaid = async (theme) => {
+  await Promise.all([document.fonts.load('400 13px "Fira Code"'), document.fonts.load('500 13px "Fira Code"'), document.fonts.ready]);
+  mermaid.initialize({ startOnLoad: false, theme: "base", state: { padding: 10 }, themeVariables: V[theme] || V.light });
+  return mermaid;
+};
+</script>
+<style>html,body{margin:0;height:100%}body{background:var(--bg-page)}a{color:var(--text-link);text-decoration:none;border-bottom:1px solid var(--border-link)}a:hover{color:var(--text-link-hover);border-bottom-color:var(--border-mark)}nav a,header a,footer a{border-bottom:none}</style>
+</head><body><div id="root"></div>
+<script type="text/babel" src="./Shell.jsx"></script>
+<script type="text/babel" src="./LandingPage.jsx"></script>
+<script type="text/babel" src="./ArticlePage.jsx"></script>
+<script type="text/babel" src="./GlossaryPage.jsx"></script>
+<script type="text/babel" src="./ProcessPage.jsx"></script>
 <script type="text/babel">
 function App() {
-  const [view, setView] = React.useState('home');
-  const [docPage, setDocPage] = React.useState('index');
-  const [theme, setTheme] = React.useState('light');
-  React.useEffect(() => { document.documentElement.setAttribute('data-theme', theme); }, [theme]);
-  const navigate = v => { setView(v); if (v === 'docs') setDocPage('index'); };
-  return <>
-    <Navbar onNavigate={navigate} theme={theme} onToggleTheme={() => setTheme(t => t === 'dark' ? 'light' : 'dark')} />
-    {view === 'home'
-      ? <LandingPage onNavigate={navigate} />
-      : <DocsPage page={docPage} onSelect={setDocPage} />}
-    <Footer />
-  </>;
+  const [page, setPage] = React.useState("practice");
+  const [theme, setTheme] = React.useState(window.HALLMARK_INITIAL_THEME || "light");
+  const [activeDoc, setActiveDoc] = React.useState("sift");
+  React.useEffect(() => { document.documentElement.setAttribute("data-theme", theme); }, [theme]);
+  React.useEffect(() => { if (window.lucide) window.lucide.createIcons(); });
+  const shell = { page, setPage, theme, setTheme, activeDoc, setActiveDoc };
+  if (page === "practice") {
+    return <Shell {...shell} sidebar toc={ARTICLE_TOC} activeToc="what-kind"><ArticlePage /></Shell>;
+  }
+  if (page === "terminology") {
+    return <Shell {...shell} sidebar><GlossaryPage /></Shell>;
+  }
+  if (page === "process") {
+    return <Shell {...shell} sidebar><ProcessPage setPage={setPage} setActiveDoc={setActiveDoc} theme={theme} /></Shell>;
+  }
+  return <Shell {...shell}><LandingPage setPage={setPage} setActiveDoc={setActiveDoc} /></Shell>;
 }
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script></body></html>

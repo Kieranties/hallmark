@@ -1,0 +1,20 @@
+/* Hallmark Prism theme — paint Docusaurus code blocks with the --code-* tokens.
+   Import after custom.css. Set themeConfig.prism.theme to any base theme; these rules win. */
+.theme-code-block,div[class^="codeBlockContainer"]{border:1px solid var(--border-subtle);border-radius:var(--radius-3);box-shadow:none;background:var(--bg-code)}
+div[class^="codeBlockTitle"]{background:var(--bg-sunken);border-bottom:1px solid var(--border-subtle);font-family:var(--font-mono);font-size:var(--text-2xs);color:var(--text-muted);letter-spacing:0}
+pre[class*="prism-code"],div[class^="codeBlockContent"] pre{background:var(--bg-code)!important;font-family:var(--font-mono);font-size:var(--text-sm);line-height:1.6;font-variant-ligatures:none;color:var(--code-plain)}
+.token.comment,.token.prolog,.token.doctype,.token.cdata{color:var(--code-comment);font-style:italic}
+.token.punctuation,.token.operator{color:var(--code-punctuation)}
+.token.keyword,.token.control,.token.directive,.token.rule,.token.important,.token.atrule{color:var(--code-keyword)}
+.token.string,.token.char,.token.attr-value,.token.regex{color:var(--code-string)}
+.token.number,.token.boolean,.token.constant,.token.symbol{color:var(--code-number)}
+.token.function,.token.class-name,.token.maybe-class-name{color:var(--code-function)}
+.token.property,.token.variable,.token.parameter{color:var(--code-property)}
+.token.tag,.token.selector,.token.deleted{color:var(--code-tag)}
+.token.attr-name,.token.namespace{color:var(--code-attr)}
+.token.inserted{color:var(--code-added)}
+.token-line.docusaurus-highlight-code-line,.theme-code-block-highlighted-line{background:var(--code-line-highlight);box-shadow:inset 2px 0 0 var(--accent)}
+.prism-code .token-line>span[class*="linenumber"],.theme-code-block .linenumber{color:var(--code-line-number)}
+code[class*="codeLine"] .diff-add{background:var(--code-added-bg)}
+code[class*="codeLine"] .diff-remove{background:var(--code-removed-bg)}
+button[class^="copyButton"]{border:1px solid var(--border-subtle);border-radius:var(--radius-2);background:var(--bg-surface);color:var(--text-muted)}

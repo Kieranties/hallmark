@@ -1,70 +1,49 @@
 ---
 title: Personas
-description: A persona is a party the running system serves — defined once, never per client, and including the internal parties as first-class.
-sidebar_position: 2
+description: A party the running system serves — the axis capabilities are stated against, and something every system must name for itself.
+sidebar_position: 3
 ---
 
 # Personas
 
-## What it is \{#definition}
+**A party the running *system* serves.** Personas are the axis
+[capabilities](../work/capability.md) are stated against — every capability takes the form *"a
+`<persona>` can `<achieve something>`"* — so a system with no personas cannot state a single
+one.
 
-**A persona is a party the running system serves.**
+Defined once, system-wide. Internal parties are first-class, not an afterthought. A persona is
+not a job title, and one human may be several of them in a day. A party that acts on the
+*change* is a [discipline](./disciplines.md), never a persona.
 
-## Why it exists \{#why}
+| Persona | The system serves them by |
+| --- | --- |
+| **End user** | Doing the thing they came for |
+| **Administrator** | Letting them configure it — tenants, permissions, settings |
+| **Operator** | Letting them run it — deploy, scale, restart, respond when it misbehaves |
+| **Support agent** | Letting them see what a user saw, and put it right |
+| **Auditor** | Letting them establish what happened, after the fact |
+| **Integrator** | Giving them a stable contract to connect another system to |
+| **Consuming developer** | Giving them something to build on — a package, an API, a library |
 
-**Everything a repository claims is written as *a `<persona>` can `<do something>`*.**
-With no personas named, not one claim can be written down — which is why naming them is
-the first thing an adopting repository does, and why the list cannot be empty.
+**These are examples. The practice names no personas.** Specifying the actual set is a
+**required act of applying the practice to a system** — until it exists, not one capability
+can be stated. The practice supplies only the test: *does the running system serve them?*
 
-**Internal parties are where the failure actually bites.** Operator, Support, Auditor,
-Integrator, Administrator are parties the running system serves as genuinely as any end
-user. Left off the list, everything they need — traceability, an audit trail, a way in
-for an integrator — becomes work that competes with features and loses, permanently. On
-the list, it is an outcome somebody is owed.
+**A new system still has personas.** A project with no users has the parties it is being built
+*for*. Naming them before anyone arrives is what makes the first capability writable, and it
+is a cheaper conversation than the one that happens after the first release goes to somebody
+nobody described.
 
-**Admit builders here and the sorting test breaks.** The test asks whether something
-gives a named persona a new outcome. Let designers or developers be personas and it
-starts asking whether a change gives *designers* a new outcome — a question the running
-system has no opinion about, and one that would let internal convenience be claimed as
-client-facing capability.
+**Admit builders here and the sorting test breaks.** The test asks whether something gives a
+named persona an outcome they did not have. Let designers or developers be personas and it
+starts asking whether a change gives *designers* a new outcome — a question the running system
+has no opinion about, and one that would let internal convenience be stated as a capability.
 
-## Rules \{#rules}
+:::important[Name for the branch, not for the person]
+The same word can land on either branch. A developer **building** the system is a
+*discipline*; a developer **consuming** what it publishes is a *persona*. Nothing about the
+person changed — the **object** did, and that is the only test there is.
 
-**A persona is a party the running system serves.** That is the whole test, and its
-counterpart is the [discipline](./disciplines.md) — a party that acts on the change. The
-two are told apart by their object, never by a verb.
-
-**A party that builds the platform is a discipline, never a persona.**
-
-**Personas are defined once across the suite, never per client.** A client is not a
-persona, and neither is a contract.
-
-**Internal parties are personas, and are first-class** — not a second tier below end
-users.
-
-**A persona is not a job title.** One human may be several, and one persona may be held
-by many humans, by another system, or by nobody yet.
-
-**The list is open and cannot be empty.** It grows as the system serves more parties,
-and it may vary with where the practice is deployed.
-
-## In detail \{#detail}
-
-### A new repository still has personas
-
-A project with no users has the parties it is being built *for*. Naming them before
-anyone arrives is what makes the first claim writable, and it is a cheaper conversation
-than the one that happens after the first release goes to somebody nobody described.
-
-### Where the persona sits in the structure
-
-A persona supplies an [actor](./actors.md), and the actor holds a
-[role](./the-four-roles.md) — the same route a discipline takes. That is what makes an
-Operator restarting a service a Worker rather than a category the role model has no
-place for. See [the structure](./the-structure.md).
-
-:::note[The catalogue is downstream of this list]
-What the system claims is organised by who it serves, and that account belongs to
-*Claims and evidence*, which is not written yet. The persona list is its axis, which is
-why the list is defined suite-wide rather than assembled per client.
+**Where a bare name could be read as either, it is not precise enough.** Qualify it until it
+can only be one — *Development* and *Consuming developer*, never *Developer* twice.
 :::

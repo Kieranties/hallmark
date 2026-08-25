@@ -19,19 +19,30 @@ may never have existed on `main`.
 
 ## Where the practice serves from
 
-Practice pages serve from `/docs/`, so a page is addressed as `/docs/loop/verified`. The root
-path `/` carries the branded landing page and is not the docs root.
+The practice is the whole site, so it serves from the root: `docs.routeBasePath` is `/`, and a
+page is addressed as `/process/sift`. `website/docs/index.mdx` is the landing page, not a
+separate React page beside it.
 
 ## A page is either finished or hidden
 
 A page that has not been written yet still has to exist, because `onBrokenLinks: 'throw'` and
 `onBrokenAnchors: 'throw'` mean a page cannot link to one that is missing — and the practice's
-pages link to each other in cycles. So an unwritten page is committed as a stub carrying its four
-anchors and `unlisted: true`, which keeps it built and linkable while hiding it from the sidebar,
-from search and from the sitemap.
+pages link to each other in cycles. So an unwritten page is committed as a stub carrying
+`unlisted: true`, which keeps it built and linkable while hiding it from the sidebar, from
+search and from the sitemap.
 
 **Deleting that one line is what publishes a page.** A page is either finished and visible, or a
 stub nobody can land on.
+
+## Where the brand comes from
+
+`website/src/css/hallmark/` is copied verbatim from `.claude/skills/hallmark-design` and is not
+hand-edited — change the design system and re-copy. `website/src/css/hallmark/README.md` states
+the copy command and what deliberately sits outside that directory.
+
+Two things are not part of the design system and do live in the site: `src/css/site.css` (the
+navbar GitHub glyph, and dark-mode parity for mermaid, which Docusaurus cannot theme per colour
+mode) and `src/components/Glossary.tsx` (the terminology filter).
 
 ## Working on the site
 

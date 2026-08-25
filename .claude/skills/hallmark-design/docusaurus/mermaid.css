@@ -1,0 +1,16 @@
+/* Hallmark mermaid overrides — square the corners, thin the strokes, letterspace the state labels.
+/* Docusaurus renders diagrams inside `.docusaurus-mermaid-container`, and puts no
+   `.mermaid` class on the svg — so a rule written for mermaid's own markup never
+   matches there. Every selector below accepts either wrapper. */
+   Import after custom.css (or paste in). */
+:is(.mermaid,.docusaurus-mermaid-container) svg{max-width:100%}
+:is(.mermaid,.docusaurus-mermaid-container) .node rect,:is(.mermaid,.docusaurus-mermaid-container) .node polygon,:is(.mermaid,.docusaurus-mermaid-container) .statediagram-state rect{rx:4px;ry:4px;stroke-width:1px!important}
+/* Fonts and sizes are set in themeVariables.fontFamily — mermaid measures labels before CSS
+   applies, so overriding the face here clips every node. Only colour is safe to restyle. */
+:is(.mermaid,.docusaurus-mermaid-container) .edgeLabel .edgeLabel,:is(.mermaid,.docusaurus-mermaid-container) .edgeLabel span{color:var(--text-muted)!important}
+:is(.mermaid,.docusaurus-mermaid-container) .edgePath .path,:is(.mermaid,.docusaurus-mermaid-container) .transition{stroke-width:1.1px!important}
+:is(.mermaid,.docusaurus-mermaid-container) .marker{fill:var(--border-strong)!important;stroke:var(--border-strong)!important}
+:is(.mermaid,.docusaurus-mermaid-container) .statediagram-cluster rect{stroke-dasharray:2 3}
+/* Start and end pseudo-states read as struck dots */
+:is(.mermaid,.docusaurus-mermaid-container) .start-state,:is(.mermaid,.docusaurus-mermaid-container) .node circle.state-start{fill:var(--accent)!important;stroke:none!important}
+:is(.mermaid,.docusaurus-mermaid-container) .node circle.state-end,:is(.mermaid,.docusaurus-mermaid-container) .end-state-inner{fill:var(--text-heading)!important}

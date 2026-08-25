@@ -1,9 +1,10 @@
-import * as React from 'react';
-
-/** Where the current page sits in the docs tree. Mono-set, chevron separated, last item unlinked. */
+/**
+ * Path trail above an article title.
+ */
 export interface BreadcrumbsProps {
-  items?: Array<{ label: string; href?: string }>;
+  items?: { label: string; href?: string }[];
+  /** @default "/" */
+  separator?: string;
   style?: React.CSSProperties;
 }
-
-export declare function Breadcrumbs(props: BreadcrumbsProps): JSX.Element;
+export function Breadcrumbs(props: BreadcrumbsProps): JSX.Element;

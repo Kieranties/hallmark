@@ -1,41 +1,43 @@
-import React from 'react';
-import { Icon } from '../core/Icon.jsx';
+import React from "react";
 
-export function SidebarNav({ sections = [], activeId, onSelect, style, ...rest }) {
+function Item({ node, active, onNavigate, depth }) {
+  const on = node.id === active;
   return (
-    <nav style={{ fontFamily: 'var(--hm-font-body)', fontSize: 'var(--hm-size-body-sm)', ...style }} {...rest}>
-      {sections.map(section => (
-        <div key={section.label} style={{ marginBottom: 'var(--hm-space-6)' }}>
+    <a href={node.href || "#"} onClick={(e) => { if (onNavigate) { e.preventDefault(); onNavigate(node); } }}
+      style={{
+        display: "flex", alignItems: "center", gap: 8, padding: "5px 10px", paddingLeft: 10 + depth * 12,
+        marginLeft: depth ? 2 : 0,
+        borderLeft: depth ? "1px solid " + (on ? "var(--border-mark)" : "var(--border-subtle)") : "none",
+        fontFamily: "var(--font-sans)", fontSize: "var(--text-sm)", lineHeight: 1.45,
+        color: on ? "var(--text-mark)" : "var(--text-muted)",
+        fontWeight: on ? "var(--weight-medium)" : "var(--weight-regular)",
+        background: on ? "var(--bg-selected)" : "transparent",
+        borderRadius: "var(--radius-2)", textDecoration: "none",
+        transition: "var(--transition-ui)",
+      }}>
+      {node.icon && <span style={{ display: "flex", flex: "none", width: 14, height: 14, color: on ? "var(--text-mark)" : "var(--text-faint)" }}>{node.icon}</span>}
+      <span>{node.label}</span>
+    </a>
+  );
+}
+
+export function SidebarNav({ sections = [], active, onNavigate, ...rest }) {
+  return (
+    <nav {...rest} style={{ width: "var(--sidebar-width)", flex: "none", padding: "24px 12px 64px", ...(rest.style || {}) }}>
+      {sections.map((sec) => (
+        <div key={sec.label} style={{ marginBottom: 22 }}>
           <div style={{
-            padding: '0 var(--hm-space-4) var(--hm-space-3)',
-            fontFamily: 'var(--hm-font-mono)', fontSize: 'var(--hm-size-label)',
-            letterSpacing: 'var(--hm-track-label)', textTransform: 'uppercase',
-            color: 'var(--hm-text-faint)', fontWeight: 'var(--hm-weight-semibold)'
-          }}>{section.label}</div>
-          <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 1 }}>
-            {section.items.map(item => {
-              const active = item.id === activeId;
-              return (
-                <li key={item.id}>
-                  <a href={item.href || '#'} onClick={e => { if (onSelect) { e.preventDefault(); onSelect(item.id); } }}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 'var(--hm-space-3)',
-                      padding: '6px var(--hm-space-4)', textDecoration: 'none',
-                      borderRadius: 'var(--hm-radius-2)',
-                      borderLeft: `2px solid ${active ? 'var(--hm-line-accent)' : 'transparent'}`,
-                      background: active ? 'var(--hm-surface-sunk)' : 'transparent',
-                      color: active ? 'var(--hm-action)' : 'var(--hm-ink-600)',
-                      fontWeight: active ? 'var(--hm-weight-medium)' : 'var(--hm-weight-regular)',
-                      transition: 'var(--hm-transition-colors)'
-                    }}>
-                    {item.icon && <Icon name={item.icon} size={14} />}
-                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.label}</span>
-                    {item.trailing}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+            padding: "0 10px 6px", fontFamily: "var(--font-sans)", fontSize: "var(--text-2xs)",
+            letterSpacing: "var(--tracking-mark)", textTransform: "uppercase", color: "var(--text-faint)",
+          }}>{sec.label}</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
+            {(sec.items || []).map((it) => (
+              <React.Fragment key={it.id}>
+                <Item node={it} active={active} onNavigate={onNavigate} depth={0} />
+                {(it.items || []).map((sub) => <Item key={sub.id} node={sub} active={active} onNavigate={onNavigate} depth={1} />)}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
       ))}
     </nav>

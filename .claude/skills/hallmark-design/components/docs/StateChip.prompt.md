@@ -1,10 +1,7 @@
-The state an item holds. Use wherever the practice's flow is shown — tables, boards, prose, the state diagram.
+State chip — monospace, because a state is a literal value in a tracker, not a label someone wrote.
 
 ```jsx
-<StateChip state="verified" />
-<StateChip state="conceded" size="sm" />
+<StateChip state="Accepted" /> <StateChip state="Retracted" />
 ```
 
-States, in travel order: `sifted`, `specified`, `planned`, `built`, `verified`, `decided`, plus `conceded` (off-path).
-Brass = in flight, verdigris = checked, aubergine = a recorded compromise, grey = not yet moving.
-Never invent a state label; the set mirrors the door's `Status` field.
+Tone is derived from the state name; only override it for application-specific subtypes.

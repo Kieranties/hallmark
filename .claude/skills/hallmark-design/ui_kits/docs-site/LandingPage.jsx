@@ -1,56 +1,79 @@
-const { Button, Badge, Callout, Icon, DocCard, StateChip } = window.HallmarkDesignSystem_b394b6;
+const { Button, Card, PrincipleCard, Mark, Badge, DefinitionTable } = window.HallmarkDesignSystem_ad5c38;
 
-function LandingPage({ onNavigate }) {
+function SectionHead({ label, title, children }) {
   return (
-    <main>
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'var(--hm-surface-sunk)', borderBottom: 'var(--hm-border)' }}>
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'url(../../assets/punch-grid.svg)', backgroundSize: '48px 48px', opacity: 0.06 }} />
-        <div style={{ position: 'relative', maxWidth: 'var(--hm-page-max)', margin: '0 auto', padding: 'var(--hm-space-10) var(--hm-gutter)' }}>
-          <img src="../../assets/logo-mark.svg" width="52" height="52" alt="" />
-          <h1 style={{
-            fontFamily: 'var(--hm-font-display)', fontSize: 'var(--hm-size-display-1)', lineHeight: 'var(--hm-lh-display-1)',
-            letterSpacing: 'var(--hm-track-display)', fontWeight: 600, color: 'var(--hm-text-strong)', margin: 'var(--hm-space-5) 0 var(--hm-space-4)'
-          }}>Hallmark</h1>
-          <p style={{
-            maxWidth: '56ch', margin: 0, fontSize: 'var(--hm-size-body-lg)', lineHeight: 'var(--hm-lh-body-lg)', color: 'var(--hm-text-body)'
-          }}>A delivery practice: declarations, states, and criteria that a repository adopts so that claims about work are <strong style={{ color: 'var(--hm-text-strong)' }}>checked rather than asserted</strong>.</p>
-          <div style={{ display: 'flex', gap: 'var(--hm-space-4)', marginTop: 'var(--hm-space-6)' }}>
-            <Button size="lg" onClick={() => onNavigate('docs')} iconRight={<Icon name="arrow-right" size={16} />}>Read the documentation</Button>
-            <Button size="lg" variant="secondary" href="https://github.com/Kieranties/hallmark" iconLeft={<Icon name="git-branch" size={16} />}>The repository</Button>
-          </div>
-          <div style={{ display: 'flex', gap: 'var(--hm-space-3)', marginTop: 'var(--hm-space-6)', alignItems: 'center' }}>
-            <Badge tone="accent">pre-1.0</Badge>
-            <Badge>dogfooding itself</Badge>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ maxWidth: 'var(--hm-page-max)', margin: '0 auto', padding: 'var(--hm-space-8) var(--hm-gutter) 0' }}>
-        <Callout kind="warning" title="This site is a scaffold" style={{ maxWidth: '80ch' }}>
-          The practice is still held as working documents in the repository and is being rewritten for publication. Nothing here describes it yet.
-        </Callout>
-
-        <h2 style={{ fontFamily: 'var(--hm-font-display)', fontSize: 'var(--hm-size-display-3)', fontWeight: 600, color: 'var(--hm-text-strong)', margin: 'var(--hm-space-8) 0 var(--hm-space-5)' }}>Where to go</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--hm-space-5)', maxWidth: 980 }}>
-          <DocCard title="Documentation" icon="book-open" description="Everything published so far." href="#" onClick={e => { e.preventDefault(); onNavigate('docs'); }} />
-          <DocCard title="The repository" icon="git-branch" description="The practice as it currently stands, and the issues tracking the rewrite." href="https://github.com/Kieranties/hallmark" />
-        </div>
-
-        <h2 style={{ fontFamily: 'var(--hm-font-display)', fontSize: 'var(--hm-size-display-3)', fontWeight: 600, color: 'var(--hm-text-strong)', margin: 'var(--hm-space-8) 0 var(--hm-space-4)' }}>Status</h2>
-        <p style={{ margin: '0 0 var(--hm-space-5)', maxWidth: 'var(--hm-measure-prose)', fontSize: 'var(--hm-size-body)', lineHeight: 'var(--hm-lh-body)', color: 'var(--hm-text-body)' }}>
-          Pre-1.0, and dogfooding itself. The site publishes automatically, but its content does not yet carry the practice.
-        </p>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--hm-space-3)', flexWrap: 'wrap' }}>
-          {['sifted', 'specified', 'planned', 'built', 'verified', 'decided'].map((s, i) => (
-            <React.Fragment key={s}>
-              {i > 0 && <Icon name="chevron-right" size={13} style={{ color: 'var(--hm-text-faint)' }} />}
-              <StateChip state={s} size="sm" />
-            </React.Fragment>
-          ))}
-        </div>
-      </section>
-    </main>
+    <div style={{ marginBottom: 24 }}>
+      {label && <div style={{ fontSize: "var(--text-2xs)", letterSpacing: "var(--tracking-mark)", textTransform: "uppercase", color: "var(--text-faint)", marginBottom: 8 }}>{label}</div>}
+      <h2 style={{ margin: 0, fontFamily: "var(--font-display)", fontSize: "var(--text-2xl)", fontWeight: 600, letterSpacing: "var(--tracking-tight)", color: "var(--text-heading)" }}>{title}</h2>
+      <div style={{ width: 44, height: "var(--rule-mark)", background: "var(--accent)", margin: "12px 0 14px" }} />
+      {children && <p style={{ margin: 0, maxWidth: "var(--measure-prose)", fontSize: "var(--text-md)", lineHeight: "var(--leading-body)", color: "var(--text-muted)" }}>{children}</p>}
+    </div>
   );
 }
 
-Object.assign(window, { LandingPage });
+function LandingPage({ setPage, setActiveDoc }) {
+  const D = window.HALLMARK_DATA;
+  return (
+    <div>
+      <section style={{ padding: "96px 40px 72px", borderBottom: "1px solid var(--border-subtle)", maxWidth: "var(--page-max)", margin: "0 auto" }}>
+                <h1 style={{ margin: 0, maxWidth: "22ch", fontFamily: "var(--font-display)", fontSize: "var(--text-4xl)", lineHeight: "var(--leading-tight)", letterSpacing: "var(--tracking-tight)", fontWeight: 500, color: "var(--text-heading)" }}>
+          A delivery practice, stamped and provable
+        </h1>
+        <p style={{ margin: "20px 0 0", maxWidth: "58ch", fontSize: "var(--text-lg)", lineHeight: "var(--leading-body)", color: "var(--text-muted)" }}>
+          Hallmark defines a <Mark variant="keyword">principled</Mark> process through which work of any size is delivered, <Mark variant="keyword">standards</Mark> are met, and what is claimed of the result is <Mark variant="keyword">proven</Mark>.
+        </p>
+        <div style={{ display: "flex", gap: 10, marginTop: 30 }}>
+          <Button onClick={() => { setPage("process"); setActiveDoc("sift"); }}>Read the practice</Button>
+          <Button variant="secondary" onClick={() => setPage("terminology")}>Terminology</Button>
+        </div>
+      </section>
+
+      <section style={{ padding: "64px 40px", maxWidth: "var(--page-max)", margin: "0 auto" }}>
+        <SectionHead label="Principles" title="Four principles, each a test that can be failed">
+          The practice is the interface; an application is an implementation of it. It states what must hold, who may act, and how work travels — and it never names a tool.
+        </SectionHead>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 16 }}>
+          {D.principles.map((p, i) => (
+            <PrincipleCard key={p.name} index={i + 1} name={p.name} test={p.test}>{p.body}</PrincipleCard>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ padding: "0 40px 64px", maxWidth: "var(--page-max)", margin: "0 auto" }}>
+        <SectionHead label="The track" title="Work advances by acts, and every act leaves something behind" />
+        <div style={{ display: "grid", gridTemplateColumns: "1.1fr .9fr", gap: 32, alignItems: "start" }}>
+          <DefinitionTable columns={["Act", "Held by", "Leaves behind"]} rows={D.acts} />
+          <Card padding={22}>
+            <div style={{ fontSize: "var(--text-2xs)", letterSpacing: "var(--tracking-mark)", textTransform: "uppercase", color: "var(--text-faint)", marginBottom: 12 }}>Roles</div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+              {D.roles.map(([r, does, ctx]) => (
+                <div key={r}>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-base)", color: "var(--text-heading)" }}>{r}</div>
+                  <div style={{ fontSize: "var(--text-sm)", color: "var(--text-muted)", lineHeight: 1.5 }}>{does}</div>
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: "var(--text-2xs)", color: "var(--text-faint)", marginTop: 2 }}>{ctx}</div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      <section style={{ padding: "0 40px 96px", maxWidth: "var(--page-max)", margin: "0 auto" }}>
+        <SectionHead label="Start here" title="Three ways in" />
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
+          {[["Terminology", "Every defined word, with the test that sorts it.", "terminology"], ["Process", "Capture through publish, act by act.", "process"], ["Apply", "Declare personas, disciplines, standards and subtypes.", "apply"]].map(([t, d, id]) => (
+            <Card key={t} as="a" href="#" interactive onClick={(e) => { e.preventDefault(); setPage(id); }} padding={22}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <span style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-md)", color: "var(--text-heading)" }}>{t}</span>
+                <Icon name="arrow-right" />
+              </div>
+              <p style={{ margin: "8px 0 0", fontSize: "var(--text-sm)", lineHeight: 1.6, color: "var(--text-muted)" }}>{d}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+Object.assign(window, { LandingPage, SectionHead });

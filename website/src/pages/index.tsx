@@ -1,102 +1,152 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import {ArrowRight, BookOpen, ChevronRight, GitBranch, TriangleAlert} from 'lucide-react';
-import StateChip, {type ItemState} from '@site/src/components/StateChip';
-import Badge from '@site/src/components/Badge';
+import {PrincipleCard} from '@site/src/components/hallmark/docs/PrincipleCard';
+import {DefinitionTable} from '@site/src/components/hallmark/docs/DefinitionTable';
+import {Mark} from '@site/src/components/hallmark/docs/Mark';
+import {Card} from '@site/src/components/hallmark/core/Card';
 
-const STATES: ItemState[] = ['sifted', 'specified', 'planned', 'built', 'verified', 'decided'];
+/**
+ * The landing page.
+ *
+ * It is a page rather than a doc, because the design gives it a hero and no
+ * sidebar — a doc under `routeBasePath: '/'` would inherit both the sidebar and
+ * the article chrome. Structure follows ui_kits/docs-site/LandingPage.jsx.
+ */
 
-const btn: React.CSSProperties = {
-  display: 'inline-flex', alignItems: 'center', gap: 'var(--hm-space-3)',
-  padding: '11px 22px', borderRadius: 'var(--hm-radius-2)',
-  border: 'var(--hm-border-width) solid var(--hm-action)',
-  background: 'var(--hm-action)', color: 'var(--hm-text-inverse)',
-  fontWeight: 500, fontSize: 'var(--hm-size-body)', textDecoration: 'none',
-};
+const PRINCIPLES = [
+  {
+    name: 'Provable',
+    test: 'If something is claimed, there must be evidence to prove it.',
+    body: 'Nothing advances on assertion. A specification that was never seen to pass is an intention with a filename.',
+  },
+  {
+    name: 'Derived',
+    test: 'If something can be determined from the record, it must not be decided.',
+    body: 'What a change touches decides what it must satisfy — nobody rules a change small enough to skip something.',
+  },
+  {
+    name: 'Traceable',
+    test: 'If something is claimed, decided or moved, there must be a path to what produced it.',
+    body: 'One door in, identifiable actors, and a recorded reason at every gate.',
+  },
+  {
+    name: 'Invariant',
+    test: 'Whatever the size of the work, or the kind of actor, the same process applies.',
+    body: 'The practice runs all-human, all-agent, or any mix, without alteration.',
+  },
+];
 
-const btnSecondary: React.CSSProperties = {
-  ...btn,
-  background: 'var(--hm-surface-card)',
-  color: 'var(--hm-text-strong)',
-  borderColor: 'var(--hm-line-strong)',
-};
+const ACTS = [
+  ['Capture', 'Anyone', 'A request'],
+  ['Sift', 'Worker', 'A typed item, agreed to be done'],
+  ['Specify', 'Worker', 'Specifications that fail'],
+  ['Plan', 'Worker', 'An ordered route, and a declared touch'],
+  ['Action', 'Worker', 'The change, and a result for every criterion'],
+  ['Validate', 'The persona, or a recorded stand-in', 'A judgement on the outcome'],
+  ['Publish', 'Worker', 'A delivered result, confirmed — and the state complete'],
+];
 
-const h2: React.CSSProperties = {
-  fontFamily: 'var(--hm-font-display)', fontSize: 'var(--hm-size-display-3)',
-  fontWeight: 600, color: 'var(--hm-text-strong)', margin: '48px 0 16px',
-};
+const ROLES = [
+  ['Worker', 'Advances the work', 'Accumulates — the only role that does'],
+  ['Verifier', 'Confirms it against a standard', 'Denied — never saw the doing'],
+  ['Sentinel', 'Watches for drift, staleness and cost', 'Outside any work session'],
+  ['Decider', 'Commits money, risk or a promise', 'Denied — decides from the record'],
+];
 
-function Card({href, title, description, icon}: {href: string; title: string; description: string; icon: React.ReactNode}) {
+const WAYS_IN = [
+  ['Terminology', 'Every word the practice reserves, and the page that owns it.', '/terminology'],
+  ['The process', 'Capture through publish, act by act.', '/process/'],
+  ['Applying it', 'Declare personas, disciplines, standards and subtypes.', '/apply/declaring-an-application'],
+];
+
+function SectionHead({label, title, children}: {label?: string; title: string; children?: React.ReactNode}) {
   return (
-    <Link to={href} style={{
-      display: 'block', textDecoration: 'none', padding: 'var(--hm-space-5)',
-      background: 'var(--hm-surface-card)', border: 'var(--hm-border-width) solid var(--hm-line)',
-      borderRadius: 'var(--hm-radius-3)', boxShadow: 'var(--hm-shadow-1)',
-    }}>
-      <div style={{display: 'flex', alignItems: 'center', gap: 'var(--hm-space-3)', color: 'var(--hm-text-strong)'}}>
-        {icon}
-        <span style={{fontFamily: 'var(--hm-font-display)', fontSize: 'var(--hm-size-subheading)', fontWeight: 600}}>{title}</span>
-      </div>
-      <p style={{margin: '8px 0 0', color: 'var(--hm-text-muted)', fontSize: 'var(--hm-size-body-sm)'}}>{description}</p>
-    </Link>
+    <div className="hm-sectionhead">
+      {label && <div className="hm-sectionhead__label">{label}</div>}
+      <h2 className="hm-sectionhead__title">{title}</h2>
+      <div className="hm-rule" />
+      {children && <p className="hm-sectionhead__lede">{children}</p>}
+    </div>
   );
 }
 
-export default function Home() {
+export default function Home(): React.JSX.Element {
   return (
-    <Layout title="Hallmark" description="A delivery practice: declarations, states, and criteria that a repository adopts.">
-      <section style={{position: 'relative', overflow: 'hidden', background: 'var(--hm-surface-sunk)', borderBottom: 'var(--hm-border-width) solid var(--hm-line)'}}>
-        <div style={{position: 'absolute', inset: 0, backgroundImage: 'url(/img/punch-grid.svg)', backgroundSize: '48px 48px', opacity: 0.06}} />
-        <div style={{position: 'relative', maxWidth: 'var(--hm-page-max)', margin: '0 auto', padding: '96px var(--hm-gutter)'}}>
-          <img src="/img/logo-mark.svg" width={52} height={55} alt="" />
-          <h1 style={{fontFamily: 'var(--hm-font-display)', fontSize: 'var(--hm-size-display-1)', lineHeight: 1.06, letterSpacing: '-0.015em', fontWeight: 600, margin: '16px 0 12px'}}>Hallmark</h1>
-          <p style={{maxWidth: '56ch', margin: 0, fontSize: 'var(--hm-size-body-lg)', lineHeight: 1.7}}>
-            A delivery practice: declarations, states, and criteria that a repository adopts so that claims
-            about work are <strong>checked rather than asserted</strong>.
-          </p>
-          <div style={{display: 'flex', gap: 'var(--hm-space-4)', marginTop: 'var(--hm-space-6)'}}>
-            <Link to="/docs" style={btn}>Read the documentation <ArrowRight size={16} strokeWidth={1.75} /></Link>
-            <Link to="https://github.com/Kieranties/hallmark" style={btnSecondary}><GitBranch size={16} strokeWidth={1.75} /> The repository</Link>
-          </div>
-          <div style={{display: 'flex', gap: 'var(--hm-space-3)', marginTop: 'var(--hm-space-6)'}}>
-            <Badge tone="accent">pre-1.0</Badge>
-            <Badge>dogfooding itself</Badge>
-          </div>
+    <Layout
+      title="A delivery practice, stamped and provable"
+      description="Hallmark defines a principled process through which work of any size is delivered, standards are met, and what is claimed of the result is proven.">
+      <section className="hm-hero">
+        <h1 className="hm-hero__title">A delivery practice, stamped and provable</h1>
+        <p className="hm-hero__lede">
+          Hallmark defines a <Mark variant="keyword">principled</Mark> process through which
+          work of any size is delivered, <Mark variant="keyword">standards</Mark> are met, and
+          what is claimed of the result is <Mark variant="keyword">proven</Mark>.
+        </p>
+        <div className="hm-hero__actions">
+          <Link className="button button--primary" to="/practice/overview">
+            Read the practice
+          </Link>
+          <Link className="button button--secondary" to="/terminology">
+            Terminology
+          </Link>
         </div>
       </section>
 
-      <main style={{maxWidth: 'var(--hm-page-max)', margin: '0 auto', padding: '48px var(--hm-gutter) 96px'}}>
-        <div className="alert alert--warning" role="alert" style={{borderLeftWidth: 3, maxWidth: '80ch'}}>
-          <div style={{display: 'flex', alignItems: 'center', gap: 8, fontFamily: 'var(--hm-font-mono)', fontSize: 'var(--hm-size-label)', letterSpacing: 'var(--hm-track-label)', textTransform: 'uppercase', fontWeight: 600}}>
-            <TriangleAlert size={14} strokeWidth={1.75} /> This site is a scaffold
-          </div>
-          <p style={{margin: '8px 0 0', fontSize: 'var(--hm-size-body-sm)'}}>
-            The practice is still held as working documents in the repository and is being rewritten for
-            publication. Nothing here describes it yet.
-          </p>
-        </div>
-
-        <h2 style={h2}>Where to go</h2>
-        <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'var(--hm-space-5)', maxWidth: 980}}>
-          <Card href="/docs" title="Documentation" description="Everything published so far." icon={<BookOpen size={16} strokeWidth={1.75} />} />
-          <Card href="https://github.com/Kieranties/hallmark" title="The repository" description="The practice as it currently stands, and the issues tracking the rewrite." icon={<GitBranch size={16} strokeWidth={1.75} />} />
-        </div>
-
-        <h2 style={h2}>Status</h2>
-        <p style={{fontSize: 'var(--hm-size-body)', lineHeight: 1.7, maxWidth: '70ch'}}>
-          Pre-1.0, and dogfooding itself. The site publishes automatically, but its content does not yet
-          carry the practice.
-        </p>
-        <div style={{display: 'flex', alignItems: 'center', gap: 'var(--hm-space-3)', flexWrap: 'wrap'}}>
-          {STATES.map((s, i) => (
-            <React.Fragment key={s}>
-              {i > 0 && <ChevronRight size={13} strokeWidth={1.75} style={{color: 'var(--hm-text-faint)'}} />}
-              <StateChip state={s} size="sm" />
-            </React.Fragment>
+      <section className="hm-section">
+        <SectionHead label="Principles" title="Four principles, each a test that can be failed">
+          The practice is the interface; an application is an implementation of it. It states
+          what must hold, who may act, and how work travels — and it never names a tool.
+        </SectionHead>
+        <div className="hm-principles">
+          {PRINCIPLES.map((p, i) => (
+            <PrincipleCard key={p.name} index={i + 1} name={p.name} test={p.test}>
+              {p.body}
+            </PrincipleCard>
           ))}
         </div>
-      </main>
+      </section>
+
+      <section className="hm-section">
+        <SectionHead
+          label="The track"
+          title="Work advances by acts, and every act leaves something behind"
+        />
+        <div className="hm-track">
+          <DefinitionTable columns={['Act', 'Held by', 'Leaves behind']} rows={ACTS} />
+          <Card padding={22}>
+            <div className="hm-rolecard__label">Roles</div>
+            <div className="hm-rolecard__list">
+              {ROLES.map(([role, does, context]) => (
+                <div key={role}>
+                  <div className="hm-rolecard__name">{role}</div>
+                  <div className="hm-rolecard__does">{does}</div>
+                  <div className="hm-rolecard__context">{context}</div>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      <section className="hm-section hm-section--last">
+        <SectionHead label="Start here" title="Three ways in" />
+        <div className="hm-waysin">
+          {/* A plain Link rather than <Card as={Link}>: Card types `as` as a string
+              union, and widening it would mean editing a file that is copied
+              verbatim from the design system. hm-waycard carries the same card
+              spec — surface, hairline, 6px radius, gold border on hover. */}
+          {WAYS_IN.map(([title, blurb, to]) => (
+            <Link key={title} className="hm-waycard" to={to}>
+              <div className="hm-waycard__head">
+                <span className="hm-waycard__title">{title}</span>
+                <span className="hm-waycard__arrow" aria-hidden="true" />
+              </div>
+              <p className="hm-waycard__blurb">{blurb}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
     </Layout>
   );
 }

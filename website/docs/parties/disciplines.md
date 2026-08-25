@@ -1,63 +1,47 @@
 ---
 title: Disciplines
-description: A discipline is a party that acts on the change — a type, never a business title, and the branch most of the track hangs from.
-sidebar_position: 3
+description: A party that acts on the change — a type, never a business title, and the source of every actor that takes a role in the track.
+sidebar_position: 4
 ---
 
 # Disciplines
 
-## What it is \{#definition}
+**A party that acts on the *change*.** The counterpart to the [persona](./personas.md), and
+the source of every [actor](./actors.md) that takes a [role](./roles.md) in the track.
 
-**A discipline is a party that acts on the change.**
+A discipline is a *type*, never a business title and never an individual — which is what lets
+it survive people rotating, changing hats, or leaving. Who supplies the actor is a deployment
+detail, so a discipline may be filled from outside the organisation entirely and nothing about
+the role changes.
 
-## Why it exists \{#why}
+| Discipline | Acts on the change by |
+| --- | --- |
+| **Product** | Deciding what should exist, and why |
+| **Design** | Shaping how it is experienced |
+| **Development** | Building it |
+| **Technical** | Setting the technical direction it must fit |
+| **Delivery** | Sequencing it, releasing it, getting it into hands |
 
-**Without it, most of the track holds roles with no party above them.** Every act
-between capture and delivery is performed by somebody, and if the only kind of party the
-model knows is the kind the system serves, there is nothing for those acts to hang from.
+**These are examples. The practice names no disciplines.** Specifying the actual set is a
+**required act of applying the practice to a system** — until it exists, roles in the track
+have no party above them. The practice supplies only the test: *does the party act on the
+change?*
 
-**Disciplines exist to guarantee the questions get asked, not to guarantee different
-people ask them.** Naming them is what makes *was the technical voice heard before we
-committed?* a question with an answer, at any size of team. One holder may cover several
-disciplines; each still has to be genuinely consulted rather than assumed.
+**Disciplines exist to guarantee the questions get asked, not to guarantee different people
+ask them.** Naming them is what makes *was the technical voice heard before we committed?* a
+question with an answer, at any size of team. One actor may cover several disciplines; each
+still has to be genuinely consulted rather than assumed.
 
-**A business title would make the model unusable everywhere but here.** Titles vary by
-organisation, by client and by year. A discipline is a type — it survives a
-reorganisation, and it means the same thing in a team of one as in a department of
-fifty.
+**Discipline and role are different questions.** A discipline says *which party you are acting
+as*; a [role](./roles.md) says *what position you hold on this subject*. The same developer is
+a discipline supplying an [actor](./actors.md), and that actor may hold Worker on one item and
+Verifier on another. Neither answer constrains the other.
 
-## Rules \{#rules}
+:::important[Name for the branch, not for the person]
+The same word can land on either branch. A developer **building** the system is a
+*discipline*; a developer **consuming** what it publishes is a *persona*. Nothing about the
+person changed — the **object** did, and that is the only test there is.
 
-**A discipline is a party that acts on the change.** Its counterpart is the
-[persona](./personas.md) — a party the running system serves. The two are told apart by
-their object, never by a verb.
-
-**The disciplines are designer, developer, product, technical and delivery.**
-
-**A discipline is a type, never a business title**, and never an individual.
-
-**One holder may cover several disciplines.** What may not happen is a voice going
-unheard because nobody was named to speak it.
-
-**Who supplies the actor — yours or a client's — is a deployment detail.** A client's
-rollout decider is Delivery, supplying an [actor](./actors.md), holding a Decider
-[role](./the-four-roles.md) scoped to that client's rollout. The interface is the same
-whoever fills it.
-
-**A discipline may capture, mid-flow, and that changes nothing.** Capture is not acting
-on the change; see [the structure](./the-structure.md).
-
-## In detail \{#detail}
-
-### Which voices must be heard, and when
-
-Disciplines are the voices required before an item advances or is promised. Which voice
-is required at which transition is a fact about the transition, and it is stated with
-[commitment](../items/commitment.md) rather than restated here.
-
-### Discipline and role are different questions
-
-A discipline says **which party you are acting as**; a role says **what position you
-hold on this subject**. The same developer is a discipline supplying an actor, and that
-actor may hold Worker on one item and Verifier on another. Neither answer constrains the
-other, and neither of them turns on whether the actor is a person or a program.
+**Where a bare name could be read as either, it is not precise enough.** Qualify it until it
+can only be one — *Development* and *Consuming developer*, never *Developer* twice.
+:::

@@ -1,34 +1,20 @@
-<!-- @dsCard group="Components" viewport="700x260" name="Core" subtitle="Button, Badge, Callout, Kbd, Icon" -->
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
-<style>body{margin:0;padding:20px;background:var(--hm-paper);font-family:var(--hm-font-body);color:var(--hm-text-body)}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}.lab{font-family:var(--hm-font-mono);font-size:var(--hm-size-label);letter-spacing:var(--hm-track-label);text-transform:uppercase;color:var(--hm-text-faint);width:64px;flex:0 0 64px}a{color:var(--hm-action)}a:hover{color:var(--hm-action-hover)}</style>
+<!-- @dsCard group="Components" viewport="700x300" name="Core" subtitle="Logo, buttons, badges, tags, cards" -->
+<!doctype html><html data-theme="light"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
 <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script src="../../_ds_bundle.js"></script></head>
-<body><div id="root"></div>
+<script src="../../_ds_bundle.js"></script>
+<script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.js"></script>
+<style>html,body{margin:0}body{background:var(--bg-page);color:var(--text-body);font-family:var(--font-sans);padding:16px}</style></head><body><div id="root"></div>
 <script type="text/babel">
-const { Button, Badge, Callout, Kbd, Icon } = window.HallmarkDesignSystem_b394b6;
-ReactDOM.createRoot(document.getElementById('root')).render(<>
-  <div className="row"><span className="lab">button</span>
-    <Button>Read the practice</Button>
-    <Button variant="secondary" iconLeft={<Icon name="github" size={15} />}>GitHub</Button>
-    <Button variant="ghost" size="sm" iconRight={<Icon name="arrow-right" size={14} />}>Enable</Button>
-    <Button size="sm" disabled>Disabled</Button>
+const { Logo, Button, Badge, Tag, Card } = window.HallmarkDesignSystem_ad5c38;
+const Row = ({children,label}) => <div style={{display:"flex",flexDirection:"column",gap:8}}><span style={{fontSize:11,letterSpacing:".14em",textTransform:"uppercase",color:"var(--text-faint)"}}>{label}</span><div style={{display:"flex",alignItems:"center",gap:10,flexWrap:"wrap"}}>{children}</div></div>;
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <div style={{display:"flex",flexDirection:"column",gap:18}}>
+    <Row label="Logo"><Logo size={24}/><Logo size={20} wordmark={false}/><Logo size={20} tone="ink"/></Row>
+    <Row label="Button"><Button>Read the practice</Button><Button variant="secondary">Glossary</Button><Button variant="ghost">Skip</Button><Button size="sm">Small</Button><Button disabled>Disabled</Button></Row>
+    <Row label="Badge / Tag"><Badge tone="pass">Verified</Badge><Badge tone="fail">Returned</Badge><Badge tone="concession">Conceded</Badge><Badge tone="accent">Derived</Badge><Badge mono>HM-0142</Badge><Tag>Capability</Tag><Tag interactive selected>Process</Tag></Row>
+    <Row label="Card"><Card style={{width:200}}><b style={{fontFamily:"var(--font-display)"}}>Standards</b><div style={{fontSize:13,color:"var(--text-muted)",marginTop:4}}>Floors that stack by union.</div></Card><Card interactive as="a" href="#" style={{width:200}}><b style={{fontFamily:"var(--font-display)"}}>Process</b><div style={{fontSize:13,color:"var(--text-muted)",marginTop:4}}>Seven acts, each leaving evidence.</div></Card></Row>
   </div>
-  <div className="row"><span className="lab">badge</span>
-    <Badge>pre-1.0</Badge><Badge tone="accent">type-practice</Badge>
-    <Badge tone="verified">checked</Badge><Badge tone="open" outline>uncommitted</Badge>
-    <Badge tone="conceded">concession</Badge>
-    <span className="lab" style={{width:'auto',flex:'0 0 auto',marginLeft:8}}>kbd</span>
-    <span><Kbd>Ctrl</Kbd> <Kbd>K</Kbd></span>
-  </div>
-  <div className="row" style={{alignItems:'stretch'}}><span className="lab">callout</span>
-    <Callout kind="warning" title="This site is a scaffold" style={{flex:1}}>The practice is still held as working documents in the repository.</Callout>
-    <Callout kind="tip" style={{flex:1}}>A merge to <code>main</code> rebuilds from <code>main</code>.</Callout>
-  </div>
-  <div className="row"><span className="lab">icon</span>
-    {['stamp','filter','file-text','list-checks','hammer','check','circle-slash','triangle-alert','copy','arrow-right'].map(n =>
-      <Icon key={n} name={n} size={18} style={{color:'var(--hm-ink-600)'}} />)}
-  </div>
-</>);
+);
 </script></body></html>

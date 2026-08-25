@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Docs landing" description="Documentation landing page: hero, principles grid and reference tables." -->
+<helmet><script src="../docs-article/ds-base.js"></script><style>html,body{margin:0}a{color:var(--text-link);text-decoration:none;border-bottom:1px solid var(--border-link)}a:hover{color:var(--text-link-hover);border-bottom-color:var(--border-mark)}nav a,header a,footer a{border-bottom:none}</style></helmet>
+<div style="min-height:100vh;background:var(--bg-page);color:var(--text-body);font-family:var(--font-sans)">
+<header style="height:60px;display:flex;align-items:center;gap:28px;padding:0 40px;border-bottom:1px solid var(--border-subtle)">
+<span style="display:inline-flex;align-items:center;gap:12px;color:var(--accent)"><svg width="26" height="22" viewBox="0 0 32 28" fill="none" style="overflow:visible"><ellipse cx="16" cy="14" rx="15" ry="11.5" stroke="currentColor" stroke-width="1.6"></ellipse><ellipse cx="16" cy="14" rx="12.4" ry="9" stroke="currentColor" stroke-width="0.7"></ellipse><text x="16" y="14" text-anchor="middle" dominant-baseline="central" fill="currentColor" style="font-family:var(--font-display);font-style:italic;font-weight:500;font-size:17px">h</text></svg><span style="font-family:var(--font-display);font-size:16px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--text-heading)">Hallmark</span></span>
+<nav style="display:flex;align-items:center;gap:22px;font-size:14px;margin-left:auto">
+<a href="#" style="color:var(--text-muted)">Practice</a>
+<a href="#" style="color:var(--text-muted)">Terminology</a>
+<a href="#" style="color:var(--text-muted)">Process</a>
+</nav>
+</header>
+<section style="padding:96px 40px 72px;border-bottom:1px solid var(--border-subtle);max-width:1360px;margin:0 auto">
+<h1 style="margin:0;max-width:22ch;font-family:var(--font-display);font-size:52px;font-weight:500;line-height:1.12;letter-spacing:-.015em;color:var(--text-heading)">A delivery practice, stamped and provable</h1>
+<p style="margin:20px 0 0;max-width:58ch;font-size:21px;line-height:1.65;color:var(--text-muted)">Hallmark defines a principled process through which work of any size is delivered, standards are met, and what is claimed of the result is proven.</p>
+<div style="display:flex;gap:10px;margin-top:30px">
+<x-import component-from-global-scope="HallmarkDesignSystem_ad5c38.Button" hint-size="180px,36px">Read the practice</x-import>
+<x-import component-from-global-scope="HallmarkDesignSystem_ad5c38.Button" variant="secondary" hint-size="120px,36px">Terminology</x-import>
+</div>
+</section>
+<section style="padding:64px 40px;max-width:1360px;margin:0 auto">
+<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:8px">Principles</div>
+<h2 style="margin:0;font-family:var(--font-display);font-size:32px;font-weight:600;letter-spacing:-.015em;color:var(--text-heading)">Four principles, each a test that can be failed</h2>
+<div style="width:44px;height:3px;background:var(--accent);margin:12px 0 26px"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div style="background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:6px;padding:20px;box-shadow:var(--shadow-1)">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="width:22px;height:22px;display:grid;place-items:center;clip-path:var(--cartouche);background:var(--accent);color:var(--accent-on);font-family:var(--font-mono);font-size:11px">1</span><h3 style="margin:0;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-heading)">Provable</h3></div>
+<p style="margin:0 0 8px;font-family:var(--font-display);font-style:italic;font-size:16px;color:var(--text-mark)">If something is claimed, there must be evidence to prove it.</p>
+<p style="margin:0;font-size:14px;line-height:1.65;color:var(--text-muted)">Nothing advances on assertion. A specification that was never seen to pass is an intention with a filename.</p>
+</div>
+<div style="background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:6px;padding:20px;box-shadow:var(--shadow-1)">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="width:22px;height:22px;display:grid;place-items:center;clip-path:var(--cartouche);background:var(--accent);color:var(--accent-on);font-family:var(--font-mono);font-size:11px">2</span><h3 style="margin:0;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-heading)">Derived</h3></div>
+<p style="margin:0 0 8px;font-family:var(--font-display);font-style:italic;font-size:16px;color:var(--text-mark)">If something can be determined from the record, it must not be decided.</p>
+<p style="margin:0;font-size:14px;line-height:1.65;color:var(--text-muted)">What a change touches decides what it must satisfy — nobody rules a change small enough to skip something.</p>
+</div>
+<div style="background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:6px;padding:20px;box-shadow:var(--shadow-1)">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="width:22px;height:22px;display:grid;place-items:center;clip-path:var(--cartouche);background:var(--accent);color:var(--accent-on);font-family:var(--font-mono);font-size:11px">3</span><h3 style="margin:0;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-heading)">Traceable</h3></div>
+<p style="margin:0 0 8px;font-family:var(--font-display);font-style:italic;font-size:16px;color:var(--text-mark)">If something is claimed, decided or moved, there must be a path to what produced it.</p>
+<p style="margin:0;font-size:14px;line-height:1.65;color:var(--text-muted)">One door in, identifiable actors, and a recorded reason at every gate.</p>
+</div>
+<div style="background:var(--bg-surface);border:1px solid var(--border-subtle);border-radius:6px;padding:20px;box-shadow:var(--shadow-1)">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><span style="width:22px;height:22px;display:grid;place-items:center;clip-path:var(--cartouche);background:var(--accent);color:var(--accent-on);font-family:var(--font-mono);font-size:11px">4</span><h3 style="margin:0;font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--text-heading)">Invariant</h3></div>
+<p style="margin:0 0 8px;font-family:var(--font-display);font-style:italic;font-size:16px;color:var(--text-mark)">Whatever the size of the work, or the kind of actor, the same process applies.</p>
+<p style="margin:0;font-size:14px;line-height:1.65;color:var(--text-muted)">The practice runs all-human, all-agent, or any mix, without alteration.</p>
+</div>
+</div>
+</section>
+<section style="padding:0 40px 96px;max-width:1360px;margin:0 auto">
+<div style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-bottom:8px">The track</div>
+<h2 style="margin:0;font-family:var(--font-display);font-size:32px;font-weight:600;letter-spacing:-.015em;color:var(--text-heading)">Work advances by acts, and every act leaves something behind</h2>
+<div style="width:44px;height:3px;background:var(--accent);margin:12px 0 26px"></div>
+<table style="width:100%;border-collapse:collapse">
+<thead><tr><th style="text-align:left;padding:8px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);border-bottom:1px solid var(--border-default)">Act</th><th style="text-align:left;padding:8px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);border-bottom:1px solid var(--border-default)">Held by</th><th style="text-align:left;padding:8px 12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);border-bottom:1px solid var(--border-default)">Leaves behind</th></tr></thead>
+<tbody>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Capture</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Anyone</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">A request</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Sift</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Worker</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">A typed item, agreed to be done</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Specify</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Worker</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Specifications that fail</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Plan</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Worker</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">An ordered route, and a declared touch</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Action</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Worker</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">The change, and a result for every criterion</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Validate</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">The persona, or a recorded stand-in</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">A judgement on the outcome</td></tr>
+<tr><td style="padding:10px 12px;font-size:14px;color:var(--text-heading);font-weight:500;border-bottom:1px solid var(--border-subtle)">Publish</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">Worker</td><td style="padding:10px 12px;font-size:14px;border-bottom:1px solid var(--border-subtle)">A delivered result, confirmed</td></tr>
+</tbody></table>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1360,&quot;height&quot;:820},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;\&quot;light\&quot; | \&quot;dark\&quot;&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+class Component extends DCLogic {
+  applyTheme() { document.documentElement.setAttribute("data-theme", this.props.theme || "light"); }
+  componentDidMount() { this.applyTheme(); }
+  componentDidUpdate() { this.applyTheme(); }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

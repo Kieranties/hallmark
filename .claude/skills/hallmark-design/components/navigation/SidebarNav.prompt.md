@@ -1,9 +1,7 @@
-The docs sidebar. One per docs layout, 270px wide (`--hm-sidebar-width`).
+Sidebar tree — maps to a Docusaurus `sidebars.js` category/doc structure.
 
 ```jsx
-<SidebarNav activeId="door" onSelect={setPage} sections={[
-  { label: 'Practice', items: [{ id: 'door', label: 'The door' }, { id: 'states', label: 'States' }] }
-]} />
+<SidebarNav sections={[{label:"Practice",items:[{id:"overview",label:"Overview"}]}]} active="overview" />
 ```
 
-Section labels are mono uppercase and are never links. Active item: sunk fill, madder text, 2px madder left edge.
+Give top-level items a 14px Lucide `icon`; leave nested items unadorned so the rail stays the depth cue. Depth 2 gets a hairline rail; depth 3 does not exist — restructure instead.

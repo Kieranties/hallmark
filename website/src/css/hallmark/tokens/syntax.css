@@ -1,0 +1,39 @@
+/* Code syntax palette. Muted, low-chroma: code is read, not admired. */
+:root{
+  --code-plain:var(--grey-2);
+  --code-comment:var(--grey-4);
+  --code-keyword:var(--blue-400);
+  --code-string:var(--green-400);
+  --code-number:var(--gold-500);
+  --code-function:var(--gold-600);
+  --code-property:var(--grey-1);
+  --code-punctuation:var(--grey-4);
+  --code-tag:var(--red-400);
+  --code-attr:var(--gold-500);
+  --code-added:var(--green-400);
+  --code-added-bg:var(--green-100);
+  --code-removed:var(--red-400);
+  --code-removed-bg:var(--red-100);
+  --code-line-highlight:var(--accent-soft);
+  --code-line-number:var(--grey-5);
+  --code-gutter-border:var(--paper-3);
+}
+[data-theme="dark"]{
+  --code-plain:var(--grey-6);
+  --code-comment:var(--grey-4);
+  --code-keyword:var(--blue-300);
+  --code-string:var(--green-300);
+  --code-number:var(--gold-300);
+  --code-function:var(--gold-200);
+  --code-property:var(--grey-7);
+  --code-punctuation:var(--grey-4);
+  --code-tag:var(--red-300);
+  --code-attr:var(--gold-300);
+  --code-added:var(--green-300);
+  --code-added-bg:rgba(95,182,162,.14);
+  --code-removed:var(--red-300);
+  --code-removed-bg:rgba(222,133,121,.14);
+  --code-line-highlight:rgba(211,172,102,.14);
+  --code-line-number:var(--ink-4);
+  --code-gutter-border:var(--ink-3);
+}

@@ -170,24 +170,21 @@ HALLMARK_NPM_CACHE_MOUNT=source=/path/to/your/npm-cache,target=/home/node/.npm,t
 | Path | Holds |
 | --- | --- |
 | `website/` | The Docusaurus site — configuration, and content under `website/docs/` |
-| `docs/adr/` | Architecture decision records. Immutable; superseded, never edited |
 | `docs/kb/` | Knowledge base articles, this one included. Living; edited as the thing changes |
-| `.hallmark/` | The repository's own declarations — its door, actors, disciplines and personas |
 | `.devcontainer/` | The container definition this article describes |
 | `.claude/` | Claude Code configuration shared by everyone working here |
 | `.github/workflows/` | Build on pull requests; build and publish on merge to `main` |
 
-[`docs/README.md`](../README.md) states which of `adr/` and `kb/` a new document belongs in.
-The split is lifecycle, not subject: if editing it later would destroy the point of it, it is
-an ADR.
+[`docs/README.md`](../README.md) states what belongs in `kb/`, and what belongs on the item
+instead.
 
 ## Working an item
 
 The door is [GitHub issues](https://github.com/Kieranties/hallmark/issues), and the board is
-[the project](https://github.com/users/Kieranties/projects/2). `.hallmark/repository.yml`
-declares both, along with what carries an item's type, state and commitment — read it there
-rather than assuming, because it is the declaration the tooling reads too.
+[the project](https://github.com/users/Kieranties/projects/2). What carries an item's type,
+state and commitment is whatever the issue and the board already offer — a label, a project
+field, a milestone — and nothing in the repository declares that mapping today.
 
-Anything worth doing that you are not doing now goes to the door rather than into your head:
-`/capture <whatever it is>` in Claude Code writes it up as an item. Four words is a valid
-capture. That is deliberate — charge for capture, and ideas stop arriving.
+Anything worth doing that you are not doing now goes to the door rather than into your head.
+Four words is a valid capture. That is deliberate — charge for capture, and ideas stop
+arriving.
