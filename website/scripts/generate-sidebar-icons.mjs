@@ -54,6 +54,7 @@ const ICONS = {
   'triangle-alert': 'triangle-alert',
   'git-fork': 'git-fork',
   house: 'house',
+  'arrow-right': 'arrow-right',
 };
 
 const attrs = (o) =>

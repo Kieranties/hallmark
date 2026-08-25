@@ -9,7 +9,6 @@ const doc = (id: string, icon: string) => ({type: 'doc' as const, id, className:
 
 const sidebars: SidebarsConfig = {
   docsSidebar: [
-    doc('index', 'house'),
     {
       type: 'category',
       label: 'The practice',

@@ -78,9 +78,14 @@
 /* Four principle cards, two up on desktop and stacked on narrow screens. */
 .hm-principles {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin: 24px 0;
+}
+@media (max-width: 996px) {
+  .hm-principles {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* --- Terminology glossary ------------------------------------------------ */
@@ -217,4 +222,167 @@
   margin: 32px auto 0;
   padding-top: 16px;
   border-top: 1px solid var(--border-subtle);
+}
+
+/* --- Landing page ---------------------------------------------------------- */
+/* A page rather than a doc, so it carries no sidebar and sets its own rhythm.
+   Structure and measurements follow ui_kits/docs-site/LandingPage.jsx. */
+.hm-hero {
+  /* width is required: .main-wrapper is a flex column, and an auto inline margin
+     on a flex item suppresses `stretch`, so without it the section shrinks to
+     its content and centres at the wrong measure. */
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 96px 40px 72px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.hm-hero__title {
+  margin: 0;
+  max-width: 22ch;
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-weight: 500;
+  color: var(--text-heading);
+}
+.hm-hero__lede {
+  margin: 20px 0 0;
+  max-width: 58ch;
+  font-size: var(--text-lg);
+  line-height: var(--leading-body);
+  color: var(--text-muted);
+}
+.hm-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.hm-section {
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 64px 40px;
+}
+.hm-section--last {
+  padding-bottom: 96px;
+}
+.hm-sectionhead {
+  margin-bottom: 24px;
+}
+.hm-sectionhead__label {
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-mark);
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+}
+.hm-sectionhead__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-heading);
+}
+.hm-sectionhead__lede {
+  margin: 0;
+  max-width: var(--measure-prose);
+  font-size: var(--text-md);
+  line-height: var(--leading-body);
+  color: var(--text-muted);
+}
+
+.hm-track {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: start;
+}
+.hm-rolecard__label {
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-mark);
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 12px;
+}
+.hm-rolecard__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hm-rolecard__name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  color: var(--text-heading);
+}
+.hm-rolecard__does {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.hm-rolecard__context {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--text-faint);
+  margin-top: 2px;
+}
+
+.hm-waysin {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.hm-waycard {
+  display: block;
+  padding: 22px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-1);
+  color: var(--text-body);
+  text-decoration: none;
+  transition: var(--transition-ui);
+}
+.hm-waycard:hover {
+  border-color: var(--border-mark);
+  box-shadow: var(--shadow-2);
+  color: var(--text-body);
+  text-decoration: none;
+}
+.hm-waycard__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hm-waycard__title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  color: var(--text-heading);
+}
+.hm-waycard__arrow {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: var(--text-faint);
+  -webkit-mask: url('/img/icons/arrow-right.svg') no-repeat center / contain;
+  mask: url('/img/icons/arrow-right.svg') no-repeat center / contain;
+}
+.hm-waycard:hover .hm-waycard__arrow {
+  background: var(--text-mark);
+}
+.hm-waycard__blurb {
+  margin: 8px 0 0;
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+@media (max-width: 996px) {
+  .hm-hero { padding: 56px 24px 48px; }
+  .hm-section { padding: 40px 24px; }
+  .hm-track, .hm-waysin { grid-template-columns: 1fr; }
 }
