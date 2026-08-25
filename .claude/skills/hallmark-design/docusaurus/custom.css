@@ -95,6 +95,50 @@
 .theme-doc-sidebar-item-category>.menu__list{border-left:1px solid var(--border-subtle);margin-left:10px;padding-left:2px}
 .menu__link--sublist-caret:after,.menu__caret:before{opacity:.5}
 
+/* ─── Layout ──────────────────────────────────────────────────────────────
+   Infima lays the docs out full-bleed, so without this the sidebar sits against
+   the viewport edge and the content column has no cap. The measurements are the
+   design's own: a 1360px shell centred on the page, holding a 284px sidebar, a
+   flexible content column and a 224px contents rail. --content-max is not set
+   directly — it falls out of 1360 less the two rails less the column padding,
+   which is how the reference layout reaches it too. */
+.main-wrapper{width:100%;max-width:var(--page-max);margin-inline:auto}
+
+:root{--doc-sidebar-width:var(--sidebar-width)}
+.theme-doc-sidebar-container>div>div{padding-top:24px}
+.theme-doc-sidebar-container .menu{padding:0 12px 64px}
+
+/* Contents rail. The column is a hashed module class, so it is reached through
+   the stable class on the rail itself. */
+@media (min-width:997px){
+  .col:has(>.theme-doc-toc-desktop){width:var(--toc-width);max-width:var(--toc-width);flex:0 0 var(--toc-width);padding:24px 24px 64px 0}
+  .theme-doc-markdown{padding:12px 16px 32px}
+}
+
+/* Footer spans the page but its contents sit on the same 1360px measure. */
+.footer .container{max-width:var(--page-max)}
+
+/* ─── Sidebar icons ───────────────────────────────────────────────────────
+   Docusaurus has no icon field on a sidebar item, so each item carries a class
+   and the glyph is painted as a mask — which means one file per icon and the
+   colour following the link's state. Items without an sb- class are unaffected. */
+.menu__link{display:flex;align-items:center;gap:8px}
+/* Docusaurus puts a sidebar item's className on the <li>, not on the <a> — so the
+   glyph is declared on the item and painted on the link inside it. Custom
+   properties inherit, so --sb-icon set on the item reaches the pseudo-element. */
+.menu__list-item[class*="sb-"]>.menu__link::before{content:"";width:14px;height:14px;flex:none;
+  background:var(--text-faint);transition:var(--transition-ui);
+  -webkit-mask:var(--sb-icon) no-repeat center/contain;mask:var(--sb-icon) no-repeat center/contain}
+.menu__list-item[class*="sb-"]>.menu__link:hover::before{background:var(--text-muted)}
+.menu__list-item[class*="sb-"]>.menu__link--active::before{background:var(--text-mark)}
+
+/* Category headers read as uppercase micro-labels rather than as links. */
+.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link{
+  font-size:var(--text-2xs);letter-spacing:var(--tracking-mark);text-transform:uppercase;
+  color:var(--text-faint);font-weight:var(--weight-medium)}
+.theme-doc-sidebar-item-category-level-1>.menu__list-item-collapsible>.menu__link:hover{background:transparent;color:var(--text-muted)}
+.theme-doc-sidebar-item-category-level-1>.menu__list{border-left:none;margin-left:0;padding-left:0}
+
 /* Prose */
 .markdown h1:first-child{font-weight:500;letter-spacing:var(--tracking-tight);line-height:1.15}
 .markdown>h2{letter-spacing:var(--tracking-tight);padding-bottom:0;border-bottom:none;margin-top:2.4rem}
@@ -120,6 +164,9 @@
 .theme-admonition .admonitionHeading_node_modules-\\@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module,
 .theme-admonition [class*="admonitionHeading"]{font-family:var(--font-sans);font-size:var(--text-2xs);letter-spacing:var(--tracking-mark);text-transform:uppercase;font-weight:var(--weight-semibold);margin-bottom:6px}
 .theme-admonition-note{background:var(--bg-sunken);--ifm-alert-foreground-color:var(--text-muted)}
+/* `:::important` has no Infima colour of its own, so it falls back to blue. The
+   design system's Callout gives `important` a soft gold plate — match it here. */
+.theme-admonition-important{background:var(--accent-soft);--ifm-alert-foreground-color:var(--text-mark)}
 .theme-admonition-info{background:var(--bg-sunken);--ifm-alert-foreground-color:var(--text-muted)}
 .theme-admonition-tip{background:var(--status-pass-soft);--ifm-alert-foreground-color:var(--status-pass)}
 .theme-admonition-warning,.theme-admonition-caution{background:var(--status-concession-soft);--ifm-alert-foreground-color:var(--status-concession)}
@@ -143,6 +190,12 @@
 /* Footer */
 .footer{background:var(--bg-sunken);border-top:1px solid var(--border-subtle);padding:40px 40px 24px;--ifm-footer-background-color:var(--bg-sunken);--ifm-footer-color:var(--text-muted);--ifm-footer-link-color:var(--text-muted);--ifm-footer-link-hover-color:var(--text-heading);--ifm-footer-title-color:var(--text-faint)}
 .footer--dark{background:var(--bg-sunken)}
+/* Infima lays footer columns out on its 12-column grid, which spaces them by
+   fraction of the width. The design spaces them by a fixed gap instead, so the
+   columns sit together at the left rather than spreading across the page. */
+.footer__links{display:flex;flex-wrap:wrap;gap:56px;margin:0}
+.footer__col{flex:0 0 auto;width:auto;min-width:174px;max-width:none;padding:0;margin-bottom:0}
+.footer__bottom .margin-bottom--sm{margin-bottom:0!important}
 .footer__title{font-family:var(--font-sans);font-size:var(--text-2xs);font-weight:var(--weight-medium);letter-spacing:var(--tracking-mark);text-transform:uppercase;color:var(--text-faint)}
 .footer__item{font-size:var(--text-sm);padding:3px 0}
 .footer__link-item{border-bottom:1px solid transparent}

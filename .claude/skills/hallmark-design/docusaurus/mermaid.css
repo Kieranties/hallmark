@@ -1,13 +1,16 @@
 /* Hallmark mermaid overrides — square the corners, thin the strokes, letterspace the state labels.
+/* Docusaurus renders diagrams inside `.docusaurus-mermaid-container`, and puts no
+   `.mermaid` class on the svg — so a rule written for mermaid's own markup never
+   matches there. Every selector below accepts either wrapper. */
    Import after custom.css (or paste in). */
-.docusaurus-mermaid-container svg,.mermaid svg{max-width:100%}
-.mermaid .node rect,.mermaid .node polygon,.mermaid .statediagram-state rect{rx:4px;ry:4px;stroke-width:1px!important}
+:is(.mermaid,.docusaurus-mermaid-container) svg{max-width:100%}
+:is(.mermaid,.docusaurus-mermaid-container) .node rect,:is(.mermaid,.docusaurus-mermaid-container) .node polygon,:is(.mermaid,.docusaurus-mermaid-container) .statediagram-state rect{rx:4px;ry:4px;stroke-width:1px!important}
 /* Fonts and sizes are set in themeVariables.fontFamily — mermaid measures labels before CSS
    applies, so overriding the face here clips every node. Only colour is safe to restyle. */
-.mermaid .edgeLabel .edgeLabel,.mermaid .edgeLabel span{color:var(--text-muted)!important}
-.mermaid .edgePath .path,.mermaid .transition{stroke-width:1.1px!important}
-.mermaid .marker{fill:var(--border-strong)!important;stroke:var(--border-strong)!important}
-.mermaid .statediagram-cluster rect{stroke-dasharray:2 3}
+:is(.mermaid,.docusaurus-mermaid-container) .edgeLabel .edgeLabel,:is(.mermaid,.docusaurus-mermaid-container) .edgeLabel span{color:var(--text-muted)!important}
+:is(.mermaid,.docusaurus-mermaid-container) .edgePath .path,:is(.mermaid,.docusaurus-mermaid-container) .transition{stroke-width:1.1px!important}
+:is(.mermaid,.docusaurus-mermaid-container) .marker{fill:var(--border-strong)!important;stroke:var(--border-strong)!important}
+:is(.mermaid,.docusaurus-mermaid-container) .statediagram-cluster rect{stroke-dasharray:2 3}
 /* Start and end pseudo-states read as struck dots */
-.mermaid .start-state,.mermaid .node circle.state-start{fill:var(--accent)!important;stroke:none!important}
-.mermaid .node circle.state-end,.mermaid .end-state-inner{fill:var(--text-heading)!important}
+:is(.mermaid,.docusaurus-mermaid-container) .start-state,:is(.mermaid,.docusaurus-mermaid-container) .node circle.state-start{fill:var(--accent)!important;stroke:none!important}
+:is(.mermaid,.docusaurus-mermaid-container) .node circle.state-end,:is(.mermaid,.docusaurus-mermaid-container) .end-state-inner{fill:var(--text-heading)!important}
